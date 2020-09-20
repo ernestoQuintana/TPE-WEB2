@@ -21,11 +21,21 @@
   <body>
     <nav class="navbar navbar-dark bg-dark">
       <ul>
-        <a class="navbar-brand" href="#">Home</a>
-        <a class="navbar-brand" href="#">Rostro</a>
-        <a class="navbar-brand" href="#">Cuerpo</a>
-        <a class="navbar-brand" href="#">Hombre</a>
-        <a class="navbar-brand" href="#">Cabello</a>
+        <a class="navbar-brand" href="productos.php?categoria=home">Home</a>
+        <a class="navbar-brand" href="productos.php?categoria=productos">Productos</a>
+
+        <div class="btn-group" role="group">
+          <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categorias
+          </button>
+          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="navbar-brand dropdown-item" href="productos.php?categoria=rostro">Rostro</a>
+            <a class="navbar-brand dropdown-item" href="productos.php?categoria=cuerpo">Cuerpo</a>
+            <a class="navbar-brand dropdown-item" href="productos.php?categoria=hombre">Hombre</a>
+            <a class="navbar-brand dropdown-item" href="productos.php?categoria=cabello">Cabello</a>
+          </div>
+          <a class="navbar-brand" href="productos.php?categoria=administrador">Administrador</a>
       </ul>
       <form class="form-inline my-2 my-lg-0">
         <input

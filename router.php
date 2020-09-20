@@ -19,6 +19,9 @@ switch ($params[0]) {
     case 'home': 
         showHome(); 
         break;
+    case 'productos':
+        showProductos();
+        break;
     case 'rostro': 
         showRostro(); 
         break;
@@ -28,15 +31,19 @@ switch ($params[0]) {
     case 'hombre': 
         showHombre(); 
         break;
-    case 'Cabello': 
+    case 'cabello': 
         showCabello(); 
         break;
+    case 'administrador':
+        showAdministrador();
+        break;
+/*
     case 'about': 
         if (isset($params[1]))
          showAbout($params[1]); 
         else
             showAbout();
-        break;
+        break;*/
     default: 
         echo('404 Page not found'); 
         break;
