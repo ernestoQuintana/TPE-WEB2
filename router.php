@@ -16,24 +16,20 @@ $params = explode('/',$action);
 
 //determina el camino a seguir con los links.
 switch ($params[0]) {
-    case 'home': 
-        showHome(); 
-        break;
     case 'productos':
-        showProductos();
-        break;
-    case 'rostro': 
-        showRostro(); 
-        break;
-    case 'cuerpo': 
-        showCuerpo(); 
-        break;
-    case 'hombre': 
-        showHombre(); 
-        break;
-    case 'cabello': 
-        showCabello(); 
-        break;
+        $controllers = new ProductosControllers;
+        $controllers->showProductos();
+    break;
+
+    case 'rostro': case 'cuerpo' : case 'hombre' : case 'cabello':
+
+        $controllers = new ProductosControllers;
+        $controllers->showCategoria();
+    break;
+    /*   case 'home': 
+           showHome(); 
+           break;
+    
     case 'administrador':
         showAdministrador();
         break;
