@@ -29,6 +29,11 @@ switch ($params[0]) {
         $controllers = new ProductosControllers;
         $controllers->showProductosByCategoria();
     break;
+    case 'detalleProducto':
+        $controllers = new ProductosControllers;
+        $id= $params[1];
+        $controllers->showDetalleProducto($id);
+    break;
     case 'home': 
         showHome(); 
         break;

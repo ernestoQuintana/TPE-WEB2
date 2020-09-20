@@ -9,19 +9,18 @@
         private $modelProducto;
         private $modelCategoria;
         private $view; 
-/*
+
         function __construct(){
             $this->modelProducto = new ModelProducto();
             $this->modelCategoria = new ModelCategoria();
             $this->view = new ViewProducto();
-        }  */
-
+        } 
         function showProductos(){
             echo "entro";
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
+          $this->view->renderProductos($productos);
 
-           $this->view->renderProductos($productos);
         }
 
         function showProductosByCategoria(){
@@ -37,9 +36,15 @@
         }
 
         function showCategorias(){
-            $categorias = $this->modelCategoria->getAllCategorias();
 
+            $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderCategorias();
+
+        }
+
+        function showDetalleProducto($id){
+            $detalleProducto = $this->modelProducto->getDetalleProducto($id);
+            $detalleProducto->view->renderDetalleProducto($id); 
         }
 
     }
