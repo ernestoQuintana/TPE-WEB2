@@ -34,13 +34,13 @@ switch ($params[0]) {
         $id= $params[1];
         $controllers->showDetalleProducto($id);
     break;
-    case 'home': 
+   /* case 'home': 
         showHome(); 
         break;
     
     case 'administrador':
         showAdministrador();
-        break;
+        break;*/
     default: 
         echo('404 Page not found'); 
         break;

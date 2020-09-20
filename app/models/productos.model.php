@@ -4,9 +4,13 @@ class ModelProducto {
     private $dbProductos;
 
     function __construct(){
-        $this->$dbProductos = new PDO('mysql:host=localhost;'.'dbname=db_productos;charset=utf8', 'root', '');
+        $this->$dbProductos = $this->connect();
     }
 
+    private function connect(){
+        $this->$dbProductos = new PDO('mysql:host=localhost;'.'dbname=db_productos;charset=utf8', 'root',''); 
+        return $dbProductos;
+    }
     function getAllProductos(){
         $query =$this->dbProductos->prepare('SELECT * FROM producto');
         $query->execute();
