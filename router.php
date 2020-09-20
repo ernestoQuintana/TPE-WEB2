@@ -20,26 +20,22 @@ switch ($params[0]) {
         $controllers = new ProductosControllers;
         $controllers->showProductos();
     break;
-
+    case 'categorias':
+        $controllers = new ProductosControllers;
+        $controllers->showCategorias();
+    break;
     case 'rostro': case 'cuerpo' : case 'hombre' : case 'cabello':
 
         $controllers = new ProductosControllers;
-        $controllers->showCategoria();
+        $controllers->showProductosByCategoria();
     break;
-    /*   case 'home': 
-           showHome(); 
-           break;
+    case 'home': 
+        showHome(); 
+        break;
     
     case 'administrador':
         showAdministrador();
         break;
-/*
-    case 'about': 
-        if (isset($params[1]))
-         showAbout($params[1]); 
-        else
-            showAbout();
-        break;*/
     default: 
         echo('404 Page not found'); 
         break;

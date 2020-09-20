@@ -21,10 +21,10 @@
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
 
-           $this->view->showProductos($productos);
+           $this->view->renderProductos($productos);
         }
 
-        function showCategoria(){
+        function showProductosByCategoria(){
             echo "entro";
             // obtiene la categoria enviado por GET 
             $categoria = $_GET['categoria'];
@@ -35,4 +35,11 @@
             // actualizo la vista
             $this->view->renderProductosByCategoria($categoria, $productos);
         }
+
+        function showCategorias(){
+            $categorias = $this->modelCategoria->getAllCategorias();
+
+            $this->view->renderCategorias();
+        }
+
     }
