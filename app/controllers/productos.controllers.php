@@ -36,15 +36,13 @@
         }
 
         function showCategorias(){
-
             $categorias = $this->modelCategoria->getAllCategorias();
-            $this->view->renderCategorias();
-
+            $this->view->renderCategorias($categorias);
         }
 
         function showDetalleProducto($id){
             $detalleProducto = $this->modelProducto->getDetalleProducto($id);
-            $detalleProducto->view->renderDetalleProducto($id); 
+            $detalleProducto->view->renderProductos($id); 
         }
 
     }

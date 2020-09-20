@@ -14,9 +14,17 @@ class ViewProducto{
                 </li>";
         }
         echo "</ul>";
+    }
 
+    function renderCategorias($categorias){
 
-
+        echo "<ul class='list-group mt-5'>";
+        foreach($categorias as $categoria) {
+            echo "<li class='list-group-item'>
+                    $categoria->nombre 
+                </li>";
+        }
+        echo "</ul>";
     }
 
 
