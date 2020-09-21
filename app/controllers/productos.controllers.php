@@ -23,14 +23,19 @@
           $this->view->renderProductos($productos);
         }
 
-        function showProductosByCategoria(){
-            echo "entro";
+        function showDetalleProducto($id){
+            $producto = $this->modelProducto->getDetalleProducto($id);
+            $this->view->renderDetalleProducto($producto); 
+        }
+        
+        function showProductosByCategoria($tipoCategoria){
             // obtiene la categoria enviado por GET 
-            $categoria = $_GET['categoria'];
+            //$categoria = $_GET['categoria'];
             // obtengo los productos por categoria
-            $productos = $this->modelProductos->getProductosByCategoria($categoria);
+            $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
+            //var_dump($productosCategoria);
             // actualizo la vista
-            $this->view->renderProductosByCategoria($categoria, $productos);
+            $this->view->renderProductosByCategoria($productosCategoria);
         }
 
         function showCategorias(){
@@ -38,8 +43,5 @@
             $this->view->renderCategorias($categorias);
         }
 
-        function showDetalleProducto($id){
-            $detalleProducto = $this->modelProducto->getDetalleProducto($id);
-            $this->view->renderProductos($detalleProducto); 
-        }
+        
     }

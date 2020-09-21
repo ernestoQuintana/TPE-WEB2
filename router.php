@@ -20,14 +20,16 @@ switch ($params[0]) {
         $controllers = new ProductosControllers;
         $controllers->showProductos();
     break;
-    case 'categorias':
+    case 'allCategorias':
         $controllers = new ProductosControllers;
         $controllers->showCategorias();
+        //$tipoCategoria = $params[1];
+        //$controllers->showProductosByCategoria($tipoCategoria);
     break;
-    case 'rostro': case 'cuerpo' : case 'hombre' : case 'cabello':
-
+    case 'categoria':
         $controllers = new ProductosControllers;
-        $controllers->showProductosByCategoria();
+        $tipoCategoria = $params[1];
+        $controllers->showProductosByCategoria($tipoCategoria);
     break;
     case 'detalleProducto':
         $controllers = new ProductosControllers;
