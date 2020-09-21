@@ -20,17 +20,14 @@
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);
-
         }
 
         function showProductosByCategoria(){
             echo "entro";
             // obtiene la categoria enviado por GET 
             $categoria = $_GET['categoria'];
-    
             // obtengo los productos por categoria
             $productos = $this->modelProductos->getProductosByCategoria($categoria);
-    
             // actualizo la vista
             $this->view->renderProductosByCategoria($categoria, $productos);
         }
@@ -42,7 +39,6 @@
 
         function showDetalleProducto($id){
             $detalleProducto = $this->modelProducto->getDetalleProducto($id);
-            $detalleProducto->view->renderProductos($id); 
+            $this->view->renderProductos($detalleProducto); 
         }
-
     }
