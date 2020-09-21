@@ -15,8 +15,9 @@
             $this->modelCategoria = new ModelCategoria();
             $this->view = new ViewProducto();
         } 
+
         function showProductos(){
-            echo "entro";
+          echo "entro";
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);
