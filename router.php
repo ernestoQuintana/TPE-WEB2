@@ -10,9 +10,9 @@ if(!empty($_GET['action'])){
 } else {
     $action = 'home'; //accion por defecto si no se envia
 }
+
 // parsea la accion Ej suma/1/2 >>> ['suma' , 1, 2]
 $params = explode('/',$action);
-//var_dump($params);
 
 //determina el camino a seguir con los links.
 switch ($params[0]) {
