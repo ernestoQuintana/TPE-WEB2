@@ -46,4 +46,21 @@
             $productos = $this->modelProducto->getAllProductos();
             $this->view->renderPagina($productos);
         }
+
+        function agregarProducto(){
+            $this->modelProducto->insertarProducto($_POST['input_title'],$_POST['input_description'],$_POST['input_precio'],$_POST['select']);
+            $this->view->showHomeLocation();
+        }
+
+        function borrarProducto(){
+            $productos = $this->modelProducto->getAllProductos();
+            $this->view->renderPagina($productos);
+        }
+
+        function editarProducto(){
+            $productos = $this->modelProducto->getAllProductos();
+            $this->view->renderPagina($productos);
+        }
+
+
     }

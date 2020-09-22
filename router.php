@@ -24,13 +24,10 @@ switch ($params[0]) {
     case '':
         $controllers->home();
     break;
-   /* case 'productos':
-        $controllers->showProductos();
-    break;*/
     case 'allCategorias':
         $controllers->showCategorias();
-        //$tipoCategoria = $params[1];
-        //$controllers->showProductosByCategoria($tipoCategoria);
+        $tipoCategoria = $params[1];
+        $controllers->showProductosByCategoria($tipoCategoria);
     break;
     case 'categoria':
         $tipoCategoria = $params[1];
@@ -40,6 +37,19 @@ switch ($params[0]) {
         $id= $params[1];
         $controllers->showDetalleProducto($id);
     break;
+    case 'agregar': 
+        $controllers->agregarProducto(); 
+    break;
+    case 'borrar': 
+        $controllers->borrarProducto($params[1]); 
+    break;
+    case 'editar': 
+        $controllers->editarProducto($params[1]); 
+    break;
+    
+    /* case 'productos':
+         $controllers->showProductos();
+     break;*/
 
     /*
     case 'administrador':

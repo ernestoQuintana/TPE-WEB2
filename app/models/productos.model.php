@@ -32,4 +32,9 @@ class ModelProducto {
         return $productos;
     }
 
+    function insertarProducto($nombre,$descripcion,$precio,$categoria){
+        $query = $this->dbProductos->prepare("INSERT INTO task(nombre, description, precio, categoria) VALUES(?,?,?,?)");
+        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+    }
+
 }

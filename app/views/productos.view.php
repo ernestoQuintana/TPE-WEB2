@@ -43,11 +43,11 @@ class ViewProducto{
               </div>
               <div class="form-group">
                 <label for="priority">Precio</label>
-                <input class="form-control" name="input_priority" id="precio">
+                <input class="form-control" name="input_precio" id="precio">
               </div>
               <div class="form-group">
               <label for="title">Categoria</label>
-              <select class="form-control">
+              <select class="form-control" name="select">
                      <option></option>
                      <option>rostro</option>
                      <option>hombre</option>
@@ -69,8 +69,10 @@ class ViewProducto{
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
             echo "<li class='list-group-item'>
-                      $producto->nombre |  $producto->precio | $producto->categoria  
-                      <a class='btn btn-danger btn-sm' href='detalleProducto/$producto->id_producto'>descripcion</a>
+                      $producto->nombre |  $producto->precio | $producto->categoria     
+                      <a class='btn btn-secondary btn-sm' href='detalleProducto/$producto->id_producto'>descripcion</a>
+                      <a class='btn btn-dark btn-sm' href='detalleProducto/$producto->id_producto'>Eliminar</a>
+                      <a class='btn btn-info btn-sm' href='detalleProducto/$producto->id_producto'>Editar</a>
                   </li>";
         }
         echo "</ul>";
@@ -86,6 +88,10 @@ class ViewProducto{
             </html>';
 
       
+    }
+    
+    function ShowHomeLocation(){
+        header("Location: ".BASE_URL."home");
     }
 /*
     function renderProductos($productos)
