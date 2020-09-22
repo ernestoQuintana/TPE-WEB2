@@ -24,9 +24,9 @@ switch ($params[0]) {
     case '':
         $controllers->home();
     break;
-    case 'productos':
+   /* case 'productos':
         $controllers->showProductos();
-    break;
+    break;*/
     case 'allCategorias':
         $controllers->showCategorias();
         //$tipoCategoria = $params[1];

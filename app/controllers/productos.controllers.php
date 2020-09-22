@@ -16,11 +16,11 @@
             $this->view = new ViewProducto();
         } 
 
-        function showProductos(){
+       /* function showProductos(){
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);
-        }
+        }*/
 
         function showDetalleProducto($id){
             $producto = $this->modelProducto->getDetalleProducto($id);

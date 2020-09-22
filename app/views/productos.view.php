@@ -1,8 +1,7 @@
 <?php
 
 
-class ViewProducto
-{
+class ViewProducto{
 
     private $title;
 
@@ -13,6 +12,7 @@ class ViewProducto
 
     function renderPagina($productos)
     {
+        
         $html = '
         <!doctype html>
         <html lang="en">
@@ -31,7 +31,6 @@ class ViewProducto
             <h1>' . $this->title . '</h1>
 
             <div class="container">
-            <h1>Lista de tarea</h1>
             <form action="insert" method="POST">
               <div class="form-group">
                 <label for="title">Nombre</label>
@@ -46,18 +45,26 @@ class ViewProducto
                 <label for="priority">Precio</label>
                 <input class="form-control" name="input_priority" id="precio">
               </div>
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="completed" name="input_completed">
-                <label class="form-check-label" for="exampleCheck1">Completado</label>
+              <div class="form-group">
+              <label for="title">Categoria</label>
+              <select class="form-control">
+                     <option></option>
+                     <option>rostro</option>
+                     <option>hombre</option>
+                     <option>cabello</option>
+                     <option>cuerpo</option>
+              </select>
               </div>
               <button type="submit" class="btn btn-primary">Agregar</button>
             </form>
             <br>
           </div>
             
-            <div class="container">
+        <div class="container">
 
           <ul class="list-group">';
+
+        echo $html;
 
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
@@ -78,9 +85,9 @@ class ViewProducto
                 </body>
             </html>';
 
-        echo $html;
+      
     }
-
+/*
     function renderProductos($productos)
     {
         echo "<ul class='list-group mt-5'>";
@@ -91,7 +98,7 @@ class ViewProducto
                 </li>";
         }
         echo "</ul>";
-    }
+    }*/
 
     function renderDetalleProducto($producto)
     {
