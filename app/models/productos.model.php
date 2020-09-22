@@ -33,8 +33,13 @@ class ModelProducto {
     }
 
     function insertarProducto($nombre,$descripcion,$precio,$categoria){
-        $query = $this->dbProductos->prepare("INSERT INTO task(nombre, description, precio, categoria) VALUES(?,?,?,?)");
-        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+        $query = $this->dbProductos->prepare("INSERT INTO producto(nombre, description, precio, categoria) VALUES(?,?,?,?)");
+        $query->execute(array($nombre,$descripcion,$precio,$categoria));
+    }
+
+    function BorrarProductoID($producto_id){
+        $query = $this->db->prepare("DELETE FROM 'producto' WHERE id=?");
+        $query->execute(array($producto_id));
     }
 
 }

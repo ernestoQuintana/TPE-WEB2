@@ -68,11 +68,11 @@ class ViewProducto{
 
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
+
             echo "<li class='list-group-item'>
                       $producto->nombre |  $producto->precio | $producto->categoria     
                       <a class='btn btn-secondary btn-sm' href='detalleProducto/$producto->id_producto'>descripcion</a>
-                      <a class='btn btn-dark btn-sm' href='detalleProducto/$producto->id_producto'>Eliminar</a>
-                      <a class='btn btn-info btn-sm' href='detalleProducto/$producto->id_producto'>Editar</a>
+                      <a class='btn btn-dark btn-sm' href='delete/$producto->id_producto'>Eliminar</a>
                   </li>";
         }
         echo "</ul>";

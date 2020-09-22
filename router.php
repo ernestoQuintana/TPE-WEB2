@@ -43,10 +43,6 @@ switch ($params[0]) {
     case 'borrar': 
         $controllers->borrarProducto($params[1]); 
     break;
-    case 'editar': 
-        $controllers->editarProducto($params[1]); 
-    break;
-    
     /* case 'productos':
          $controllers->showProductos();
      break;*/

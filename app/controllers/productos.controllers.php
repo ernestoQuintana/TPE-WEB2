@@ -49,18 +49,13 @@
 
         function agregarProducto(){
             $this->modelProducto->insertarProducto($_POST['input_title'],$_POST['input_description'],$_POST['input_precio'],$_POST['select']);
-            $this->view->showHomeLocation();
+            $this->view->ShowHomeLocation();
         }
 
-        function borrarProducto(){
-            $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderPagina($productos);
+        function borrarProducto($params = null){
+            $producto_id = $params[':ID'];
+            $this->modelProducto->BorrarProductoID($producto_id);
+            $this->view->ShowHomeLocation();
         }
-
-        function editarProducto(){
-            $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderPagina($productos);
-        }
-
 
     }
