@@ -14,32 +14,34 @@ if(!empty($_GET['action'])){
 // parsea la accion Ej suma/1/2 >>> ['suma' , 1, 2]
 $params = explode('/',$action);
 
+$controllers = new ProductosControllers;
+
 //determina el camino a seguir con los links.
 switch ($params[0]) {
+    case 'home': 
+        $controllers->home(); 
+    break;
+    case '':
+        $controllers->home();
+    break;
     case 'productos':
-        $controllers = new ProductosControllers;
         $controllers->showProductos();
     break;
     case 'allCategorias':
-        $controllers = new ProductosControllers;
         $controllers->showCategorias();
         //$tipoCategoria = $params[1];
         //$controllers->showProductosByCategoria($tipoCategoria);
     break;
     case 'categoria':
-        $controllers = new ProductosControllers;
         $tipoCategoria = $params[1];
         $controllers->showProductosByCategoria($tipoCategoria);
     break;
     case 'detalleProducto':
-        $controllers = new ProductosControllers;
         $id= $params[1];
         $controllers->showDetalleProducto($id);
     break;
-   /* case 'home': 
-        showHome(); 
-        break;
-    
+
+    /*
     case 'administrador':
         showAdministrador();
         break;*/

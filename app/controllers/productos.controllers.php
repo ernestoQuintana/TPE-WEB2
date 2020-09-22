@@ -8,7 +8,7 @@
 
         private $modelProducto;
         private $modelCategoria;
-        private $view; 
+        private $view;
 
         function __construct(){
             $this->modelProducto = new ModelProducto();
@@ -17,7 +17,6 @@
         } 
 
         function showProductos(){
-          echo "entro";
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);
@@ -43,5 +42,8 @@
             $this->view->renderCategorias($categorias);
         }
 
-        
+        function home(){
+            $productos = $this->modelProducto->getAllProductos();
+            $this->view->renderPagina($productos);
+        }
     }
