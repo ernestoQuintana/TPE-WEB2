@@ -1,4 +1,5 @@
 <div class="container">
+    <h1 class="listaProductos"> Lista de Productos</h1>
     <form action="insert" method="POST">
         <div class="form-group">
             <label for="title">Nombre</label>
@@ -16,7 +17,7 @@
         <div class="form-group">
             <label for="title">Categoria</label>
             <select class="form-control" name="input_categoria">
-                <option></option>
+                <option value="0"></option>
                 <option value="1">rostro</option>
                 <option value="2">hombre</option>
                 <option value="3">cabello</option>
