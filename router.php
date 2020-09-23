@@ -40,8 +40,9 @@ switch ($params[0]) {
     case 'agregar': 
         $controllers->agregarProducto(); 
     break;
-    case 'borrar': 
-        $controllers->borrarProducto($params[1]); 
+    case 'borrar':
+        $id = $params[1]; 
+        $controllers->borrarProducto($id); 
     break;
     /* case 'productos':
          $controllers->showProductos();

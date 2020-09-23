@@ -37,9 +37,11 @@ class ModelProducto {
         $query->execute(array($nombre,$descripcion,$precio,$categoria));
     }
 
-    function BorrarProductoID($producto_id){
-        $query = $this->db->prepare("DELETE FROM 'producto' WHERE id=?");
-        $query->execute(array($producto_id));
+    function BorrarProductoID($id){
+        $query = $this->db->prepare('DELETE FROM `producto` WHERE id_producto = ?');
+        $query->execute([$id]);
+        $producto= $query->fetch(PDO::FETCH_OBJ);
+        return $producto;
     }
 
 }
