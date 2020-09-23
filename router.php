@@ -45,9 +45,7 @@ switch ($params[0]) {
     break;
     /* case 'productos':
          $controllers->showProductos();
-     break;*/
-
-    /*
+     break;
     case 'administrador':
         showAdministrador();
         break;*/
