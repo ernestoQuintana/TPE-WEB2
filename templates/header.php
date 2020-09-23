@@ -17,7 +17,10 @@
 
         <nav class="navBar">
             <img src="img\crema.png" class="imgCremas" alt="crema natural">
-            <h1 class="tituloProductos">Cremas Naturales</h1>
+            <div>
+                <h1 class="tituloProductos">Cremas Zaraquin</h1>
+                <h5 class="tituloDescripcion">Cremas a base de Productos organicos</h5>
+            </div>
             <div>
                 <div class="btn-group" role="group">
                     <a class="navbar-brand" href="productos.php?categoria=home">Home</a>
