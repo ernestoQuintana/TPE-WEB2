@@ -38,10 +38,8 @@ class ModelProducto {
     }
 
     function BorrarProductoID($id){
-        $query = $this->db->prepare('DELETE FROM `producto` WHERE id_producto = ?');
+        $query = $this->db->prepare('DELETE * FROM `producto` WHERE id_producto = ?');
         $query->execute([$id]);
-        $producto= $query->fetch(PDO::FETCH_OBJ);
-        return $producto;
     }
 
 }

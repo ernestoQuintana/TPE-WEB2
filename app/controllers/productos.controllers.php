@@ -52,7 +52,7 @@
             $this->view->ShowHomeLocation();
         }
 
-        function borrarProducto($id = null){
+        function borrarProducto($id){
             $id_producto = $this->modelProducto->BorrarProductoID($id);
             $this->view->ShowHomeLocation($id_producto);
         }
