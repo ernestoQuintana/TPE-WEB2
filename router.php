@@ -18,10 +18,7 @@ $controllers = new ProductosControllers;
 
 //determina el camino a seguir con los links.
 switch ($params[0]) {
-    case 'home': 
-        $controllers->home(); 
-    break;
-    case '':
+    case 'home': case '':
         $controllers->home();
     break;
     case 'allCategorias':
