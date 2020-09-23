@@ -48,7 +48,13 @@
         }
 
         function agregarProducto(){
-            $this->modelProducto->insertarProducto($_POST['input_title'],$_POST['input_description'],$_POST['input_precio'],$_POST['select']);
+            $nombre = $_POST['input_title'];
+            $descripcion = $_POST['input_description'];
+            $precio = $_POST['input_precio'];
+            $categoria = $_POST['select_categoria'];
+
+            $this->modelProducto->insertarProducto($nombre,$descripcion,$precio,$categoria);
+            var_dump($nombre);
             $this->view->ShowHomeLocation();
         }
 

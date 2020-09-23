@@ -14,7 +14,7 @@ class ViewProducto{
             echo "<li class='list-group-item'>
                       $producto->nombre |  $producto->precio | $producto->categoria     
                       <a class='btn btn-secondary btn-sm' href='detalleProducto/$producto->id_producto'>descripcion</a>
-                      <a class='btn btn-dark btn-sm' href='delete/$producto->id_producto'>Eliminar</a>
+                      <a class='btn btn-dark btn-sm' href='borrar/$producto->id_producto'>Eliminar</a>
                   </li>";
         }
         echo "</ul>";

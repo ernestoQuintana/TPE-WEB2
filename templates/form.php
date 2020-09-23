@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="listaProductos"> Lista de Productos</h1>
-    <form action="insert" method="POST">
+    <form action="agregar" method="POST">
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp">
@@ -16,8 +16,8 @@
         </div>
         <div class="form-group">
             <label for="title">Categoria</label>
-            <select class="form-control" name="input_categoria">
-                <option value="0"></option>
+            <select class="form-control" name="select_categoria">
+                <option></option>
                 <option value="1">rostro</option>
                 <option value="2">hombre</option>
                 <option value="3">cabello</option>
