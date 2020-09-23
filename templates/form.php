@@ -4,7 +4,6 @@
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp">
-            <small id="emailHelp" class="form-text text-muted">Titulo de la tarea</small>
         </div>
         <div class="form-group">
             <label for="description">Descripcion</label>
