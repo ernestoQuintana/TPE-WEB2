@@ -8,7 +8,7 @@ class ModelProducto {
     }
     //llamamos todos los productos
     function getAllProductos(){
-        $query =$this->dbProductos->prepare('SELECT * FROM producto');
+        $query =$this->dbProductos->prepare('SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria');
         $query->execute();
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;

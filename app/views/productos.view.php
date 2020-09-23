@@ -4,7 +4,7 @@ echo "";
 class ViewProducto
 {
 
-    function renderPagina($productos)
+    function renderPaginaAdmin($productos)
     {
 
         include_once 'templates\header.php';
@@ -14,10 +14,10 @@ class ViewProducto
         foreach ($productos as $producto) {
 
             echo "<li class='listaProductoView'>
-                      $producto->nombre |  $producto->precio | $producto->categoria
+                      $producto->nombre |  $producto->precio 
                     <div class= 'cajaBtn'>     
-                      <a class='btnDetalle' href='detalleProducto/$producto->id_producto'>descripcion</a>
-                      <a class='btnBorrar' href='borrar/$producto->id_producto'>Eliminar</a>
+                      <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
+                      <a class='btnBorrar' href='borrar/$producto->id'>Eliminar</a>
                     </div>                  
                       </li>";
         }
@@ -37,7 +37,7 @@ class ViewProducto
 
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
-        $producto->nombre |  $producto->categoria  
+        $producto->nombre //aca tenemos q poner la categoria con el nuevo metodo  
         </li>";
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
@@ -58,6 +58,7 @@ class ViewProducto
 
     function renderCategorias($categorias)
     {
+        include_once 'templates\header.php';
         echo "<ul class='list-group mt-5'>";
         foreach ($categorias as $categoria) {
             echo "<li class='list-group-item'>

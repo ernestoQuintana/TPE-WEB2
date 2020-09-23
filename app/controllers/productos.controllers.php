@@ -42,9 +42,9 @@
             $this->view->renderCategorias($categorias);
         }
 
-        function home(){
+        function homeAdministrador(){
             $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderPagina($productos);
+            $this->view->renderPaginaAdmin($productos);
         }
 
         function agregarProducto(){
