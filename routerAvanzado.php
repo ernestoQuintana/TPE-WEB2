@@ -16,13 +16,12 @@ $r->addRoute("insert", "POST", "TasksController", "InsertTask");
 
 $r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
 $r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
-
+*/
 //Ruta por defecto.
-$r->setDefaultRoute("TasksController", "Home");
-
+$r->setDefaultRoute("ProductosControllers", "administrador");
+/*
 //Advance
-$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");*/
 
 //run
 $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 
-*/
