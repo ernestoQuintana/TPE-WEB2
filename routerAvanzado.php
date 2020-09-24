@@ -12,9 +12,9 @@ $r->addRoute("administrador", "GET", "ProductosControllers", "homeAdministrador"
 $r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategorias");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
-//Esto lo veo en TasksView
-//$r->addRoute("insert", "POST", "TasksController", "InsertTask");
-
+$r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
+$r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
+$r->addRoute("editarProducto", "POST", "ProductosControllers", "editarProducto");
 //$r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
 //$r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
 

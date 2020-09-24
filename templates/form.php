@@ -1,6 +1,6 @@
 <div class="container">
     <h1 class="listaProductos"> Lista de Productos</h1>
-    <form action="agregar" method="POST">
+    <form action="agregarProducto" method="POST">
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp">

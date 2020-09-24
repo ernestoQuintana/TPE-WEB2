@@ -47,20 +47,39 @@
             $this->view->renderPaginaAdmin($productos);
         }
 
+        
         function agregarProducto(){
-            $nombre = $_POST['input_title'];
-            $descripcion = $_POST['input_description'];
-            $precio = $_POST['input_precio'];
-            $categoria = $_POST['select_categoria'];
-
+            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
+                isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
+                $nombre = $_POST['input_title'];
+                $descripcion = $_POST['input_description'];
+                $precio = $_POST['input_precio'];
+                $categoria = $_POST['select_categoria'];
+            }    
             $this->modelProducto->insertarProducto($nombre,$descripcion,$precio,$categoria);
-            var_dump($nombre);
             $this->view->ShowHomeLocation();
         }
 
-        function borrarProducto($id){
-            $id_producto = $this->modelProducto->BorrarProductoID($id);
-            $this->view->ShowHomeLocation($id_producto);
+        function editarProducto($params = null){
+            $id = $params[':ID'];
+            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
+                isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
+                $nombre = $_POST['input_title'];
+                $descripcion = $_POST['input_description'];
+                $precio = $_POST['input_precio'];
+                $categoria = $_POST['select_categoria'];
+            }    
+            echo $nombre . $descripcion . $precio . $categoria . $id;
+            
+            $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
+            //$this->view->ShowHomeLocation();
+        }
+
+
+        function eliminarProducto($params = null){
+            $id = $params[':ID'];
+            $id_producto = $this->modelProducto->eliminarProductoID($id);
+            $this->view->ShowHomeLocation();
         }
 
     }

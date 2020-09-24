@@ -35,9 +35,9 @@ switch ($params[0]) {
       //  $id= $params[1];
        // $controllers->showDetalleProducto($id);
     //break;
-    case 'agregar': 
-        $controllers->agregarProducto(); 
-    break;
+   // case 'agregar': 
+      //  $controllers->agregarProducto(); 
+    //break;
     case 'borrar':
         $id = $params[1]; 
         $controllers->borrarProducto($id); 

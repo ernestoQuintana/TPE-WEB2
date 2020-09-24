@@ -8,10 +8,10 @@ class ModelProducto {
     }
     //llamamos todos los productos
     function getAllProductos(){
-        $query =$this->dbProductos->prepare('SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria');
-        $query->execute();
+        $query =$this->dbProductos->prepare('SELECT * FROM producto LEFT JOIN categoria ON producto.id_categoria = categoria.id_categoria');
+        $query->execute();                  
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
-        var_dump($productos);
+        //var_dump($productos);
         return $productos;
     }
 
@@ -34,11 +34,19 @@ class ModelProducto {
     }
 
     function insertarProducto($nombre,$descripcion,$precio,$categoria){
-        $query = $this->dbProductos->prepare("INSERT INTO producto(nombre, description, precio) VALUES(?,?,?)");
+       
+        $query = $this->dbProductos->prepare("INSERT INTO producto (nombre, descripcion, precio, id_categoria) VALUES(?,?,?,?)");
         $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
-    function BorrarProductoID($id){
+    function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
+        echo $nombre . $descripcion . $precio . $categoria . $id;
+
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET nombre=$nombre, descripcion =$descripcion, precio=$precio , id_categoria=$categoria WHERE id =?");
+        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+    }
+
+    function eliminarProductoID($id){
         $query = $this->dbProductos->prepare('DELETE FROM `producto` WHERE id = ?');
         $query->execute([$id]);
     }

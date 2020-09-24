@@ -13,4 +13,12 @@
         $categoria = $query->fetchAll(PDO::FETCH_OBJ);
         return $categoria;
     }
+
+    function getIdCategorias(){ 
+        $query = $this->dbCategorias->prepare('SELECT * FROM categoria WHERE id =?');
+        $query->execute();
+        $nombreCategorias = $query->fetchAll(PDO::FETCH_OBJ);
+        return $nombreCategorias;
+    }
+
  }

@@ -17,7 +17,8 @@ class ViewProducto
                       $producto->nombre |  $producto->precio 
                     <div class= 'cajaBtn'>     
                       <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
-                      <a class='btnBorrar' href='borrar/$producto->id'>Eliminar</a>
+                      <a class='btnBorrar' href='eliminarProducto/$producto->id'>Eliminar</a>
+                      <a class='btnBorrar' href='editarProducto/$producto->id'>Editar</a>
                     </div>                  
                       </li>";
         }
@@ -28,7 +29,7 @@ class ViewProducto
 
     function ShowHomeLocation()
     {
-        header("Location: " . BASE_URL . "home");
+        header("Location: " . BASE_URL . "administrador");
     }
 
     function renderDetalleProducto($producto)
