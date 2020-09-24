@@ -8,9 +8,11 @@ class ModelProducto {
     }
     //llamamos todos los productos
     function getAllProductos(){
-        $query =$this->dbProductos->prepare('SELECT * FROM producto LEFT JOIN categoria ON producto.id_categoria = categoria.id_categoria');
+        
+        $query =$this->dbProductos->prepare('SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria');
         $query->execute();                  
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
+        //me trae un objeto pero me pisa los datos de las diferentes tablas
         //var_dump($productos);
         return $productos;
     }
@@ -40,9 +42,10 @@ class ModelProducto {
     }
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
-        echo $nombre . $descripcion . $precio . $categoria . $id;
-
-        $query = $this->dbProductos->prepare("UPDATE `producto` SET nombre=$nombre, descripcion =$descripcion, precio=$precio , id_categoria=$categoria WHERE id =?");
+        
+        echo "kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk";
+        //aca deberia tener un values(?,?,?,?)....
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET nombre=$nombre, descripcion =$descripcion, precio=$precio , id_categoria=$categoria WHERE id =$id");
         $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
