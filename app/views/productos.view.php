@@ -35,7 +35,6 @@ class ViewProducto
     function renderDetalleProducto($producto)
     {
         include_once 'templates\header.php';
-        var_dump($producto);
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
         $producto->nombre   
