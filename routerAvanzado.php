@@ -7,9 +7,9 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 $r = new Router();
 
-// rutas               
-/*$r->addRoute("home", "GET"//por post solo viene cuandoe es una nueva tarea, "TasksController", "Home");
-$r->addRoute("mermelada", "GET", "TasksController", "Home");
+// rutas //por post solo viene cuandoe es una nueva tarea              
+$r->addRoute("administrador", "GET", "ProductosControllers", "homeAdministrador");
+/*$r->addRoute("mermelada", "GET", "TasksController", "Home");
 
 //Esto lo veo en TasksView
 $r->addRoute("insert", "POST", "TasksController", "InsertTask");
