@@ -22,15 +22,15 @@
           $this->view->renderProductos($productos);
         }*/
 
-        function showDetalleProducto($id){
+        function showDetalleProducto($params = null){
+            $id = $params[':ID'];
             $producto = $this->modelProducto->getDetalleProducto($id);
             $this->view->renderDetalleProducto($producto); 
         }
         
-        function showProductosByCategoria($tipoCategoria){
-            // obtiene la categoria enviado por GET 
-            //$categoria = $_GET['categoria'];
-            // obtengo los productos por categoria
+        function showProductosByCategoria($params = null){
+           
+            $tipoCategoria = $params[':ID'];
             $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
             //var_dump($productosCategoria);
             // actualizo la vista

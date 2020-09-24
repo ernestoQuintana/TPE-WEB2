@@ -9,16 +9,17 @@ $r = new Router();
 
 // rutas //por post solo viene cuandoe es una nueva tarea              
 $r->addRoute("administrador", "GET", "ProductosControllers", "homeAdministrador");
-/*$r->addRoute("mermelada", "GET", "TasksController", "Home");
-
+$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategorias");
+$r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
+$r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 //Esto lo veo en TasksView
-$r->addRoute("insert", "POST", "TasksController", "InsertTask");
+//$r->addRoute("insert", "POST", "TasksController", "InsertTask");
 
-$r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
-$r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
-*/
+//$r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
+//$r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
+
 //Ruta por defecto.
-$r->setDefaultRoute("ProductosControllers", "administrador");
+//$r->setDefaultRoute("ProductosControllers", "administrador");
 /*
 //Advance
 $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");*/

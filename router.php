@@ -18,23 +18,23 @@ $controllers = new ProductosControllers;
 
 //determina el camino a seguir con los links.
 switch ($params[0]) {
-    case 'administrador':
-        $controllers->homeAdministrador();
-    break;
-    case 'allCategorias':
-        $controllers->showCategorias();
+    //case 'administrador':
+      //  $controllers->homeAdministrador();
+    //break;
+    //case 'allCategorias':
+      //  $controllers->showCategorias();
         // preguntar si hacemos otra funcion aparte o ponemos un if
-        $tipoCategoria = $params[1];
-        $controllers->showProductosByCategoria($tipoCategoria);
-    break;
+       // $tipoCategoria = $params[1];
+        //$controllers->showProductosByCategoria($tipoCategoria);
+    //break;
     case 'categoria':
         $tipoCategoria = $params[1];
         $controllers->showProductosByCategoria($tipoCategoria);
     break;
-    case 'detalleProducto':
-        $id= $params[1];
-        $controllers->showDetalleProducto($id);
-    break;
+    //case 'detalleProducto':
+      //  $id= $params[1];
+       // $controllers->showDetalleProducto($id);
+    //break;
     case 'agregar': 
         $controllers->agregarProducto(); 
     break;

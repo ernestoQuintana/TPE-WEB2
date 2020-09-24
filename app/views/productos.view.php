@@ -34,10 +34,10 @@ class ViewProducto
     function renderDetalleProducto($producto)
     {
         include_once 'templates\header.php';
-
+        var_dump($producto);
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
-        $producto->nombre //aca tenemos q poner la categoria con el nuevo metodo  
+        $producto->nombre   
         </li>";
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
@@ -50,7 +50,7 @@ class ViewProducto
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
             echo "<li class='list-group-item'>
-            $producto->nombre | $producto->categoria 
+            $producto->nombre | $producto->id 
             </li>";
         }
         echo "</ul>";
