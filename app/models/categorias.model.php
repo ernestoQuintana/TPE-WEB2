@@ -20,10 +20,11 @@
         $query->execute([$nombre,$descripcion,$origen]);
     }
 
-    function editarCategoriaID($nombre,$descripcion,$origen,$id){// no deberia haber un values??
-        $query = $this->dbCategorias->prepare("UPDATE `categoria` SET nombre=$nombre,
-         descripcion =$descripcion, precio=$origen WHERE id =$id");
-        $query->execute([$nombre,$descripcion,$origen,$id]);
+    function editarCategoriaID($nombre,$descripcion,$origen,$id){
+        var_dump($nombre);
+        $query = $this->dbCategorias->prepare(" UPDATE `categoria` SET `nombre`=$nombre,
+         `descripcion` = $descripcion, `origen` =$origen WHERE id =`$id`");
+        $query->execute([$nombre,$descripcion,$origen]);
     }
 
     function eliminarCategoriaID($id){

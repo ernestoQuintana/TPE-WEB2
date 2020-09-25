@@ -37,13 +37,15 @@ class ModelProducto {
 
     function insertarProducto($nombre,$descripcion,$precio,$categoria){
        
-        $query = $this->dbProductos->prepare("INSERT INTO producto (nombre, descripcion, precio, id_categoria) VALUES(?,?,?,?)");
+        $query = $this->dbProductos->prepare("INSERT INTO producto (nombre, descripcion,
+         precio, id_categoria) VALUES(?,?,?,?)");
         $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){// no deberia haber un values??
-        $query = $this->dbProductos->prepare("UPDATE `producto` SET nombre=$nombre, descripcion =$descripcion, precio=$precio , id_categoria=$categoria WHERE id =$id");
-        $query->execute([$nombre,$descripcion,$precio,$categoria,$id]);
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= `$nombre`, 
+        `descripcion` = `$descripcion`, `precio` = `$precio` ,`id_categoria` = `$categoria` WHERE id =`$id`;");
+        $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
     function eliminarProductoID($id){

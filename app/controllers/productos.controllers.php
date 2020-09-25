@@ -47,12 +47,12 @@
 
         function editarProducto($params = null){
             $id = $params[':ID'];
-            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
-                isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
-                $nombre = $_POST['input_title'];
-                $descripcion = $_POST['input_description'];
-                $precio = $_POST['input_precio'];
-                $categoria = $_POST['select_categoria'];
+            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
+                isset($_REQUEST['input_precio']) &&isset($_REQUEST['select_categoria'])){
+                $nombre = $_REQUEST['input_title'];
+                $descripcion = $_REQUEST['input_description'];
+                $precio = $_REQUEST['input_precio'];
+                $categoria = $_REQUEST['select_categoria'];
             }    
             
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
@@ -61,7 +61,7 @@
 
         function eliminarProducto($params = null){
             $id = $params[':ID'];
-            $id_producto = $this->modelProducto->eliminarProductoID($id);
+            $this->modelProducto->eliminarProductoID($id);
             $this->view->ShowHomeLocation();
         }
            
@@ -85,17 +85,15 @@
 
         function editarCategoria($params = null){
             $id = $params[':ID'];
-            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& isset($_POST['input_origen'])){
-                $nombre = $_POST['input_title'];
-                $descripcion = $_POST['input_description'];
-                $precio = $_POST['input_origen'];
+            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& isset($_REQUEST['input_origen'])){
+                $nombre = $_REQUEST['input_title'];
+                $descripcion = $_REQUEST['input_description'];
+                $precio = $_REQUEST['input_origen'];
             }    
             $this->modelCategoria->editarCategoriaID($nombre,$descripcion,$precio,$id);
-            $this->view->ShowHomeLocation();
+            $this->view->ShowHomeLocationCategory();
         }
-        //llamamos alas categorias
-
-    
+       
 
 
         /********************** FUNCIONES DEL USUARIO **********************/
