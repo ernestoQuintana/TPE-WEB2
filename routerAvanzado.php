@@ -14,7 +14,7 @@ $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCat
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
-$r->addRoute("editarProducto", "POST", "ProductosControllers", "editarProducto");
+$r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");
 //$r->addRoute("delete/:ID", "GET", "TasksController", "BorrarLaTaskQueVienePorParametro");
 //$r->addRoute("completar/:ID", "GET", "TasksController", "MarkAsCompletedTask");
 

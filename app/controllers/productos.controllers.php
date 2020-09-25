@@ -68,9 +68,7 @@
                 $descripcion = $_POST['input_description'];
                 $precio = $_POST['input_precio'];
                 $categoria = $_POST['select_categoria'];
-            }    
-            $datos = [$nombre , $descripcion , $precio , $categoria , $id];
-            var_dump($datos); 
+            }
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
             $this->view->ShowHomeLocation();
         }
