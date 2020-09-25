@@ -27,7 +27,7 @@ $r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCatego
 $r->addRoute("home", "GET", "ProductosControllers", "showHomeUsuario");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
-$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasUsuario");
+$r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
 
 //Ruta por defecto.
 //$r->setDefaultRoute("ProductosControllers", "home");

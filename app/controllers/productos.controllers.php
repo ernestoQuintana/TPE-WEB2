@@ -95,10 +95,7 @@
         }
         //llamamos alas categorias
 
-        function showCategoriasUsuario(){
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->view->renderCategoriasUsuario($categorias);
-        }
+    
 
 
 
@@ -129,6 +126,9 @@
             $this->view->renderProductosByCategoria($productosCategoria);
         }
 
-
+        function showCategoriasUsuario(){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderCategoriasUsuario($categorias);
+        }
 
     }
