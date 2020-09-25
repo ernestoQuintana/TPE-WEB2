@@ -38,6 +38,11 @@ class ViewProducto{
         header("Location: " . BASE_URL . "administrador");
     }
     
+    function ShowHomeLocationCategory()
+    {
+        header("Location: " . BASE_URL . "allCategorias");
+    }
+
     function renderCategoriasAdmin($categorias)
     {
         include_once 'templates\header.php';

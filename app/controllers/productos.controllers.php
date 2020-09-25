@@ -16,17 +16,23 @@
             $this->view = new ViewProducto();
         } 
 
-        // FUNCIONES DEL ADMINISTRADOR
 
-        //LLAMAMOS TODOS LOS PRODUCTOS
+    /***********************  FUNCIONES DEL ADMINISTRADOR ***********************/
+
+    
+        //FUNCIONES DE LOS PRODUCTOS
+
+        //administrador
         function showHomeAdministrador(){
             $productos = $this->modelProducto->getAllProductos();
             $this->view->renderPaginaAdmin($productos);
         }
+
         function showCategoriasAdmin(){
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderCategoriasAdmin($categorias);
-        }        
+        }
+
         function agregarProducto(){
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
                 isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
@@ -58,7 +64,9 @@
             $id_producto = $this->modelProducto->eliminarProductoID($id);
             $this->view->ShowHomeLocation();
         }
-                    
+           
+        //FUNCIONES DE LAS CATEGORIAS
+
         function agregarCategoria(){
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& isset($_POST['input_origen'])){
                 $nombre = $_POST['input_title'];
@@ -66,13 +74,13 @@
                 $origen = $_POST['input_origen'];
             }    
             $this->modelCategoria->insertarCategoria($nombre,$descripcion,$origen);
-           // $this->view->ShowHomeLocation();
+            $this->view->ShowHomeLocationCategory();
         }
 
         function eliminarCategoria($params = null){
             $id = $params[':ID'];
             $this->modelCategoria->eliminarCategoriaID($id);
-            //$this->view->ShowHomeLocation();
+            $this->view->ShowHomeLocationCategory();
         }
 
         function editarCategoria($params = null){
@@ -92,7 +100,14 @@
             $this->view->renderCategoriasUsuario($categorias);
         }
 
-        //FUNCIONES DEL USUARIO
+
+
+
+        /********************** FUNCIONES DEL USUARIO **********************/
+
+
+
+
         function showHomeUsario(){
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
