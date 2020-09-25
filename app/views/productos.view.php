@@ -89,6 +89,7 @@ class ViewProducto{
     function renderProductos($productos)
     {
         include_once 'templates\header.php';
+
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
             echo "<li class='list-group-item'>
@@ -99,9 +100,7 @@ class ViewProducto{
         echo "</ul>";
     }
     
-    //VA EN EL PUBLICO
-    function renderDetalleProducto($producto)
-    {
+    function renderDetalleProducto($producto){
         include_once 'templates\header.php';
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
@@ -110,7 +109,6 @@ class ViewProducto{
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
         echo "<a class='btnVolver' href='home/'>volver</a>";
-        
     }
     
     function renderCategoriasUsuario($categorias)
@@ -128,7 +126,7 @@ class ViewProducto{
         echo "</ul>";
     }
 
-    
+
     function ShowHomeLocationUsuario()
     {
         header("Location: " . BASE_URL . "home");
