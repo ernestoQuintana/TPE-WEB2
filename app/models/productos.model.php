@@ -43,7 +43,7 @@ class ModelProducto {
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
         $query = $this->dbProductos->prepare("UPDATE `producto` SET nombre=$nombre, descripcion =$descripcion, precio=$precio , id_categoria=$categoria WHERE id =$id");
-        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+        $query->execute([$nombre,$descripcion,$precio,$categoria,$id]);
     }
 
     function eliminarProductoID($id){

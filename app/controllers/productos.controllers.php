@@ -61,14 +61,14 @@
         }
 
         function editarProducto($params = null){
-            $id = $params[':ID'];
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
-                isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
+            isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
                 $nombre = $_POST['input_title'];
                 $descripcion = $_POST['input_description'];
                 $precio = $_POST['input_precio'];
                 $categoria = $_POST['select_categoria'];
             }
+            $id = $params[':ID'];
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
             $this->view->ShowHomeLocation();
         }

@@ -69,6 +69,12 @@ body{
     border-radius: 3px;
     padding: 8px;
 }
+.btnEditar{
+    background-color: rgb(40, 190, 65);
+    color: white;
+    border-radius: 3px;
+    padding: 8px;
+}
 .listaProductoView{
     position: relative;
     display: flex;
@@ -94,5 +100,10 @@ body{
 .btnDetalle:hover{
     text-decoration: none;
     background-color: blue;
+    color: aliceblue;
+}
+.btnEditar:hover{
+    text-decoration: none;
+    background-color: rgb(128, 224, 90);
     color: aliceblue;
 }

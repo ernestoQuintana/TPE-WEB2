@@ -18,7 +18,7 @@ class ViewProducto
                     <div class= 'cajaBtn'>     
                       <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
                       <a class='btnBorrar' href='eliminarProducto/$producto->id'>Eliminar</a>
-                      <a class='btnBorrar' href='editarProducto/$producto->id'>Editar</a>
+                      <a class='btnEditar' href='editarProducto/$producto->id'>Editar</a>
                     </div>                  
                       </li>";
         }
