@@ -88,9 +88,9 @@
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& isset($_REQUEST['input_origen'])){
                 $nombre = $_REQUEST['input_title'];
                 $descripcion = $_REQUEST['input_description'];
-                $precio = $_REQUEST['input_origen'];
+                $origen = $_REQUEST['input_origen'];
             }    
-            $this->modelCategoria->editarCategoriaID($nombre,$descripcion,$precio,$id);
+            $this->modelCategoria->editarCategoriaID($nombre,$descripcion,$origen,$id);
             $this->view->ShowHomeLocationCategory();
         }
        
