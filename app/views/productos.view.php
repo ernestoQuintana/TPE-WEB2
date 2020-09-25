@@ -8,10 +8,17 @@ class ViewProducto{
     
     // PRODUCTOS
 
-    function renderPaginaAdmin($productos)
+    function renderAdmin(){
+        include_once 'templates\header.php';
+        include_once 'templates\administrador.php';
+        include_once 'templates\footer.php';        
+    }
+
+
+    function renderProductosAdmin($productos)
     {
         // INCLUIR EL FORM PARA CATEGORIA
-        include_once 'templates\header.php';
+        include_once 'templates\header.php';      
         include_once 'templates\form.php';
 /*
         $smaty = new Smarty();
@@ -65,9 +72,9 @@ class ViewProducto{
         include_once 'templates\footer.php';
     }
 
-    function renderProductosByCategoria($productosCategoria){
+    function renderProductosByCategoria($productosCategoria , $tipoCategoria){
         include_once 'templates\header.php';
-        
+            echo "<h1> Lista de: " . $tipoCategoria ."</h1>"; 
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
             echo "<li class='list-group-item'>

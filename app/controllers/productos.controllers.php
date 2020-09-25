@@ -23,9 +23,13 @@
         //FUNCIONES DE LOS PRODUCTOS
 
         //administrador
-        function showHomeAdministrador(){
+        function showAdmin(){
+            $this->view->renderAdmin();
+        }
+
+        function showProductosAdmin(){
             $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderPaginaAdmin($productos);
+            $this->view->renderProductosAdmin($productos);
         }
 
         function showCategoriasAdmin(){
@@ -100,7 +104,7 @@
 
 
 
-        function showHomeUsuario(){
+        function showProductos(){
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);
@@ -118,7 +122,7 @@
             $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
             //var_dump($productosCategoria);
             // actualizo la vista
-            $this->view->renderProductosByCategoria($productosCategoria);
+            $this->view->renderProductosByCategoria($productosCategoria , $tipoCategoria);
         }
 
         function showCategoriasUsuario(){

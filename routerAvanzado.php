@@ -10,7 +10,8 @@ $r = new Router();
 // rutas administrador //por post solo viene cuandoe es una nueva tarea              
 
 //rutas admin productos
-$r->addRoute("administrador", "GET", "ProductosControllers", "showHomeAdministrador");
+$r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
+$r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
 $r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");
@@ -24,7 +25,7 @@ $r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCatego
 //faltaria la parte del login del administrador
 
 //rutas usuario
-$r->addRoute("home", "GET", "ProductosControllers", "showHomeUsuario");
+$r->addRoute("productos", "GET", "ProductosControllers", "showProductos");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");

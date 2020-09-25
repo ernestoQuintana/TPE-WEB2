@@ -23,17 +23,17 @@
             </div>
             <div>
                 <div class="btn-group" role="group">
-                    <a class="navbar-brand" href="routerAvanzado.php?action=home">Home</a>
-                    <a class="navbar-brand" href="routerAvanzado.php?action=productos">Productos</a>
-                    <a class="navbar-brand nav-link dropdown-toggle categorias" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="navbar-brand" href="home">Home</a>
+                    <a class="navbar-brand" href="productos">Productos</a>
+                    <a class="navbar-brand nav-link dropdown-toggle categorias"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/allCategorias">Todas las Categorias</a>
-                        <a class="dropdown-item" href="routerAvanzado.php?action=">Rostro</a>
-                        <a class="dropdown-item" href="routerAvanzado.php?action=cuerpo">Cuerpo</a>
-                        <a class="dropdown-item " href="routerAvanzado.php?action=hombre">Hombre</a>
-                        <a class="dropdown-item" href="routerAvanzado.php?action=cabello">Cabello</a>
+                        <a class="dropdown-item" href="allCategoriasUsuario">Todas las Categorias</a>
+                        <a class="dropdown-item" href="categoria/1">Rostro</a>
+                        <a class="dropdown-item" href="categoria/2">Cuerpo</a>
+                        <a class="dropdown-item " href="categoria/3">Hombre</a>
+                        <a class="dropdown-item" href="categoria/4">Cabello</a>
                     </div>
                 </div>
             </div>
@@ -41,7 +41,7 @@
 
             </ul>
 
-            <a class="admin" href="routerAvanzado.php?action=administrador">Administrador</a>
+            <a class="admin" href="administrador">Administrador</a>
         </nav>
     </header>
     <main class="container">
