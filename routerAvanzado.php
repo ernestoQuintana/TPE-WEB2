@@ -7,16 +7,30 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 $r = new Router();
 
-// rutas //por post solo viene cuandoe es una nueva tarea              
-$r->addRoute("administrador", "GET", "ProductosControllers", "homeAdministrador");
-$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategorias");
-$r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
-$r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
+// rutas administrador //por post solo viene cuandoe es una nueva tarea              
+
+//rutas admin productos
+$r->addRoute("administrador", "GET", "ProductosControllers", "showHomeAdministrador");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
 $r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");
+//rutas admin categorias
+$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin");
+$r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");
+$r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCategoria");
+$r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
+
+
+//faltaria la parte del login del administrador
+
+//rutas usuario
+$r->addRoute("home", "GET", "ProductosControllers", "showHomeUsuario");
+$r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
+$r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
+$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasUsuario");
+
 //Ruta por defecto.
-//$r->setDefaultRoute("ProductosControllers", "administrador");
+//$r->setDefaultRoute("ProductosControllers", "home");
 /*
 //Advance
 $r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");*/

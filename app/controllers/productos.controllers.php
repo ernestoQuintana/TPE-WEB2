@@ -16,38 +16,17 @@
             $this->view = new ViewProducto();
         } 
 
-       /* function showProductos(){
-            //1.obtener los productos
-          $productos = $this->modelProducto->getAllProductos();
-          $this->view->renderProductos($productos);
-        }*/
+        // FUNCIONES DEL ADMINISTRADOR
 
-        function showDetalleProducto($params = null){
-            $id = $params[':ID'];
-            $producto = $this->modelProducto->getDetalleProducto($id);
-            $this->view->renderDetalleProducto($producto); 
-        }
-        
-        function showProductosByCategoria($params = null){
-           
-            $tipoCategoria = $params[':ID'];
-            $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
-            //var_dump($productosCategoria);
-            // actualizo la vista
-            $this->view->renderProductosByCategoria($productosCategoria);
-        }
-
-        function showCategorias(){
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->view->renderCategorias($categorias);
-        }
-
-        function homeAdministrador(){
+        //LLAMAMOS TODOS LOS PRODUCTOS
+        function showHomeAdministrador(){
             $productos = $this->modelProducto->getAllProductos();
             $this->view->renderPaginaAdmin($productos);
         }
-
-        
+        function showCategoriasAdmin(){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderCategoriasAdmin($categorias);
+        }        
         function agregarProducto(){
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
                 isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
@@ -61,23 +40,80 @@
         }
 
         function editarProducto($params = null){
+            $id = $params[':ID'];
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
-            isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
+                isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
                 $nombre = $_POST['input_title'];
                 $descripcion = $_POST['input_description'];
                 $precio = $_POST['input_precio'];
                 $categoria = $_POST['select_categoria'];
-            }
-            $id = $params[':ID'];
+            }    
+            
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
             $this->view->ShowHomeLocation();
         }
-
 
         function eliminarProducto($params = null){
             $id = $params[':ID'];
             $id_producto = $this->modelProducto->eliminarProductoID($id);
             $this->view->ShowHomeLocation();
         }
+                    
+        function agregarCategoria(){
+            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& isset($_POST['input_origen'])){
+                $nombre = $_POST['input_title'];
+                $descripcion = $_POST['input_description'];
+                $origen = $_POST['input_origen'];
+            }    
+            $this->modelCategoria->insertarCategoria($nombre,$descripcion,$origen);
+           // $this->view->ShowHomeLocation();
+        }
+
+        function eliminarCategoria($params = null){
+            $id = $params[':ID'];
+            $this->modelCategoria->eliminarCategoriaID($id);
+            //$this->view->ShowHomeLocation();
+        }
+
+        function editarCategoria($params = null){
+            $id = $params[':ID'];
+            if (isset($_POST['input_title']) && isset($_POST['input_description'])&& isset($_POST['input_origen'])){
+                $nombre = $_POST['input_title'];
+                $descripcion = $_POST['input_description'];
+                $precio = $_POST['input_origen'];
+            }    
+            $this->modelCategoria->editarCategoriaID($nombre,$descripcion,$precio,$id);
+            $this->view->ShowHomeLocation();
+        }
+        //llamamos alas categorias
+
+        function showCategoriasUsuario(){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderCategoriasUsuario($categorias);
+        }
+
+        //FUNCIONES DEL USUARIO
+        function showHomeUsario(){
+            //1.obtener los productos
+          $productos = $this->modelProducto->getAllProductos();
+          $this->view->renderProductos($productos);
+        }
+
+        function showDetalleProducto($params = null){
+            $id = $params[':ID'];
+            $producto = $this->modelProducto->getDetalleProducto($id);
+            $this->view->renderDetalleProducto($producto); 
+        }
+                
+        function showProductosByCategoria($params = null){
+           
+            $tipoCategoria = $params[':ID'];
+            $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
+            //var_dump($productosCategoria);
+            // actualizo la vista
+            $this->view->renderProductosByCategoria($productosCategoria);
+        }
+
+
 
     }
