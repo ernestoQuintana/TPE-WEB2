@@ -21,7 +21,8 @@
     }
 
     function editarCategoriaID($nombre,$descripcion,$origen,$id){// no deberia haber un values??
-        $query = $this->dbCategorias->prepare("UPDATE `categoria` SET nombre=$nombre, descripcion =$descripcion, precio=$origen WHERE id =$id");
+        $query = $this->dbCategorias->prepare("UPDATE `categoria` SET nombre=$nombre,
+         descripcion =$descripcion, precio=$origen WHERE id =$id");
         $query->execute([$nombre,$descripcion,$origen,$id]);
     }
 
