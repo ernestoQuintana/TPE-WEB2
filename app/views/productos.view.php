@@ -1,15 +1,22 @@
 <?php
 
 echo "";
-class ViewProducto
-{
+class ViewProducto{
+
+    //require_once "libs\smarty\Smarty.class.php";
 
     function renderPaginaAdmin($productos)
     {
 
         include_once 'templates\header.php';
         include_once 'templates\form.php';
+/*
+        $smaty = new Smarty();
+        $smaty->assign();
+        $smarty->assing();
 
+
+*/
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
 
