@@ -23,16 +23,17 @@
             </div>
             <div>
                 <div class="btn-group" role="group">
-                    <a class="navbar-brand" href="productos.php?categoria=home">Home</a>
-                    <a class="navbar-brand" href="productos.php?categoria=productos">Productos</a>
+                    <a class="navbar-brand" href="routerAvanzado.php?action=home">Home</a>
+                    <a class="navbar-brand" href="routerAvanzado.php?action=productos">Productos</a>
                     <a class="navbar-brand nav-link dropdown-toggle categorias" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="productos.php?categoria=rostro">Rostro</a>
-                        <a class="dropdown-item" href="productos.php?categoria=cuerpo">Cuerpo</a>
-                        <a class="dropdown-item " href="productos.php?categoria=hombre">Hombre</a>
-                        <a class="dropdown-item" href="productos.php?categoria=cabello">Cabello</a>
+                        <a class="dropdown-item" href="/allCategorias">Todas las Categorias</a>
+                        <a class="dropdown-item" href="routerAvanzado.php?action=">Rostro</a>
+                        <a class="dropdown-item" href="routerAvanzado.php?action=cuerpo">Cuerpo</a>
+                        <a class="dropdown-item " href="routerAvanzado.php?action=hombre">Hombre</a>
+                        <a class="dropdown-item" href="routerAvanzado.php?action=cabello">Cabello</a>
                     </div>
                 </div>
             </div>
@@ -40,7 +41,7 @@
 
             </ul>
 
-            <a class="admin" href="productos.php?categoria=administrador">Administrador</a>
+            <a class="admin" href="routerAvanzado.php?action=administrador">Administrador</a>
         </nav>
     </header>
     <main class="container">
