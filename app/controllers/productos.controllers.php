@@ -108,7 +108,7 @@
 
 
 
-        function showHomeUsario(){
+        function showHomeUsuario(){
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
           $this->view->renderProductos($productos);

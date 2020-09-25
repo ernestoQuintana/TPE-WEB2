@@ -3,6 +3,10 @@
 class ViewProducto{
 
     //require_once "libs\smarty\Smarty.class.php";
+    
+    /************************ TABLAS DEL ADMINISTRADOR ************************/
+    
+    // PRODUCTOS
 
     function renderPaginaAdmin($productos)
     {
@@ -15,8 +19,6 @@ class ViewProducto{
         $smarty->assing();
 
 */      
-        //AGREGAR TABLA DE CATEGORIA
-
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
 
@@ -38,13 +40,10 @@ class ViewProducto{
         header("Location: " . BASE_URL . "administrador");
     }
     
-    function ShowHomeLocationCategory()
-    {
-        header("Location: " . BASE_URL . "allCategorias");
-    }
-
-    function renderCategoriasAdmin($categorias)
-    {
+    
+    // CATEGORIAS 
+    
+    function renderCategoriasAdmin($categorias){
         include_once 'templates\header.php';
         include_once 'templates\formCategoria.php';
         //incluir form para las categorias
@@ -53,9 +52,9 @@ class ViewProducto{
             echo "<li class='list-group-item'>
             $categoria->nombre  | $categoria->origen
             <div class= 'cajaBtn'>     
-                      <a class='btnBorrar' href='eliminarCategoria/$categoria->id_categoria'>Eliminar</a>
-                      <a class='btnEditar' href='editarCategoria/$categoria->id_categoria'>Editar</a>
-                    </div>
+            <a class='btnBorrar' href='eliminarCategoria/$categoria->id_categoria'>Eliminar</a>
+            <a class='btnEditar' href='editarCategoria/$categoria->id_categoria'>Editar</a>
+            </div>
             </li>";
             echo "<li class='list-group-item'>
             $categoria->descripcion
@@ -65,10 +64,10 @@ class ViewProducto{
         
         include_once 'templates\footer.php';
     }
-    function renderProductosByCategoria($productosCategoria)
-    {
-        include_once 'templates\header.php';
 
+    function renderProductosByCategoria($productosCategoria){
+        include_once 'templates\header.php';
+        
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
             echo "<li class='list-group-item'>
@@ -77,29 +76,30 @@ class ViewProducto{
         }
         echo "</ul>";
     }
-
-
-    //EN LA PARTE DEL PUBLICO
-
-    function ShowHomeLocationUsuario()
+    
+    function ShowHomeLocationCategory()
     {
-        header("Location: " . BASE_URL . "home");
+        header("Location: " . BASE_URL . "allCategorias");
     }
 
+    /************************ TABLAS DEL USUARIO ************************/
+    
+    
+    
     function renderProductos($productos)
-        {
-            include_once 'templates\header.php';
-            echo "<ul class='list-group mt-5'>";
-            foreach ($productos as $producto) {
-                echo "<li class='list-group-item'>
-                        $producto->nombre |  $producto->precio | $producto->id_categoria  
-                        <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
-                    </li>";
-            }
-            echo "</ul>";
+    {
+        include_once 'templates\header.php';
+        echo "<ul class='list-group mt-5'>";
+        foreach ($productos as $producto) {
+            echo "<li class='list-group-item'>
+            $producto->nombre |  $producto->precio | $producto->id_categoria  
+            <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
+            </li>";
         }
-
-        //VA EN EL PUBLICO
+        echo "</ul>";
+    }
+    
+    //VA EN EL PUBLICO
     function renderDetalleProducto($producto)
     {
         include_once 'templates\header.php';
@@ -112,7 +112,7 @@ class ViewProducto{
         echo "<a class='btnVolver' href='home/'>volver</a>";
         
     }
-
+    
     function renderCategoriasUsuario($categorias)
     {
         include_once 'templates\header.php';
@@ -128,4 +128,10 @@ class ViewProducto{
         echo "</ul>";
     }
 
+    
+    function ShowHomeLocationUsuario()
+    {
+        header("Location: " . BASE_URL . "home");
+    }
+    
 }
