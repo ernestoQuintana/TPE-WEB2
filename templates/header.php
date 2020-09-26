@@ -25,7 +25,8 @@
                 <div class="btn-group" role="group">
                     <a class="navbar-brand" href="home">Home</a>
                     <a class="navbar-brand" href="productos">Productos</a>
-                    <a class="navbar-brand nav-link dropdown-toggle categorias"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="navbar-brand nav-link dropdown-toggle categorias" 
+                    id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">

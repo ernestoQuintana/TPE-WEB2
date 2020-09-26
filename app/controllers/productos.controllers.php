@@ -26,6 +26,9 @@
         function showAdmin(){
             $this->view->renderAdmin();
         }
+        function showHome(){
+            $this->view->renderHome();
+        }
 
         function showProductosAdmin(){
             $productos = $this->modelProducto->getAllProductos();

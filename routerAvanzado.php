@@ -25,6 +25,7 @@ $r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCatego
 //faltaria la parte del login del administrador
 
 //rutas usuario
+$r->addRoute("home", "GET", "ProductosControllers","showHome");
 $r->addRoute("productos", "GET", "ProductosControllers", "showProductos");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
