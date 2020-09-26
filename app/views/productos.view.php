@@ -56,7 +56,7 @@ class ViewProducto{
         //incluir form para las categorias
         echo "<ul class='list-group mt-5'>";
         foreach ($categorias as $categoria) {
-            echo "<li class='list-group-item'>
+            echo "<li class='listaCategoriasView'>
             $categoria->nombre  | $categoria->origen
             <div class= 'cajaBtn'>     
             <a class='btnBorrar' href='eliminarCategoria/$categoria->id_categoria'>Eliminar</a>

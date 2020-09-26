@@ -49,7 +49,7 @@ body{
 .container{
     margin: 2em;
 }
-.listaProductos{
+.listaProductos, .listaCategorias   {
     font-weight: bold;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     margin: 3rem 0 5rem;
@@ -75,7 +75,7 @@ body{
     border-radius: 3px;
     padding: 8px;
 }
-.listaProductoView{
+.listaProductoView , .listaCategoriasView{
     position: relative;
     display: flex;
     padding: .75rem 1.25rem;
