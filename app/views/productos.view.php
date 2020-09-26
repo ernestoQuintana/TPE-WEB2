@@ -74,6 +74,7 @@ class ViewProducto{
 
     function renderProductosByCategoria($productosCategoria , $tipoCategoria){
         include_once 'templates\header.php';
+            echo '<main class="container">';
             echo "<h1> Lista de: " . $tipoCategoria ."</h1>"; 
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
@@ -96,7 +97,7 @@ class ViewProducto{
     function renderProductos($productos)
     {
         include_once 'templates\header.php';
-
+        echo '<main class="container">';
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
             echo "<li class='list-group-item'>
@@ -109,6 +110,7 @@ class ViewProducto{
     
     function renderDetalleProducto($producto){
         include_once 'templates\header.php';
+        echo '<main class="container">';
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
         $producto->nombre   
@@ -121,6 +123,7 @@ class ViewProducto{
     function renderCategoriasUsuario($categorias)
     {
         include_once 'templates\header.php';
+        echo '<main class="container">';
         echo "<ul class='list-group mt-5'>";
         foreach ($categorias as $categoria) {
             echo "<li class='list-group-item'>

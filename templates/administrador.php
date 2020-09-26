@@ -1,11 +1,11 @@
-<div>
-    <figure class = "cajaImagen">
-    <button class="btn btn-primary" href="administrador/productos"><img src="img\producto.jpeg" alt="" srcset="" ></button>
-
-    
-    </figure>
-    <figure class = "cajaImagen">
-    <button class="btn btn-primary" href="administrador/categorias"><img src="img\categorias.jpeg" alt="" srcset="" ></button>
-    
-    </figure>
+<div class="selecAdmin">
+        <div class="productosImg">
+            <h2>Lista de Productos</h2> 
+            <a class="" href="allProductos"><img src="img\producto.jpeg" alt="" srcset=""></a>
+        </div>
+        
+        <div class="categoriasImg">
+            <h2>Lista de categorias</h2>
+            <a class="" href="allCategorias"><img src="img\categorias.jpeg" alt="" srcset=""></a>
+        </div>
 </div>

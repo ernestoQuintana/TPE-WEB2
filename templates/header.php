@@ -44,4 +44,4 @@
             <a class="admin" href="administrador">Administrador</a>
         </nav>
     </header>
-    <main class="container">
+   

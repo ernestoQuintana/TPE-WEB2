@@ -107,3 +107,22 @@ body{
     background-color: rgb(128, 224, 90);
     color: aliceblue;
 }
+.selecAdmin{
+    display: flex;
+
+}
+.productosImg{
+    background-color: aqua;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.categoriasImg{
+    background-color: rgb(51, 255, 0);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
