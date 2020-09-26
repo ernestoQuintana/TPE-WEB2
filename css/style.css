@@ -107,22 +107,30 @@ body{
     background-color: rgb(128, 224, 90);
     color: aliceblue;
 }
+/********************** ADMINISTRADOR *************************/
 .selecAdmin{
     display: flex;
 
 }
-.productosImg{
-    background-color: aqua;
+.adminImg{
+    background-color: rgb(128, 224, 90);
+    margin: 100px;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    color: #fff;
+    opacity: 50%;
+    border-radius: 3%;
+}
+.adminImg:hover{
+    opacity: 100%;
+    box-shadow: 1px 1px 15px black;
+    transition: ease-in;
+    transform: scale(1.05);
+    transition-duration: 250ms;
+}
+.adminImg img{
     width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    border-radius: 0 0 3% 3%;
 }
-
-.categoriasImg{
-    background-color: rgb(51, 255, 0);
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-

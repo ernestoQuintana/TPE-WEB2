@@ -38,9 +38,6 @@
                 </div>
             </div>
 
-
-            </ul>
-
             <a class="admin" href="administrador">Administrador</a>
         </nav>
     </header>

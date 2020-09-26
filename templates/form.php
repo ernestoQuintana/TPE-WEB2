@@ -1,4 +1,4 @@
-<main class="container">
+<main class="container">  
 <div class="container">
     <h1 class="listaProductos"> Lista de Productos</h1>
     <form action="agregarProducto" method="POST">
