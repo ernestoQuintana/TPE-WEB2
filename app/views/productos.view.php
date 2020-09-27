@@ -21,7 +21,6 @@ class ViewProducto{
 
     function renderProductosAdmin($productos)
     {
-        // INCLUIR EL FORM PARA CATEGORIA
         include_once 'templates\header.php';      
         include_once 'templates\form.php';
 /*
@@ -82,7 +81,7 @@ class ViewProducto{
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
             echo "<li class='list-group-item'>
-            $producto->nombre | $producto->id 
+            $producto->nombre | $tipoCategoria 
             </li>";
         }
         echo "</ul>";
@@ -118,7 +117,7 @@ class ViewProducto{
         </li>";
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
-        echo "<a class='btnVolver' href='home/'>volver</a>";
+        echo "<a class='btnVolver' href='productos/'>volver</a>";
     }
     
     function renderCategoriasUsuario($categorias)

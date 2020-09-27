@@ -12,7 +12,6 @@ class ModelProducto {
         $query =$this->dbProductos->prepare('SELECT * FROM producto');
         $query->execute();                  
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
-        //me trae un objeto pero me pisa los datos de las diferentes tablas
         //var_dump($productos);
         return $productos;
     }
@@ -43,8 +42,9 @@ class ModelProducto {
     }
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){// no deberia haber un values??
-        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= `$nombre`, 
-        `descripcion` = `$descripcion`, `precio` = `$precio` ,`id_categoria` = `$categoria` WHERE id =`$id`;");
+        echo $nombre . $descripcion . $precio . $categoria;
+
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ? ,`descripcion`= ?,`precio`= ?,`id_categoria`=? WHERE id =$id");
         $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
