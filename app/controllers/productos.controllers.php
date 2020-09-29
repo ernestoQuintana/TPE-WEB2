@@ -57,6 +57,7 @@
         }
 
         function editarProducto($params = null){
+
             $id = $params[':ID'];
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
                 isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){
@@ -68,7 +69,7 @@
                 } 
                 //NO ESTA TOMANDO LOS DATOS DESDE EL FORMULARIO
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
-           // $this->view->ShowHomeLocation();
+            $this->view->ShowHomeLocation();
         }
 
         function eliminarProducto($params = null){
