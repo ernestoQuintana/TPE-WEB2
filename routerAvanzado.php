@@ -14,8 +14,8 @@ $r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
 $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
-$r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");
-$r->addRoute("editarProductoB/:ID", "GET", "ProductosControllers", "editarProductoB");
+$r->addRoute("editarP/:ID", "GET", "ProductosControllers", "editarP");
+$r->addRoute("editarProducto", "GET", "ProductosControllers", "editarProducto");
 //rutas admin categorias
 $r->addRoute("administrador/allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); //preguntar si esta bien 
 $r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");

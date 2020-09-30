@@ -18,7 +18,7 @@
         <nav class="navBar">
             <img src="img\crema.png" class="imgCremas" alt="crema natural">
             <div>
-                <h1 class="tituloProductos">Cremas Zaraquin</h1>
+                <h1 class="tituloProductos">Distribuidora Zaraquin</h1>
                 <h5 class="tituloDescripcion">Cremas a base de Productos organicos</h5>
             </div>
             <div>

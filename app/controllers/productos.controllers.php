@@ -57,28 +57,24 @@
         }
 
 
-       function editarProductoB($params = null){
+       function editarP($params = null){
             $id = $params[':ID'];
             $this->view->renderFormEditar($id);
         }
 
-        function editarProducto(){
+        function editarProducto($params = null){
             
-            //$id = $params[':ID'];
-            /*if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
-                isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){
-               */     
+           // $id = $params[':ID'];
+            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
+                isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){ 
                 $nombre = $_REQUEST['input_title'];
                 $descripcion = $_REQUEST['input_description'];
                 $precio = $_REQUEST['input_precio'];
                 $categoria = $_REQUEST['select_categoria'];
-
-                echo $nombre . $descripcion . $precio . $categoria . $id;
-                //} 
-                //NO ESTA TOMANDO LOS DATOS DESDE EL FORMULARIO
-                //------------------------------------------
-            $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
-            //$this->view->ShowHomeLocation();
+                }
+             echo $nombre . $descripcion . $precio . $categoria;
+            $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria);
+            $this->view->ShowHomeLocation();
            
         }
 

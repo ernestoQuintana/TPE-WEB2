@@ -20,9 +20,10 @@ class ViewProducto{
      }
 
 
-    function renderFormEditar($id){
+    function renderFormEditar(){
         include_once 'templates\header.php';      
         include_once 'templates\formEditar.php';
+        include_once 'templates\footer.php';
     }
 
     function renderProductosAdmin($productos)
@@ -42,7 +43,7 @@ class ViewProducto{
                       $producto->nombre |  $producto->precio 
                     <div class= 'cajaBtn'>     
                       <a class='btnBorrar' href='eliminarProducto/$producto->id'>Eliminar</a>
-                      <a class='btnEditar' href='editarProductoB/$producto->id'>Editar</a>
+                      <a class='btnEditar' href='editarP/$producto->id'>Editar</a>
                     </div>                  
                       </li>";
         }
