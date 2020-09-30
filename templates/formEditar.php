@@ -1,7 +1,8 @@
+
 <main class="container">  
 <div class="container">
     <h1 class="listaProductos"> Lista de Productos</h1>
-    <form action="agregarProducto" method="POST">
+    <form action="editarProducto/:ID" method="GET">
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp" required>
@@ -24,6 +25,6 @@
                 <option value="4">cuerpo</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="submit" class="btn btn-primary">Editar</button>
     </form>
 </div>  
