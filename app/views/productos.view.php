@@ -47,7 +47,7 @@ class ViewProducto{
 
     function ShowHomeLocation()
     {
-        header("Location: " . BASE_URL . "administrador");
+        header("Location: " . BASE_URL . "allProductos");
     }
     
     
