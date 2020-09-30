@@ -1,13 +1,16 @@
 <?php
-
+include_once "libs/smarty/Smarty.class.php";
 class ViewProducto{
 
-    //require_once "libs\smarty\Smarty.class.php";
-    
     /************************ TABLAS DEL ADMINISTRADOR ************************/
+    private $smarty;
+
+    function __construct()
+    {
+       $this->smarty = new Smarty();     
+    }
     
     // PRODUCTOS
-
     function renderAdmin(){
         include_once 'templates\header.php';
         include_once 'templates\administrador.php';
@@ -19,37 +22,16 @@ class ViewProducto{
         include_once 'templates\footer.php';  
      }
 
-
-    function renderFormEditar(){
-        include_once 'templates\header.php';      
-        include_once 'templates\formEditar.php';
-        include_once 'templates\footer.php';
+    function renderFormEditar($id)
+    {
+        $this->smarty->assign('id', $id); //el id que me viene transformo al $id     
+        $this->smarty->display('formEditar.tpl');
     }
 
     function renderProductosAdmin($productos)
     {
-        include_once 'templates\header.php';      
-        include_once 'templates\form.php';
-/*
-        $smaty = new Smarty();
-        $smaty->assign();
-        $smarty->assing();
-
-*/      
-        echo "<ul class='list-group mt-5'>";
-        foreach ($productos as $producto) {
-
-            echo "<li class='listaProductoView'>
-                      $producto->nombre |  $producto->precio 
-                    <div class= 'cajaBtn'>     
-                      <a class='btnBorrar' href='eliminarProducto/$producto->id'>Eliminar</a>
-                      <a class='btnEditar' href='editarP/$producto->id'>Editar</a>
-                    </div>                  
-                      </li>";
-        }
-        echo "</ul>";
-
-        include_once 'templates\footer.php';
+        $this->smarty->assign('productos',$productos);
+        $this->smarty->display('productosAdmin.tpl');
     }
 
     function ShowHomeLocation()

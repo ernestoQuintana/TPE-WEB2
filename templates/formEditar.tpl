@@ -1,8 +1,8 @@
-
+{include file="header.php"}
 <main class="container">  
 <div class="container">
     <h1 class="listaProductos"> Edita tus Productos</h1>
-    <form action="editarProducto" method="GET">
+    <form action="editarProducto/{$id}" method="GET">
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp" required>
@@ -27,4 +27,5 @@
         </div>
         <button type="submit" class="btn btn-primary" href="allProductos" >Editar</button>
     </form>
-</div>  
+</div> 
+{include file="footer.php"} 

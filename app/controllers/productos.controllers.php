@@ -64,7 +64,7 @@
 
         function editarProducto($params = null){
             
-           // $id = $params[':ID'];
+            $id = $params[':ID'];
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
                 isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){ 
                 $nombre = $_REQUEST['input_title'];
@@ -72,10 +72,9 @@
                 $precio = $_REQUEST['input_precio'];
                 $categoria = $_REQUEST['select_categoria'];
                 }
-             echo $nombre . $descripcion . $precio . $categoria;
-            $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria);
+            $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
             $this->view->ShowHomeLocation();
-           
+          
         }
 
         function eliminarProducto($params = null){
