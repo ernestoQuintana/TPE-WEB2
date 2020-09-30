@@ -56,20 +56,30 @@
             $this->view->ShowHomeLocation();
         }
 
-        function editarProducto($params = null){
 
+       function editarProductoB($params = null){
             $id = $params[':ID'];
-            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
+            $this->view->renderFormEditar($id);
+        }
+
+        function editarProducto(){
+            
+            //$id = $params[':ID'];
+            /*if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
                 isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){
-                 
+               */     
                 $nombre = $_REQUEST['input_title'];
                 $descripcion = $_REQUEST['input_description'];
                 $precio = $_REQUEST['input_precio'];
                 $categoria = $_REQUEST['select_categoria'];
-                } 
+
+                echo $nombre . $descripcion . $precio . $categoria . $id;
+                //} 
                 //NO ESTA TOMANDO LOS DATOS DESDE EL FORMULARIO
+                //------------------------------------------
             $this->modelProducto->editarProductoID($nombre,$descripcion,$precio,$categoria,$id);
-            $this->view->ShowHomeLocation();
+            //$this->view->ShowHomeLocation();
+           
         }
 
         function eliminarProducto($params = null){

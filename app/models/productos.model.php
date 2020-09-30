@@ -44,8 +44,7 @@ class ModelProducto {
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){// no deberia haber un values??
         echo $nombre . $descripcion . $precio . $categoria;
 
-        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ? ,`descripcion`= ?,`precio`= ?,`id_categoria`=? WHERE id =$id");
-        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= $nombre ,`descripcion`= $descripcion,`precio`= $precio,`id_categoria`=$categoria WHERE id =$id");
     }
 
     function eliminarProductoID($id){
