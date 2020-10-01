@@ -45,7 +45,7 @@ body{
     justify-content: flex-end;
 
 }
-/********************* MAIN **********************/
+/********************* MAIN HOME **********************/
 .container{
     margin: 2em;
 }
@@ -156,7 +156,7 @@ body{
     margin: 1em 0 2em;
     font-family: cursive;
     font-size: 2em;
-    color: rgb(118, 184, 118);
+    color: rgb(128, 224, 90);
     text-shadow: 1px 3px 5px black;
 }
 .home .propiedades{
@@ -171,6 +171,28 @@ body{
 }
 .videoHome{
     margin: 2% 20%;
+}
+
+section .franjaAzul{
+    width: 100%;
+    height: 500px;
+    background-color: rgb(69, 66, 102);
+    margin: 8em 0;
+    color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+.textoRedes{
+    margin-left: 20%;
+    padding: 5% 0;
+    font-family: cursive;
+}
+.iconosRedes{
+    margin: 2em;
+}
+.fab .fa-twitter-square{
+    width: 80px;
+    color: #fff;
 }
 
 /****************** FOOTER *******************/

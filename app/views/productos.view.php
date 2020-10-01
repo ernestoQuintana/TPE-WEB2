@@ -74,6 +74,7 @@ class ViewProducto{
             </li>";
         }
         echo "</ul>";
+        include_once 'templates\footer.php';
     }
     
     function ShowHomeLocationCategory()
@@ -96,6 +97,7 @@ class ViewProducto{
             </li>";
         }
         echo "</ul>";
+        include_once 'templates\footer.php';
     }
     
     function renderDetalleProducto($producto){
@@ -107,6 +109,7 @@ class ViewProducto{
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
         echo "<a class='btnVolver' href='productos/'>volver</a>";
+        include_once 'templates\footer.php';
     }
     
     function renderCategoriasUsuario($categorias)
@@ -122,6 +125,7 @@ class ViewProducto{
             </li>";            
         }
         echo "</ul>";
+        include_once 'templates\footer.php';
     }
 
 

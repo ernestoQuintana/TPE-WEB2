@@ -42,7 +42,20 @@
                 </p>
             </div>
             <div class="videoHome">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/IcvnZzHBOjo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-               </div>    
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IcvnZzHBOjo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+        <section>
+            <div class="franjaAzul">
+                <div class="textoRedes">
+                    <h1>¡Probá Nuestros Productos!</h1>
+                    <p>Recibe nuestras ofertas y descuentos</p>
+
+                    <h2>¡Siguenos!</h2>
+                    <p>Siguenos en Redes Sociales</p>
+                    <div class="iconosRedes">
+                    </div>
+                </div>
+            </div>
         </section>
     </article>
