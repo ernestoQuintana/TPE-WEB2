@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="<?= BASE_URL ?>">
@@ -15,7 +14,6 @@
 
 <body>
     <header>
-
         <nav class="navBar">
             <img src="img\crema.png" class="imgCremas" alt="crema natural">
             <div>
@@ -26,8 +24,7 @@
                 <div class="btn-group" role="group">
                     <a class="navbar-brand" href="home">Home</a>
                     <a class="navbar-brand" href="productos">Productos</a>
-                    <a class="navbar-brand nav-link dropdown-toggle categorias" 
-                    id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="navbar-brand nav-link dropdown-toggle categorias" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -39,16 +36,15 @@
                     </div>
                 </div>
             </div>
-            
+
             <a class="admin" href="administrador">Administrador</a>
-                <div class="iconosRedesNav">
-                            <a href="#"><i class="iconosNav fab fa-facebook"></i></a>
-                            <a href="#"><i class="iconosNav fab fa-instagram-square"></i></a>
-                            <a href="#"><i class="iconosNav fab fa-twitter"></i></a>
-                            <a href="#"><i class="iconosNav fab fa-github"></i></a>
-                            <a href="#"><i class="iconosNav fab fa-vk"></i></a>
-                            <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
-                </div>
+            <div class="iconosRedesNav">
+                <a href="#"><i class="iconosNav fab fa-facebook"></i></a>
+                <a href="#"><i class="iconosNav fab fa-instagram-square"></i></a>
+                <a href="#"><i class="iconosNav fab fa-twitter"></i></a>
+                <a href="#"><i class="iconosNav fab fa-github"></i></a>
+                <a href="#"><i class="iconosNav fab fa-vk"></i></a>
+                <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
+            </div>
         </nav>
     </header>
-   
