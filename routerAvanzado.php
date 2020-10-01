@@ -15,13 +15,14 @@ $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin"
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
 $r->addRoute("editarP/:ID", "GET", "ProductosControllers", "editarP");
-$r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");
+$r->addRoute("editarP/editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");//porque me queda en al URL EDITARP
 
 //rutas admin categorias
 $r->addRoute("administrador/allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); 
 $r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");
 $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCategoria");
-$r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
+$r->addRoute("editar/:ID", "GET", "ProductosControllers", "editar");
+$r->addRoute("editar/editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
 
 
 //faltaria la parte del login del administrador
@@ -34,10 +35,10 @@ $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCat
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
 
 //Ruta por defecto.
-$r->setDefaultRoute("ProductosControllers", "showHome");
+//$r->setDefaultRoute("ProductosControllers", "showHome");
 
 //Advance
-$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
+//$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
 
 //run
 $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

@@ -41,27 +41,15 @@ class ViewProducto{
     
     
     // CATEGORIAS 
-    
+         
     function renderCategoriasAdmin($categorias){
-        include_once 'templates\header.php';
-        include_once 'templates\formCategoria.php';
-        //incluir form para las categorias
-        echo "<ul class='list-group mt-5'>";
-        foreach ($categorias as $categoria) {
-            echo "<li class='listaCategoriasView'>
-            $categoria->nombre  | $categoria->origen
-            <div class= 'cajaBtn'>     
-            <a class='btnBorrar' href='eliminarCategoria/$categoria->id_categoria'>Eliminar</a>
-            <a class='btnEditar' href='editarCategoria/$categoria->id_categoria'>Editar</a>
-            </div>
-            </li>";
-            echo "<li class='list-group-item'>
-            $categoria->descripcion
-            </li>";            
-        }
-        echo "</ul>";
+       $this->smarty->assign('categorias' , $categorias);
+       $this->smarty->display('categoriasAdmin.tpl');
         
-        include_once 'templates\footer.php';
+    }
+    function renderFormEditarCategoria($id){
+        $this->smarty->assign('id' , $id);
+        $this->smarty->display('formEditarCategoria.tpl');
     }
 
     function renderProductosByCategoria($productosCategoria , $tipoCategoria){
@@ -79,7 +67,7 @@ class ViewProducto{
     
     function ShowHomeLocationCategory()
     {
-        header("Location: " . BASE_URL . "allCategorias");
+        header("Location: " . BASE_URL . "administrador/allCategorias");
     }
 
     /************************ TABLAS DEL USUARIO ************************/

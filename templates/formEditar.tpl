@@ -25,7 +25,7 @@
                 <option value="4">cuerpo</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" href="allProductos" >Editar</button>
+        <button type="submit" class="btn btn-primary" >Editar</button>
     </form>
 </div> 
 {include file="footer.php"} 

@@ -10,7 +10,7 @@
         private $modelProducto;
         private $modelCategoria;
         private $view;
-        private $form;        
+        
         function __construct(){
             $this->modelProducto = new ModelProducto();
             $this->modelCategoria = new ModelCategoria();
@@ -101,6 +101,11 @@
             $this->view->ShowHomeLocationCategory();
         }
 
+        function editar($params = null){
+            $id = $params[':ID'];
+            $this->view->renderFormEditarCategoria($id);
+        }
+        
         function editarCategoria($params = null){
             $id = $params[':ID'];
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& isset($_REQUEST['input_origen'])){

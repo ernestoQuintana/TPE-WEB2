@@ -29,10 +29,10 @@
     }
 
     function editarCategoriaID($nombre,$descripcion,$origen,$id){
-        var_dump($nombre);
-        $query = $this->dbCategorias->prepare(" UPDATE `categoria` SET `nombre`=$nombre,
-         `descripcion` = $descripcion, `origen` =$origen WHERE id =`$id`");
-        $query->execute([$nombre,$descripcion,$origen]);
+        
+        $query = $this->dbCategorias->prepare(" UPDATE `categoria` SET `nombre`=?,
+         `descripcion` = ?, `origen` = ? WHERE id =`?`");
+        $query->execute([$nombre,$descripcion,$origen,$id]);
     }
 
     function eliminarCategoriaID($id){
