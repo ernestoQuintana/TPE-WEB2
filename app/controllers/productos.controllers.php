@@ -57,9 +57,9 @@
             $this->view->ShowHomeLocation();
         }
 
-
        function editarP($params = null){
             $id = $params[':ID'];
+            //traer
             $this->view->renderFormEditar($id);
         }
 
