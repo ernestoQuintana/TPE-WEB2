@@ -22,7 +22,7 @@ $r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasAdmi
 $r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");
 $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCategoria");
 $r->addRoute("editar/:ID", "GET", "ProductosControllers", "editar");
-$r->addRoute("editar/editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
+$r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
 
 
 //faltaria la parte del login del administrador

@@ -1,8 +1,8 @@
-{include file="header.tpl"}
+{include file='header.tpl'}
 <main class="container">  
 <div class="container">
     <h1 class="listaProductos"> Edita tus Productos</h1>
-    <form action="editarProducto/{$id}" method="GET">
+    <form action="editarProducto/{$id}" method="POST">
         <div class="form-group">
             <label for="title">Nombre</label>
             <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp" required>
@@ -25,7 +25,7 @@
                 <option value="4">cuerpo</option>
             </select>
         </div>
-        <button type="submit" class="btn btn-primary" >Editar</button>
+        <button type="submit" class="btn btn-primary">Editar</button>
     </form>
 </div> 
-{include file="footer.tpl"}
+{include file='footer.tpl'}

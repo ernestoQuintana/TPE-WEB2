@@ -42,6 +42,7 @@
             $this->view->renderCategoriasAdmin($categorias);
         }
 
+        
         function agregarProducto(){
     
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 

@@ -11,7 +11,10 @@ class ViewProducto{
     }
     
     // PRODUCTOS
+
+    //pasar como templated de smarty y adentro del administrador incluir el header y footer
     function renderAdmin(){
+
         include_once 'templates\header.tpl';
         include_once 'templates\administrador.php';
         include_once 'templates\footer.tpl';        
@@ -24,6 +27,7 @@ class ViewProducto{
 
     function renderFormEditar($id)
     {
+        $this->smarty->assign('BASE_URL', BASE_URL); //variable url que se lo paso al string pepito que esta en el FORM editar
         $this->smarty->assign('id', $id); //el id que me viene transformo al $id     
         $this->smarty->display('formEditar.tpl');
     }
