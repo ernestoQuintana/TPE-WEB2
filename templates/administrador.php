@@ -6,6 +6,6 @@
         
         <div class="adminImg">
             <h2>Lista de categorias</h2>
-            <a class="" href="administrador/allCategorias"><img src="img\categorias.jpeg" alt="" srcset=""></a>
+            <a class="" href="allCategorias"><img src="img\categorias.jpeg" alt="" srcset=""></a>
         </div>
 </div>

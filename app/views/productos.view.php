@@ -67,7 +67,7 @@ class ViewProducto{
     
     function ShowHomeLocationCategory()
     {
-        header("Location: " . BASE_URL . "administrador/allCategorias");
+        header("Location: " . BASE_URL . "allCategorias");
     }
 
     /************************ TABLAS DEL USUARIO ************************/

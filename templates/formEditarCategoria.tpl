@@ -15,7 +15,7 @@
                 <label for="priority">Origen</label>
                 <input class="form-control" name="input_origen" id="precio">
             </div>
-            <button type="submit" class="btn btn-primary">Editar</button>
+            <button type="submit" class="btn btn-primary" href="editarCategoria/{$id}" >Editar</button>
         </form>
     </div>
 {include file='footer.php'}

@@ -15,10 +15,10 @@ $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin"
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
 $r->addRoute("editarP/:ID", "GET", "ProductosControllers", "editarP");
-$r->addRoute("editarP/editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");//porque me queda en al URL EDITARP
+$r->addRoute("editarProducto/:ID", "GET", "ProductosControllers", "editarProducto");//porque me queda en al URL EDITARP
 
 //rutas admin categorias
-$r->addRoute("administrador/allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); 
+$r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); 
 $r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");
 $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCategoria");
 $r->addRoute("editar/:ID", "GET", "ProductosControllers", "editar");
