@@ -42,9 +42,17 @@ body {
   font-size: 20px;
   color: rgb(69, 129, 51);
   justify-content: flex-end;
+  position: static;
 }
 .iconosRedesNav{
+    margin-left: 6em;
+}
+.iconosNav{
+    margin-right: 6px;
+    font-size: 25px;
+    display: flex;
     justify-content: flex-end;
+    color: #fff;
 }
 /********************* MAIN HOME **********************/
 .container {
@@ -192,8 +200,8 @@ section .franjaAzul {
 .iconosRedes {
   margin: 2em;
 }
-.fab {
-  font-size: 30px;
+.iconosHome {
+  font-size: 50px;
   color: #fff;
   padding: 10px;
 }
