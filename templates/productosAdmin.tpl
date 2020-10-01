@@ -1,4 +1,4 @@
-{include file="header.php"}
+{include file="header.tpl"}
 {include file="form.php"}
          <ul class='list-group mt-5'>
 
@@ -12,4 +12,4 @@
                       </li>
          {/foreach}
        </ul>
-{include file="footer.php"}
+{include file="footer.tpl"}

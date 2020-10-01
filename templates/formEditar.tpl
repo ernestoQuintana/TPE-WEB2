@@ -1,4 +1,4 @@
-include file="header.tpl"
+{include file="header.tpl"}
 <main class="container">  
 <div class="container">
     <h1 class="listaProductos"> Edita tus Productos</h1>
@@ -28,4 +28,4 @@ include file="header.tpl"
         <button type="submit" class="btn btn-primary" >Editar</button>
     </form>
 </div> 
-include file="footer.tpl"
+{include file="footer.tpl"}

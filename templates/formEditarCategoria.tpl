@@ -1,4 +1,4 @@
-{include file= 'header.php'}
+{include file= 'header.tpl'}
     <main class="container">  
     <div class="container">
         <h1 class="listaCategorias"> Lista de Categorias</h1>
@@ -18,4 +18,4 @@
             <button type="submit" class="btn btn-primary" href="editarCategoria/{$id}" >Editar</button>
         </form>
     </div>
-{include file='footer.php'}
+{include file='footer.tpl'}

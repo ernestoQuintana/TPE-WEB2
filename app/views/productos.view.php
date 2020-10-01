@@ -12,14 +12,14 @@ class ViewProducto{
     
     // PRODUCTOS
     function renderAdmin(){
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
         include_once 'templates\administrador.php';
-        include_once 'templates\footer.php';        
+        include_once 'templates\footer.tpl';        
     }
      function renderHome(){
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
         include_once 'templates\home.php';
-        include_once 'templates\footer.php';  
+        include_once 'templates\footer.tpl';  
      }
 
     function renderFormEditar($id)
@@ -53,7 +53,7 @@ class ViewProducto{
     }
 
     function renderProductosByCategoria($productosCategoria , $tipoCategoria){
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
             echo "<h1> Lista de: " . $tipoCategoria ."</h1>"; 
         echo "<ul class='list-group mt-5'>";
         foreach ($productosCategoria as $producto) {
@@ -62,7 +62,7 @@ class ViewProducto{
             </li>";
         }
         echo "</ul>";
-        include_once 'templates\footer.php';
+        include_once 'templates\footer.tpl';
     }
     
     function ShowHomeLocationCategory()
@@ -76,7 +76,7 @@ class ViewProducto{
     
     function renderProductos($productos)
     {
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
         echo "<ul class='list-group mt-5'>";
         foreach ($productos as $producto) {
             echo "<li class='list-group-item'>
@@ -85,11 +85,11 @@ class ViewProducto{
             </li>";
         }
         echo "</ul>";
-        include_once 'templates\footer.php';
+        include_once 'templates\footer.tpl';
     }
     
     function renderDetalleProducto($producto){
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
         echo "<ul class='list-group mt-5'>";
         echo "<li class='list-group-item'>
         $producto->nombre   
@@ -97,12 +97,12 @@ class ViewProducto{
         echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
         echo "</ul>";
         echo "<a class='btnVolver' href='productos/'>volver</a>";
-        include_once 'templates\footer.php';
+        include_once 'templates\footer.tpl';
     }
     
     function renderCategoriasUsuario($categorias)
     {
-        include_once 'templates\header.php';
+        include_once 'templates\header.tpl';
         echo "<ul class='list-group mt-5'>";
         foreach ($categorias as $categoria) {
             echo "<li class='list-group-item'>
@@ -113,9 +113,8 @@ class ViewProducto{
             </li>";            
         }
         echo "</ul>";
-        include_once 'templates\footer.php';
+        include_once 'templates\footer.tpl';
     }
-
 
     function ShowHomeLocationUsuario()
     {

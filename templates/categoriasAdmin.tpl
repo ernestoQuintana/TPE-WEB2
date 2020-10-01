@@ -1,4 +1,4 @@
-{include file='header.php'}
+{include file='header.tpl'}
 {include file='formCategoria.php'}
     <ul class='list-group mt-5'>
         {foreach $categorias as $categoria}
@@ -16,4 +16,4 @@
         }
     </ul>;
 }
-{include file='footer.php'}
+{include file='footer.tpl'}
