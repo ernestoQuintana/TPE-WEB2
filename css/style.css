@@ -190,9 +190,28 @@ section .franjaAzul{
 .iconosRedes{
     margin: 2em;
 }
-.fab .fa-twitter-square{
-    width: 80px;
+.fab{
+    font-size: 50px;
     color: #fff;
+    padding: 10px;
+}
+.fa-facebook:hover{
+    color: rgb(32, 32, 238);
+}
+.fa-instagram-square:hover{
+    color: rgb(233, 47, 93);
+}
+.fa-twitter:hover{
+    color: rgb(47, 134, 233);
+}
+.fa-github:hover{
+    color: rgb(15, 1, 5);
+}
+.fa-vk:hover{
+    color: rgb(47, 90, 233);
+}
+.fa-telegram:hover{
+    color: rgb(9, 32, 163);
 }
 
 /****************** FOOTER *******************/

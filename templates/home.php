@@ -51,9 +51,15 @@
                     <h1>¡Probá Nuestros Productos!</h1>
                     <p>Recibe nuestras ofertas y descuentos</p>
 
-                    <h2>¡Siguenos!</h2>
-                    <p>Siguenos en Redes Sociales</p>
+                    <h2>¡Seguinos!</h2>
+                    <p>Seguinos en Redes Sociales</p>
                     <div class="iconosRedes">
+                    <a href="#"><i class="iconos fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-instagram-square"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-vk"></i></a>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
                     </div>
                 </div>
             </div>
