@@ -6,14 +6,12 @@
                 {$categoria->nombre} | {$categoria->origen}
                 <div class='cajaBtn'>
                     <a class='btnBorrar' href='eliminarCategoria/{$categoria->id_categoria}'>Eliminar</a>
-                    <a class='btnEditar' href='editar/{$categoria->id_categoria}'>Editar</a>
+                    <a class='btnEditar' href='editarC/{$categoria->id_categoria}'>Editar</a>
                 </div>
             </li>
             <li class='list-group-item'>
                 {$categoria->descripcion}
             </li>
         {/foreach}
-        }
-    </ul>;
-}
+    </ul>
 {include file='footer.tpl'}

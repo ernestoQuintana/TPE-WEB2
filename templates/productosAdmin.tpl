@@ -1,5 +1,5 @@
 {include file="header.tpl"}
-{include file="form.php"}
+{include file="form.tpl"}
          <ul class='list-group mt-5'>
 
         {foreach $productos as $producto}

@@ -23,15 +23,14 @@
     */
 
     function insertarCategoria($nombre,$descripcion,$origen){
-        echo $nombre . $descripcion . $origen;
         $query = $this->dbCategorias->prepare("INSERT INTO categoria (nombre, descripcion, origen) VALUES(?,?,?)");
         $query->execute([$nombre,$descripcion,$origen]);
     }
 
     function editarCategoriaID($nombre,$descripcion,$origen,$id){
         
-        $query = $this->dbCategorias->prepare(" UPDATE `categoria` SET `nombre`=?,
-         `descripcion` = ?, `origen` = ? WHERE id =`?`");
+        $query = $this->dbCategorias->prepare("UPDATE `categoria` SET `nombre`=?,
+         `descripcion` = ?,`origen` = ? WHERE `id_categoria` =?");
         $query->execute([$nombre,$descripcion,$origen,$id]);
     }
 
