@@ -58,7 +58,6 @@
             $this->view->ShowHomeLocation();
         }
 
-
        function editarP($params = null){
             $id = $params[':ID'];
             $categorias = $this->modelCategoria->getAllCategorias();
