@@ -33,8 +33,9 @@
         }
 
         function showProductosAdmin(){
+            $categorias = $this->modelCategoria->getAllCategorias();
             $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderProductosAdmin($productos);
+            $this->view->renderProductosAdmin($productos, $categorias);
         }
 
         function showCategoriasAdmin(){
@@ -60,7 +61,8 @@
 
        function editarP($params = null){
             $id = $params[':ID'];
-            $this->view->renderFormEditar($id);
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderFormEditar($id, $categorias);
         }
 
         function editarProducto($params = null){
@@ -102,18 +104,20 @@
             $this->view->ShowHomeLocationCategory();
         }
 
-        function editar($params = null){
+        function editarC($params = null){
             $id = $params[':ID'];
             $this->view->renderFormEditarCategoria($id);
         }
         
         function editarCategoria($params = null){
             $id = $params[':ID'];
-            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& isset($_REQUEST['input_origen'])){
+            if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])
+            && isset($_REQUEST['input_origen'])){
                 $nombre = $_REQUEST['input_title'];
                 $descripcion = $_REQUEST['input_description'];
                 $origen = $_REQUEST['input_origen'];
-            }    
+            }  
+            
             $this->modelCategoria->editarCategoriaID($nombre,$descripcion,$origen,$id);
             $this->view->ShowHomeLocationCategory();
         }

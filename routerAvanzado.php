@@ -21,8 +21,8 @@ $r->addRoute("editarProducto/:ID", "POST", "ProductosControllers", "editarProduc
 $r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); 
 $r->addRoute("agregarCategoria", "POST", "ProductosControllers", "agregarCategoria");
 $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCategoria");
-$r->addRoute("editar/:ID", "GET", "ProductosControllers", "editar");
-$r->addRoute("editarCategoria/:ID", "GET", "ProductosControllers", "editarCategoria");
+$r->addRoute("editarC/:ID", "GET", "ProductosControllers", "editarC");
+$r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCategoria");
 
 
 //faltaria la parte del login del administrador

@@ -17,13 +17,7 @@
         </div>
         <div class="form-group">
             <label for="title">Categoria</label>
-            <select class="form-control" name="select_categoria" id="select_categoria" required>
-                <option></option>
-                <option value="1">rostro</option>
-                <option value="2">hombre</option>
-                <option value="3">cabello</option>
-                <option value="4">cuerpo</option>
-            </select>
+            {include file="listaCategorias.tpl"}
         </div>
         <button type="submit" class="btn btn-primary">Editar</button>
     </form>
