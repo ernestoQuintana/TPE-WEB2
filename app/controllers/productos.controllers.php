@@ -24,6 +24,12 @@
     
         //FUNCIONES DE LOS PRODUCTOS
 
+        //prueba
+        function showIndex(){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderIndex($categorias);
+        }
+
         //administrador
         function showAdmin(){
             $this->view->renderAdmin();
@@ -42,8 +48,8 @@
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderCategoriasAdmin($categorias);
         }
-
-        
+     
+       
         function agregarProducto(){
     
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 

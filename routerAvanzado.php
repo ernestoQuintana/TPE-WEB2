@@ -7,8 +7,9 @@ define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] 
 
 $r = new Router();
 
-// rutas administrador            
-
+// rutas administrador      
+//Prueba      
+$r->addRoute("index", "GET", "ProductosControllers", "showIndex");
 //rutas admin productos
 $r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
 $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
@@ -34,8 +35,8 @@ $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleP
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
 
-//Ruta por defecto.
-//$r->setDefaultRoute("ProductosControllers", "showHome");
+
+$r->setDefaultRoute("ProductosControllers", "showHome");
 
 //Advance
 //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
