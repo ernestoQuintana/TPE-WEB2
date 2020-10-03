@@ -21,7 +21,7 @@
                 </div>
             </div>
 
-            <a class="admin" href="administrador">Administrador</a>
+            <a class="admin" href="login">Administrador</a>
             <div class="iconosRedesNav">
                 <a href="#"><i class="iconosNav fab fa-facebook"></i></a>
                 <a href="#"><i class="iconosNav fab fa-instagram-square"></i></a>

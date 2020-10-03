@@ -1,6 +1,7 @@
 <?php
 
 require_once 'app\controllers\productos.controllers.php';
+require_once 'app\controllers\user.controllers.php';
 require_once 'RouterClass.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
@@ -11,7 +12,7 @@ $r = new Router();
 //Prueba      
 
 //rutas admin productos
-$r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
+//$r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
 $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
@@ -27,6 +28,8 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 
 
 //faltaria la parte del login del administrador
+$r->addRoute("login", "GET", "UsersControllers", "login");
+$r->addRoute("administrador", "POST", "UsersControllers", "verificarUsuario");
 
 //rutas usuario
 $r->addRoute("index", "GET", "ProductosControllers", "showIndex");

@@ -24,17 +24,17 @@
     
         //FUNCIONES DE LOS PRODUCTOS
 
-        //prueba
+        
         function showIndex(){
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderIndex($categorias);
         }
 
         //administrador
-        function showAdmin(){
+       /* function showAdmin(){
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderAdmin($categorias);
-        }
+        }*/
 
         function showProductosAdmin(){
             $categorias = $this->modelCategoria->getAllCategorias();
