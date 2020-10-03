@@ -5,8 +5,8 @@
 </head>
 
 <body>
-    {include file="h3ader.tpl"}
-    {include file="hom3.tpl"}
+    {include file="header.tpl"}
+    {include file="home.tpl"}
     {include file="footer.tpl"}
 </body>
 </html>

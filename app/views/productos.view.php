@@ -14,12 +14,11 @@ class ViewProducto
     // PRODUCTOS
 
     //pasar como templated de smarty y adentro del administrador incluir el header y footer
-    function renderAdmin()
+    function renderAdmin($categorias)
     {
-
-        include_once 'templates\header.tpl';
-        include_once 'templates\administrador.php';
-        include_once 'templates\footer.tpl';
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->display('administrador.tpl');
     }
     //prueba
     function renderIndex($categorias)
@@ -27,13 +26,6 @@ class ViewProducto
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('index.tpl');
-    }
-
-    function renderHome()
-    {
-        include_once 'templates\header.tpl';
-        include_once 'templates\home.php';
-        include_once 'templates\footer.tpl';
     }
 
     function renderFormEditar($id, $categorias)
@@ -46,6 +38,7 @@ class ViewProducto
 
     function renderProductosAdmin($productos, $categorias)
     {
+        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('productos', $productos);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('productosAdmin.tpl');
@@ -61,6 +54,7 @@ class ViewProducto
 
     function renderCategoriasAdmin($categorias)
     {
+        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('categoriasAdmin.tpl');
     }
@@ -72,18 +66,14 @@ class ViewProducto
         $this->smarty->display('formEditarCategoria.tpl');
     }
 
-    function renderProductosByCategoria($productosCategoria, $tipoCategoria)
+    function renderProductosByCategoria($categorias ,$productosCategoria, $tipoCategoria)
     {
-        include_once 'templates\header.tpl';
-        echo "<h1> Lista de: " . $tipoCategoria . "</h1>";
-        echo "<ul class='list-group mt-5'>";
-        foreach ($productosCategoria as $producto) {
-            echo "<li class='list-group-item'>
-            $producto->nombre | $tipoCategoria 
-            </li>";
-        }
-        echo "</ul>";
-        include_once 'templates\footer.tpl';
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('tipoCategoria', $tipoCategoria);
+        $this->smarty->assign('productosCategoria', $productosCategoria);
+        $this->smarty->display('productosPorCategoria.tpl');
+
     }
 
     function ShowHomeLocationCategory()
@@ -93,53 +83,31 @@ class ViewProducto
 
     /************************ TABLAS DEL USUARIO ************************/
 
-
-
-    function renderProductos($productos)
+    function renderProductos($productos , $categorias)
     {
-        include_once 'templates\header.tpl';
-        echo "<ul class='list-group mt-5'>";
-        foreach ($productos as $producto) {
-            echo "<li class='list-group-item'>
-            $producto->nombre |  $producto->precio | $producto->id_categoria  
-            <a class='btnDetalle' href='detalleProducto/$producto->id'>descripcion</a>
-            </li>";
-        }
-        echo "</ul>";
-        include_once 'templates\footer.tpl';
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('productos', $productos);
+        $this->smarty->display('allProductos.tpl');
     }
 
-    function renderDetalleProducto($producto)
+    function renderDetalleProducto($producto , $categorias)
     {
-        include_once 'templates\header.tpl';
-        echo "<ul class='list-group mt-5'>";
-        echo "<li class='list-group-item'>
-        $producto->nombre   
-        </li>";
-        echo "<li class='list-group-item'> $producto->descripcion | $producto->precio </li>";
-        echo "</ul>";
-        echo "<a class='btnVolver' href='productos/'>volver</a>";
-        include_once 'templates\footer.tpl';
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('producto', $producto);
+        $this->smarty->display('detalleProductos.tpl');
     }
 
     function renderCategoriasUsuario($categorias)
     {
-        include_once 'templates\header.tpl';
-        echo "<ul class='list-group mt-5'>";
-        foreach ($categorias as $categoria) {
-            echo "<li class='list-group-item'>
-            $categoria->nombre  | $categoria->origen
-            </li>";
-            echo "<li class='list-group-item'>
-            $categoria->descripcion;
-            </li>";
-        }
-        echo "</ul>";
-        include_once 'templates\footer.tpl';
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->display('allCategorias.tpl');
     }
 
     function ShowHomeLocationUsuario()
     {
-        header("Location: " . BASE_URL . "home");
+        header("Location: " . BASE_URL . "index");
     }
 }

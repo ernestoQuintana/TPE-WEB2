@@ -1,20 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-    <!-- <base href="{$BASE_URL}"> -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <base href="/TPE/TPE-WEB2/"> 
-    <link rel="stylesheet" href="css\style.css">
-    <script src="https://kit.fontawesome.com/c178af35d7.js" crossorigin="anonymous"></script>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <title>Productos</title>
-</head>
-
-<body>
-    <header>
+<header>
         <nav class="navBar">
             <img src="img\crema.png" class="imgCremas" alt="crema natural">
             <div>
@@ -23,17 +7,16 @@
             </div>
             <div>
                 <div class="btn-group" role="group">
-                    <a class="navbar-brand" href="home">Home</a>
+                    <a class="navbar-brand" href="index">Home</a>
                     <a class="navbar-brand" href="productos">Productos</a>
                     <a class="navbar-brand nav-link dropdown-toggle categorias" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categorias
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="allCategoriasUsuario">Todas las Categorias</a>
-                        <a class="dropdown-item" href="categoria/1">Rostro</a>
-                        <a class="dropdown-item" href="categoria/2">Cuerpo</a>
-                        <a class="dropdown-item " href="categoria/3">Hombre</a>
-                        <a class="dropdown-item" href="categoria/4">Cabello</a>
+                    {foreach $categorias as $categoria}
+                        <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre}</a>
+                    {/foreach}
                     </div>
                 </div>
             </div>
@@ -48,4 +31,4 @@
                 <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
             </div>
         </nav>
-    </header>
+</header>

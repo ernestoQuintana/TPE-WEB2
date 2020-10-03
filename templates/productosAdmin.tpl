@@ -1,3 +1,4 @@
+{include file="head.tpl"}
 {include file="header.tpl"}
 {include file="form.tpl"}
          <ul class='list-group mt-5'>

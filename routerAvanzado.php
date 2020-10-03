@@ -9,7 +9,7 @@ $r = new Router();
 
 // rutas administrador      
 //Prueba      
-$r->addRoute("index", "GET", "ProductosControllers", "showIndex");
+
 //rutas admin productos
 $r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
 $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
@@ -29,14 +29,14 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 //faltaria la parte del login del administrador
 
 //rutas usuario
-$r->addRoute("home", "GET", "ProductosControllers","showHome");
+$r->addRoute("index", "GET", "ProductosControllers", "showIndex");
 $r->addRoute("productos", "GET", "ProductosControllers", "showProductos");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
 
 
-$r->setDefaultRoute("ProductosControllers", "showHome");
+$r->setDefaultRoute("ProductosControllers", "showIndex");
 
 //Advance
 //$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");

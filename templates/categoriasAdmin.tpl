@@ -1,5 +1,6 @@
+{include file="head.tpl"}
 {include file='header.tpl'}
-{include file='formCategoria.php'}
+{include file='formCategoria.tpl'}
     <ul class='list-group mt-5'>
         {foreach $categorias as $categoria}
             <li class='listaCategoriasView'>

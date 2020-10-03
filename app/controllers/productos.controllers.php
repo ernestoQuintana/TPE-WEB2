@@ -32,10 +32,8 @@
 
         //administrador
         function showAdmin(){
-            $this->view->renderAdmin();
-        }
-        function showHome(){
-            $this->view->renderHome();
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderAdmin($categorias);
         }
 
         function showProductosAdmin(){
@@ -131,25 +129,26 @@
 
         /********************** FUNCIONES DEL USUARIO **********************/
 
-
-
         function showProductos(){
             //1.obtener los productos
           $productos = $this->modelProducto->getAllProductos();
-          $this->view->renderProductos($productos);
+          $categorias = $this->modelCategoria->getAllCategorias();
+          $this->view->renderProductos($productos ,$categorias);
         }
 
         function showDetalleProducto($params = null){
             $id = $params[':ID'];
             $producto = $this->modelProducto->getDetalleProducto($id);
-            $this->view->renderDetalleProducto($producto); 
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->view->renderDetalleProducto($producto ,$categorias); 
         }
                 
         function showProductosByCategoria($params = null){
            
             $tipoCategoria = $params[':ID'];
             $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
-           /* $categoriaProducto = $this->modelCategoria->getCategoria($tipoCategoria);
+            $categorias = $this->modelCategoria->getAllCategorias();
+            /* $categoriaProducto = $this->modelCategoria->getCategoria($tipoCategoria);
             echo $categoriaProducto;
             var_dump($categoriaProducto);*/
             // actualizo la vista
@@ -169,7 +168,7 @@
                 default:
                     "page no found 404";               
             }
-            $this->view->renderProductosByCategoria($productosCategoria , $tipoCategoria);
+            $this->view->renderProductosByCategoria($categorias,$productosCategoria , $tipoCategoria);
         }
 
         function showCategoriasUsuario(){
