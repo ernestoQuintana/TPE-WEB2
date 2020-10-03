@@ -15,7 +15,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="allCategoriasUsuario">Todas las Categorias</a>
                     {foreach $categorias as $categoria}
-                        <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre}</a>
+                        <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
                     {/foreach}
                     </div>
                 </div>

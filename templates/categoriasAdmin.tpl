@@ -11,7 +11,7 @@
                 </div>
             </li>
             <li class='list-group-item'>
-                {$categoria->descripcion}
+                {$categoria->descripcion_categoria}
             </li>
         {/foreach}
     </ul>

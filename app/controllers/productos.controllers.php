@@ -145,30 +145,13 @@
                 
         function showProductosByCategoria($params = null){
            
-            $tipoCategoria = $params[':ID'];
-            $productosCategoria = $this->modelProducto->getProductosByCategoria($tipoCategoria);
+            $idCategoria = $params[':ID'];
+            $productosCategoria = $this->modelProducto->getProductosByCategoria($idCategoria);
             $categorias = $this->modelCategoria->getAllCategorias();
-            /* $categoriaProducto = $this->modelCategoria->getCategoria($tipoCategoria);
-            echo $categoriaProducto;
-            var_dump($categoriaProducto);*/
+            $nombreCategoriaId = $this->modelCategoria->getNombreCategoria($idCategoria);
+            //var_dump($nombreCategoriaId);
             // actualizo la vista
-            switch($tipoCategoria){
-                case "1":
-                    $tipoCategoria = "rostro";
-                    break;
-                case "2":
-                    $tipoCategoria = "cuerpo";
-                    break;
-                case "3":
-                    $tipoCategoria = "hombre";
-                    break;
-                case "4":
-                    $tipoCategoria = "cabello";
-                    break;
-                default:
-                    "page no found 404";               
-            }
-            $this->view->renderProductosByCategoria($categorias,$productosCategoria , $tipoCategoria);
+            $this->view->renderProductosByCategoria($categorias,$productosCategoria , $nombreCategoriaId);
         }
 
         function showCategoriasUsuario(){

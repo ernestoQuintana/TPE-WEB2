@@ -13,14 +13,14 @@
         $categoria = $query->fetchAll(PDO::FETCH_OBJ);
         return $categoria;
     }
-    /*
-    function getCategoria($tipoCategoria){
-        $query = $this->dbCategorias->prepare('SELECT * FROM categoria WHERE nombre LIKE id_categoria =?');//para que traiga el nombre de la categoria
-        $query->execute($tipoCategoria);
-        $categoria = $query->fetch(PDO::FETCH_OBJ);
-        return $categoria;
+    
+    function getNombreCategoria($idCategoria){
+        $query = $this->dbCategorias->prepare('SELECT categoria.nombre_categoria FROM categoria WHERE id_categoria =?');//para que traiga el nombre de la categoria
+        $query->execute([$idCategoria]);
+        $nombreCategoriaId = $query->fetch(PDO::FETCH_OBJ);
+        return $nombreCategoriaId;
     }
-    */
+    
 
     function insertarCategoria($nombre,$descripcion,$origen){
         $query = $this->dbCategorias->prepare("INSERT INTO categoria (nombre, descripcion, origen) VALUES(?,?,?)");

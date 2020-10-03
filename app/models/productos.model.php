@@ -26,10 +26,10 @@ class ModelProducto {
     }
 
     //llamamos productos por categoria
-    function getProductosByCategoria($tipoCategoria){   
+    function getProductosByCategoria($idCategoria){   
     
-        $query =$this->dbProductos->prepare('SELECT * FROM `producto` WHERE id_categoria = ?');
-        $query->execute([$tipoCategoria]);
+        $query =$this->dbProductos->prepare('SELECT producto.nombre , categoria.nombre_categoria FROM producto INNER JOIN categoria ON producto.id_categoria=categoria.id_categoria WHERE producto.id_categoria = ?');
+        $query->execute([$idCategoria]);
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;
     }
