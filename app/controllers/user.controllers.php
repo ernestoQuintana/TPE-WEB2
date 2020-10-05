@@ -40,8 +40,11 @@ class UsersControllers
         if (isset($usuarioDB) && $usuarioDB){
         
            if (password_verify($password, $usuarioDB->password_usuario)) {
-
-               $this->viewUsuario->renderAdmin($categorias); 
+               
+                session_start();
+                $_SESSION["nombre"] = $usuarioDB->nombre_usuario;
+                echo "Que esta pasando?";
+               //$this->viewUsuario->renderAdmin($categorias); 
             }
             else{
                 $mensaje = "PASSWORD INCORRECTO";

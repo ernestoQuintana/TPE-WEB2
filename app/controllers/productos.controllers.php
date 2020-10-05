@@ -3,6 +3,7 @@
     require_once 'app\views\productos.view.php';
     require_once 'app\models\categorias.model.php';
     require_once 'app\models\productos.model.php';
+    require_once 'app\controllers\user.controllers.php';
 
 
     class ProductosControllers{
@@ -10,12 +11,13 @@
         private $modelProducto;
         private $modelCategoria;
         private $view;
+      //  private $viewUsuario;
         
         function __construct(){
             $this->modelProducto = new ModelProducto();
             $this->modelCategoria = new ModelCategoria();
             $this->view = new ViewProducto();
-
+        //    $this->viewUsuario = new ViewUsuario();
         } 
 
 
@@ -30,6 +32,16 @@
             $this->view->renderIndex($categorias);
         }
 
+        function checkLogin(){
+           // $categorias = $this->modelCategoria->getAllCategorias();
+            session_start();
+            if(!isset($_SESSION['nombre'])){
+                header("Location: " .LOGIN);
+              //  $this->viewUsuario->renderViewUsuario($categorias , $mensaje = "");
+                die();
+            }
+            
+        }
         //administrador
        /* function showAdmin(){
             $categorias = $this->modelCategoria->getAllCategorias();
@@ -37,12 +49,16 @@
         }*/
 
         function showProductosAdmin(){
+
+            $this->checkLogin();
+
             $categorias = $this->modelCategoria->getAllCategorias();
             $productos = $this->modelProducto->getAllProductos();
             $this->view->renderProductosAdmin($productos, $categorias);
         }
 
         function showCategoriasAdmin(){
+            $this->checkLogin();
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderCategoriasAdmin($categorias);
         }
