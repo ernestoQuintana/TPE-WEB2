@@ -3,7 +3,7 @@
         <ul class='list-group mt-5'>
         {foreach $productos as $producto}
             <li class='list-group-item'>
-            {$producto->nombre} |  {$producto->precio} | {$producto->id_categoria}  
+            {$producto->nombre} |  {$producto->precio} | {$producto->nombre_categoria}  
             <a class='btnDetalle' href='detalleProducto/{$producto->id}'>descripcion</a>
             </li>
         {/foreach} 

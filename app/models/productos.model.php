@@ -9,13 +9,12 @@ class ModelProducto {
     //llamamos todos los productos
     function getAllProductos(){
         
-        $query =$this->dbProductos->prepare('SELECT * FROM producto');
+        $query =$this->dbProductos->prepare('SELECT producto.nombre, producto.precio , categoria.nombre_categoria, producto.id FROM producto INNER JOIN categoria ON producto.id_categoria=categoria.id_categoria');
         $query->execute();                  
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
-        //var_dump($productos);
         return $productos;
     }
-
+    
     //llamamos un producto por id
     function getDetalleProducto($id){
     

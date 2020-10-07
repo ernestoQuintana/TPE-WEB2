@@ -3,6 +3,7 @@
 require_once 'app\views\usuario.view.php';
 require_once 'app\models\user.model.php';
 require_once 'app\models\categorias.model.php';
+require_once 'app\controllers\helper.php';
 
 class UsersControllers
 {
@@ -10,6 +11,7 @@ class UsersControllers
     private $viewUsuario;
     private $modelUsuario;
     private $modelCategoria;
+    private $helper;
 
     function __construct()
     {
@@ -17,13 +19,22 @@ class UsersControllers
         $this->viewUsuario = new ViewUsuario();
         $this->modelUsuario = new ModelUsuario();
         $this->modelCategoria = new ModelCategoria();
+        $this->helper = new helper();
     }
 
     function login()
-    {
+    {   
         $categorias = $this->modelCategoria->getAllCategorias();
         $this->viewUsuario->renderViewUsuario($categorias);
     }
+    
+    function logout()
+    {
+        session_start();
+        session_destroy();
+        header("Location: " . LOGIN);
+    }
+
     function verificarUsuario()
     {
 
@@ -43,6 +54,8 @@ class UsersControllers
                
                 session_start();
                 $_SESSION["nombre"] = $usuarioDB->nombre_usuario;
+                $_SESSION['LAST_ACTIVITY'] = time();
+
                 $this->viewUsuario->renderAdmin($categorias); 
             }
             else{

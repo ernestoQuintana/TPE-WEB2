@@ -6,6 +6,7 @@ require_once 'RouterClass.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');
 define('LOGIN', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/login');
+define('LOGOUT', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/logout');
 
 $r = new Router();
 
@@ -30,6 +31,7 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 
 //faltaria la parte del login del administrador
 $r->addRoute("login", "GET", "UsersControllers", "login");
+$r->addRoute("logout", "GET", "UsersControllers", "logout");
 $r->addRoute("administrador", "POST", "UsersControllers", "verificarUsuario");
 
 //rutas usuario
