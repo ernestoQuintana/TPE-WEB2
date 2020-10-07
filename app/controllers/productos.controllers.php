@@ -17,7 +17,7 @@
             $this->modelProducto = new ModelProducto();
             $this->modelCategoria = new ModelCategoria();
             $this->view = new ViewProducto();
-        //    $this->viewUsuario = new ViewUsuario();
+           //    $this->viewUsuario = new ViewUsuario();
         } 
 
 
@@ -36,9 +36,10 @@
            // $categorias = $this->modelCategoria->getAllCategorias();
             session_start();
             if(!isset($_SESSION['nombre'])){
+                echo "asjkdkansdnasdas";
                 header("Location: " .LOGIN);
               //  $this->viewUsuario->renderViewUsuario($categorias , $mensaje = "");
-                die();
+               die();
             }
             
         }
@@ -65,7 +66,7 @@
      
        
         function agregarProducto(){
-    
+            $this->checkLogin();
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& 
                 isset($_POST['input_precio']) &&isset($_POST['select_categoria'])){
                 $nombre = $_POST['input_title'];
@@ -79,13 +80,14 @@
         }
 
        function editarP($params = null){
+            $this->checkLogin();
             $id = $params[':ID'];
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->view->renderFormEditar($id, $categorias);
         }
 
         function editarProducto($params = null){
-            
+            $this->checkLogin();
             $id = $params[':ID'];
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])&& 
                 isset($_REQUEST['input_precio']) && isset($_REQUEST['select_categoria'])){ 
@@ -100,6 +102,7 @@
         }
 
         function eliminarProducto($params = null){
+            $this->checkLogin();
             $id = $params[':ID'];
             $this->modelProducto->eliminarProductoID($id);
             $this->view->ShowHomeLocation();
@@ -108,6 +111,7 @@
         //FUNCIONES DE LAS CATEGORIAS
 
         function agregarCategoria(){
+            $this->checkLogin();
             if (isset($_POST['input_title']) && isset($_POST['input_description'])&& isset($_POST['input_origen'])){
                 $nombre = $_POST['input_title'];
                 $descripcion = $_POST['input_description'];
@@ -118,17 +122,20 @@
         }
 
         function eliminarCategoria($params = null){
+            $this->checkLogin();
             $id = $params[':ID'];
             $this->modelCategoria->eliminarCategoriaID($id);
             $this->view->ShowHomeLocationCategory();
         }
 
         function editarC($params = null){
+            $this->checkLogin();
             $id = $params[':ID'];
             $this->view->renderFormEditarCategoria($id);
         }
         
         function editarCategoria($params = null){
+            $this->checkLogin();
             $id = $params[':ID'];
             if (isset($_REQUEST['input_title']) && isset($_REQUEST['input_description'])
             && isset($_REQUEST['input_origen'])){

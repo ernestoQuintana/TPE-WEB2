@@ -43,8 +43,7 @@ class UsersControllers
                
                 session_start();
                 $_SESSION["nombre"] = $usuarioDB->nombre_usuario;
-                echo "Que esta pasando?";
-               //$this->viewUsuario->renderAdmin($categorias); 
+                $this->viewUsuario->renderAdmin($categorias); 
             }
             else{
                 $mensaje = "PASSWORD INCORRECTO";
