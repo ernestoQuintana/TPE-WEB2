@@ -24,8 +24,14 @@ class UsersControllers
 
     function login()
     {   
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->viewUsuario->renderViewUsuario($categorias);
+        session_start();
+        if(isset ($_SESSION["nombre"])){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->viewUsuario->renderAdmin($categorias);
+        }else{
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->viewUsuario->renderViewUsuario($categorias);
+        }
     }
     
     function logout()
@@ -37,7 +43,6 @@ class UsersControllers
 
     function verificarUsuario()
     {
-
         if (isset($_POST['input_user']) && isset($_POST['input_password'])) {
             $nombre = $_POST['input_user'];
             $password = $_POST['input_password'];
