@@ -179,7 +179,6 @@ class ProductosControllers
         $productosCategoria = $this->modelProducto->getProductosByCategoria($idCategoria);
         $categorias = $this->modelCategoria->getAllCategorias();
         $nombreCategoriaId = $this->modelCategoria->getNombreCategoria($idCategoria);
-        // actualizo la vista
         $this->view->renderProductosByCategoria($categorias, $productosCategoria, $nombreCategoriaId);
     }
 

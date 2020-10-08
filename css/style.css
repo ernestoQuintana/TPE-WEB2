@@ -224,6 +224,53 @@ section .franjaAzul {
   color: rgb(9, 32, 163);
 }
 
+
+/************* ALLPRODUCTOS **************/
+
+
+.tituloTablaProductos, .tituloTablaCategoria{
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+.tituloTablaProductos h1, .tituloTablaCategoria h1{
+  font-size: 3rem;
+}
+
+.tablaProductos, .tablaCategorias{
+ margin-left: 25%;
+ width: 50%;
+}
+
+.thead , .theadCategorias{
+  font-size: 1.4rem;
+  color: #fff;
+}
+.thead th , .theadCategorias th {
+  padding: 0.5em 0;
+}
+.tdDescripcion{
+  width: 50%;
+}
+.tdCategoriaOrigen , .tdCategoriaNombre{
+  font-size: 1.5rem;
+}
+
+td,
+tr{
+  border: solid black 2px;
+  padding: 1.5em;
+  text-align: center;
+}
+thead {
+  background-color: rgb(128, 224, 90);
+}
+.detalleProducto{
+  width: 80%;
+  text-align: center;
+}
+
 /****************** FOOTER *******************/
 footer {
   background-image: url("../img/fondo.jpg");
