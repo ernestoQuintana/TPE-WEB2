@@ -1,6 +1,7 @@
 {include file="head.tpl"}
 {include file='header.tpl'}
-<main class="container">  
+<main class="container"> 
+<div class="btnLogout"><a href="logout">Logout</a></div> 
 <div class="container">
     <h1 class="listaProductos"> Edita tus Productos</h1>
     <form action="editarProducto/{$id}" method="POST">

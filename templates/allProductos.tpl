@@ -1,5 +1,6 @@
 {include file="head.tpl"}
 {include file='header.tpl'}
+   
     <div class="tituloTablaProductos">
         <h1>Nuestra Lista de Productos</h1>
     </div>

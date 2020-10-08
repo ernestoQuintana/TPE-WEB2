@@ -1,5 +1,6 @@
 {include file="head.tpl"}
 {include file= 'header.tpl'}
+<div class="btnLogout"><a href="logout">Logout</a></div>
     <main class="container">  
     <div class="container">
         <h1 class="listaCategorias"> Lista de Categorias</h1>

@@ -1,4 +1,5 @@
 <main class="container">  
+<div class="btnLogout"><a href="logout">Logout</a></div>
 <div class="container">
     <h1 class="listaProductos"> Lista de Productos</h1>
     <form action="agregarProducto" method="POST">

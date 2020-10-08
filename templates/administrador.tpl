@@ -1,5 +1,6 @@
 {include file="head.tpl"}
 {include file='header.tpl'}
+<div class="btnLogout"><a href="logout">Logout</a></div>
 
     <div class="selecAdmin">
             <div class="adminImg">
