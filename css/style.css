@@ -67,24 +67,22 @@ body {
   display: flex;
   justify-content: center;
 }
-.btnDetalle {
-  background-color: rgb(0, 0, 0);
+.btnBorrar , .btnEditar, .btnDetalle{
   color: white;
   border-radius: 3px;
   padding: 8px;
 }
 .btnBorrar {
   background-color: rgb(65, 58, 58);
-  color: white;
-  border-radius: 3px;
-  padding: 8px;
 }
-.btnEditar {
+.btnEditar{
   background-color: rgb(40, 190, 65);
-  color: white;
-  border-radius: 3px;
-  padding: 8px;
 }
+.btnDetalle{
+  background-color: rgb(6, 150, 30) ;
+  padding-top: 15px;
+}
+
 .listaProductoView,
 .listaCategoriasView {
   position: relative;
@@ -101,19 +99,14 @@ body {
   padding: 10px;
   justify-content: space-around;
 }
-
-.btnBorrar:hover {
+.btnBorrar:hover, .btnDetalle:hover, .btnEditar:hover{
   text-decoration: none;
-
-  background-color: rgb(255, 0, 43);
   color: white;
 }
-.btnDetalle:hover {
-  text-decoration: none;
-  background-color: blue;
-  color: aliceblue;
+.btnBorrar:hover {
+  background-color: rgb(255, 0, 43);
 }
-.btnEditar:hover {
+.btnEditar:hover , .btnDetalle:hover {
   text-decoration: none;
   background-color: rgb(128, 224, 90);
   color: aliceblue;
@@ -199,6 +192,10 @@ section .franjaAzul {
 }
 .iconosRedes {
   margin: 2em;
+}
+.iconoDescripcion{
+  font-size: 30px;
+  align-items: center;
 }
 .iconosHome {
   font-size: 50px;

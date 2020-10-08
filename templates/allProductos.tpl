@@ -19,7 +19,9 @@
                 <td>{$producto->nombre}</td>
                 <td>{$producto->precio}</td>
                 <td>{$producto->nombre_categoria}</td>
-                <td><a class='btnDetalle' href='detalleProducto/{$producto->id}'>Descripcion</a></td>
+                <td><a class='btnDetalle' href='detalleProducto/{$producto->id}'>
+                    <i class="iconoDescripcion far fa-list-alt">
+                </i></a></td>
             </tr>    
         {/foreach} 
             <!--  <ul class='list-group mt-5'>
