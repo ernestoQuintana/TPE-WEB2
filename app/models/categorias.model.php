@@ -40,4 +40,11 @@
         $query->execute([$id]);
     }
 
+    function categoriaID($idCategoria){
+        $query = $this->dbCategorias->prepare('SELECT producto FROM categoria INNER JOIN producto ON categoria.id_categoria=producto.id_categoria WHERE id_categoria = ?');//para que traiga el nombre de la categoria
+        $query->execute([$idCategoria]);
+        $categoriaID = $query->fetch(PDO::FETCH_OBJ);
+        return $categoriaID;
+    }
+
  }
