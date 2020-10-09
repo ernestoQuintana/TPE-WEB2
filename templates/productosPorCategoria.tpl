@@ -1,6 +1,4 @@
-{include file="head.tpl"}
 {include file='header.tpl'}
-
 <div class="container">
     <h1> Lista de: {$nombreCategoriaId->nombre_categoria} </h1>
     <ul class='list-group mt-5'>

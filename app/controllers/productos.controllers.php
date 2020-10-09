@@ -14,7 +14,6 @@ class ProductosControllers
     private $modelCategoria;
     private $view;
     private $helper;
-    //  private $viewUsuario;
 
     function __construct()
     {
@@ -76,8 +75,9 @@ class ProductosControllers
     {
         $this->helper->checkLogin();
         $id = $params[':ID'];
+        $producto = $this->modelProducto->getDetalleProducto($id);
         $categorias = $this->modelCategoria->getAllCategorias();
-        $this->view->renderFormEditar($id, $categorias);
+        $this->view->renderFormEditar($id,$categorias,$producto);
     }
 
     function editarProducto($params = null)
@@ -110,13 +110,15 @@ class ProductosControllers
     function agregarCategoria()
     {
         $this->helper->checkLogin();
+
         if (isset($_POST['input_title']) && isset($_POST['input_description']) && isset($_POST['input_origen'])) {
             $nombre = $_POST['input_title'];
             $descripcion = $_POST['input_description'];
             $origen = $_POST['input_origen'];
         }
-        $this->modelCategoria->insertarCategoria($nombre, $descripcion, $origen);
-        $this->view->ShowHomeLocationCategory();
+     
+       $this->modelCategoria->insertarCategoria($nombre, $descripcion, $origen);
+       $this->view->ShowHomeLocationCategory();
     }
 
     function eliminarCategoria($params = null)
@@ -130,8 +132,9 @@ class ProductosControllers
     function editarC($params = null)
     {
         $this->helper->checkLogin();
-        $id = $params[':ID'];
-        $this->view->renderFormEditarCategoria($id);
+        $idCategoria = $params[':ID'];
+        $categoria = $this->modelCategoria->getNombreCategoria($idCategoria);
+        $this->view->renderFormEditarCategoria($idCategoria ,$categoria);
     }
 
     function editarCategoria($params = null)
@@ -159,7 +162,6 @@ class ProductosControllers
     {
         //1.obtener los productos
         $productos = $this->modelProducto->getAllProductos();
-      //  var_dump($productos);
         $categorias = $this->modelCategoria->getAllCategorias();
         $this->view->renderProductos($productos, $categorias);
     }
@@ -170,6 +172,7 @@ class ProductosControllers
         $producto = $this->modelProducto->getDetalleProducto($id);
         $categorias = $this->modelCategoria->getAllCategorias();
         $this->view->renderDetalleProducto($producto, $categorias);
+     
     }
 
     function showProductosByCategoria($params = null)
@@ -180,6 +183,7 @@ class ProductosControllers
         $categorias = $this->modelCategoria->getAllCategorias();
         $nombreCategoriaId = $this->modelCategoria->getNombreCategoria($idCategoria);
         $this->view->renderProductosByCategoria($categorias, $productosCategoria, $nombreCategoriaId);
+    
     }
 
     function showCategoriasUsuario()
@@ -187,4 +191,5 @@ class ProductosControllers
         $categorias = $this->modelCategoria->getAllCategorias();
         $this->view->renderCategoriasUsuario($categorias);
     }
+     
 }

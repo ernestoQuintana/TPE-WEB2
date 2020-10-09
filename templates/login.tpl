@@ -1,9 +1,8 @@
-{include file="head.tpl"}
 {include file="header.tpl"}
+<div class="container">
 <div class="mensajeError">
     {$mensaje}
 </div>
-<div class="container">
     <h1 class="tituloIngresar"> Ingresar</h1>
     <form action="administrador" method="POST">
         <div class="form-group">
@@ -16,6 +15,5 @@
         </div>
         <button type="submit" class="btn btn-primary">Agregar</button>
     </form>
-</div>  
-
+</div>
 {include file="footer.tpl"}

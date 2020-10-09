@@ -1,6 +1,4 @@
-{include file="head.tpl"}
 {include file='header.tpl'}
-   
     <div class="tituloTablaProductos">
         <h1>Nuestra Lista de Productos</h1>
     </div>
@@ -25,14 +23,6 @@
                 </i></a></td>
             </tr>    
         {/foreach} 
-            <!--  <ul class='list-group mt-5'>
-        {foreach $productos as $producto}
-                <li class='list-group-item'>
-                <h5>{$producto->nombre}</h5> | Precio: ${$producto->precio} | Categoria: {$producto->nombre_categoria}  
-                <a class='btnDetalle' href='detalleProducto/{$producto->id}'>descripcion</a>
-                </li>
-        {/foreach} 
-        </ul> -->
         </tbody>
     </table>
 {include file='footer.tpl'}
