@@ -59,10 +59,11 @@ class ViewProducto
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('categoriasAdmin.tpl');
     }
-    function renderFormEditarCategoria($idCategoria, $categoria)
+    function renderFormEditarCategoria($idCategoria, $categoria, $categorias)
     {
 
         $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('idCategoria', $idCategoria);
         $this->smarty->assign('categoria',$categoria);
         $this->smarty->display('formEditarCategoria.tpl');

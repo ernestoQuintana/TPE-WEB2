@@ -133,8 +133,9 @@ class ProductosControllers
     {
         $this->helper->checkLogin();
         $idCategoria = $params[':ID'];
+        $categorias = $this->modelCategoria->getAllCategorias();
         $categoria = $this->modelCategoria->getNombreCategoria($idCategoria);
-        $this->view->renderFormEditarCategoria($idCategoria ,$categoria);
+        $this->view->renderFormEditarCategoria($idCategoria ,$categoria , $categorias);
     }
 
     function editarCategoria($params = null)
