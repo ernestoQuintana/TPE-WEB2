@@ -17,7 +17,6 @@
                 <td class="tdCategoriaNombre">{$categoria->nombre_categoria}</td>
                 <td class="tdCategoriaOrigen">{$categoria->origen}</td>
                 <td class="tdDescripcion">{$categoria->descripcion_categoria}</td>
-                <!--     <td><a class='btnDetalle' href='detalleProducto/{$producto->id}'>descripcion</a></td> -->
             </tr>
         {/foreach}
 

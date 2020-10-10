@@ -34,10 +34,9 @@ class ModelProducto {
     }
 
     function insertarProducto($nombre,$descripcion,$precio,$categoria){
-       
-        $query = $this->dbProductos->prepare("INSERT INTO producto (nombre, descripcion,
-         precio, id_categoria) VALUES(?,?,?,?)");
-        $query->execute([$nombre,$descripcion,$precio,$categoria]);
+        
+      $query =$this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria) VALUES(?,?,?,?)');
+      $query->execute([$nombre,$descripcion,$precio,$categoria]);
     }
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
