@@ -26,8 +26,7 @@ class ViewUsuario
         $this->smarty->display('administrador.tpl');
     }
 
-    function ShowUserLocation()
-    {
+   /* function ShowUserLocation(){
         header("Location: " . BASE_URL . "administrador");
-    }
+    }*/
 }

@@ -49,7 +49,6 @@ class UsersControllers
         }
 
         $categorias = $this->modelCategoria->getAllCategorias();
-        //   var_dump($usuarioDB);
 
         $usuarioDB =  $this->modelUsuario->getUsuario($nombre);
 

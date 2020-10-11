@@ -119,14 +119,11 @@ class ProductosControllers
         $this->helper->checkLogin();
         $id = $params[':ID'];
         $categoriaID = $this->modelCategoria->categoriaID($id);
-        $boolean = false;
-        if($categoriaID !== $boolean){
-            $this->modelCategoria->eliminarCategoriaID($id);
-            $this->view->ShowHomeLocationCategory();
-        }else{
-            echo "aaaaaaaaaaaaaaaaaaaaaa";
-        }
         
+       if($categoriaID === false){
+            $this->modelCategoria->eliminarCategoriaID($id);
+            $this->view->ShowHomeLocationCategory();   
+        }       
     }
 
     function editarC($params = null)
