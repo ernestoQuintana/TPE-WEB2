@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 10-10-2020 a las 12:53:40
+-- Tiempo de generación: 15-10-2020 a las 00:56:10
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -43,7 +43,8 @@ INSERT INTO `categoria` (`id_categoria`, `nombre_categoria`, `descripcion_catego
 (2, 'cuerpo', 'Descubre la gama Creme de Corps, inspirada en nuestra clásica Creme de Corps, uno de los productos  de culto desde su creación en los años 70. Sus voluptuosas y generosas texturas envuelven tu piel de suavidad y la dejan\r\nsedosa y protegida', 'Alemania'),
 (3, 'hombre', 'Cuidar la piel antes y después del afeitado es esencial para tener una piel saludable.', 'Alemania'),
 (4, 'cabello', 'Los champús , acondicionadores naturales limpian y nutren el cabello con total delicadeza a la vez que tratan necesidades capilares específicas. Elaborados a base de los mejores ingredientes naturales como el aceite de oliva, aguacate, extracto de limón, ', 'Alemania'),
-(14, 'Programar', 'Muy cremosa para la cara', 'turquia');
+(14, 'Programar', 'Muy cremosa para la cara', 'turquia'),
+(18, 'Nino', 'es un gato de marte', 'Marte');
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,11 @@ INSERT INTO `producto` (`id`, `nombre`, `descripcion`, `precio`, `id_categoria`)
 (15, 'Olive Fruit Oil Deeply Repairative Hair Pak', 'Olive Fruit Oil Deeply Repairative Hair Pak es una fórmula especial pensada para el cabello deshidratado, desnutrido y dañado\r\nContiene aceite de aguacate, extracto de limón y aceite de oliva para crear un tratamiento profundamente nutritivo que hidrata y', 1340, 4),
 (16, 'Creme de Corps', 'Creme de Corps es una crema hidratante corporal diseñada con los mejores ingredientes nutritivos para la piel conocidos por Kiehl\'s. Proporciona una textura rica y elegante. Deja la piel suave, lisa y maravillosamente hidratada.', 1290, 2),
 (17, '\r\nCreme de Corps Soy Milk & Honey Whipped Body Butter', 'Creme de Corps Soy Milk & Honey Whipped Body Butter ofrece una sensación ligera sobre la piel que ofrece 24 horas de hidratación\r\nDe una ligereza deliciosa, se absorbe al instante y restaura, protege y suaviza la piel\r\nSe absorbe rápidamente para hidratar', 1390, 2),
-(18, 'Musk Shower Gel', 'Gel limpiador corporal espumoso de sensual aroma. La glicerina junto con el sodio PCA obtenido a partir de aminoácidos, resultan dos humectantes de gran poder para retener el agua en la piel.', 1900, 2);
+(18, 'Musk Shower Gel', 'Gel limpiador corporal espumoso de sensual aroma. La glicerina junto con el sodio PCA obtenido a partir de aminoácidos, resultan dos humectantes de gran poder para retener el agua en la piel.', 1900, 2),
+(63, 'Programar', 'tomar mate mientras estudio', 111111, 14),
+(67, 'Crema de Manos manitas', 'Ponerme al dia en web2 porque sino hay tabla', 111111, 18),
+(68, 'Matear Reload', 'Muy cremosa para la cara', 111111, 18),
+(69, 'Matear Reload', 'tomar mate mientras estudio', 400, 14);
 
 -- --------------------------------------------------------
 
@@ -134,13 +139,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
-  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id_categoria` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`

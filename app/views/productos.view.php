@@ -30,8 +30,8 @@ class ViewProducto
 
     function renderFormEditar($id,$categorias,$producto)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL); //variable url que se lo paso al string pepito que esta en el FORM editar
-        $this->smarty->assign('id', $id); //el id que me viene transformo al $id    
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('id', $id);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('producto', $producto);
         $this->smarty->display('formEditar.tpl');

@@ -13,7 +13,6 @@ $r = new Router();
 //Prueba      
 
 //rutas admin productos
-//$r->addRoute("administrador", "GET", "ProductosControllers", "showAdmin");
 $r->addRoute("allProductos", "GET", "ProductosControllers", "showProductosAdmin");
 $r->addRoute("agregarProducto", "POST", "ProductosControllers", "agregarProducto");
 $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarProducto");
@@ -42,9 +41,6 @@ $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategor
 
 
 $r->setDefaultRoute("ProductosControllers", "showIndex");
-
-//Advance
-//$r->addRoute("autocompletar", "GET", "TasksAdvanceController", "AutoCompletar");
 
 //run
 $r->route($_GET['action'], $_SERVER['REQUEST_METHOD']); 

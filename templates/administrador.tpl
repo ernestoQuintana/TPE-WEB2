@@ -1,7 +1,5 @@
 {include file='header.tpl'}
-<!--<div class="saludoBienvenida">
-   <h4>Bienvenido {$usuarioDB->nombre_usuario}</h4>
-</div>-->
+
 <div class="btnLogout">
     <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
 </div>
