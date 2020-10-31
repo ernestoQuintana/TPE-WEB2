@@ -16,7 +16,7 @@ class ViewProducto
     //pasar como templated de smarty y adentro del administrador incluir el header y footer
     function renderAdmin($categorias)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('BASE_URL', BASE_URL);// agregar al constructor
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('administrador.tpl');
     }

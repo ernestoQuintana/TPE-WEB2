@@ -21,4 +21,4 @@
             <button type="submit" class="btn btn-primary">Editar</button>
         </form>
     </div>
-    {include file='footer.tpl'}
+{include file='footer.tpl'}
