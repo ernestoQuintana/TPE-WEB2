@@ -9,6 +9,12 @@
         <a class='btnVolver' href='productos/'><i class="fas fa-backward"> Volver</i></a>
 </div>
 
+{include file="formComentario.tpl"}
+{include file="listaComentarios"}
+
+titulo comentario puntaje
+titulo comentario puntaje 
+
 {include file="comentarios.tpl"}
 {include file='footer.tpl'}
 

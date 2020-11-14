@@ -23,10 +23,15 @@ class ModelComentarios{
     }
 
 
-    function insertarComentario($titulo,$texto ,$puntuacion){
-        $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion) VALUES(?,?,?)');
-        $comentario->execute([$titulo,$texto,$puntuacion]);
+    function insertarComentario($titulo,$texto , $puntuacion, $idUsuario){
+        $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion,id_usuario) VALUES(?,?,?,?)');
+        $comentario->execute([$titulo,$texto,$puntuacion,$idUsuario]);
         return $this->dbComentarios->lastInsertId();//Trae el ultimo id que toco.
+    }
+    function getComentarioId($idComentario){
+        $comentario = $this->dbComentarios->prepare('SELECT * FROM comentario WHERE id = ?');
+        $comentario->execute([$idComentario]);
+        return $comentario->fetch(PDO::FETCH_OBJ);
     }
 
 
