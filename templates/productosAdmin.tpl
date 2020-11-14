@@ -14,5 +14,6 @@
          {$producto->descripcion}
         </li>
     {/foreach}
+    
 </ul>
 {include file="footer.tpl"}
