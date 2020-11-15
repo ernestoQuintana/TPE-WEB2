@@ -34,6 +34,7 @@
                     {/foreach}
                     </div>
                     <a class="navbar-brand" href="registro">Registrate</a>
+                    <a class="admin" href="login">Ingresa</a>
                 </div>
             </div>
             <div class="iconosRedesNav">
@@ -45,7 +46,7 @@
                 <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
             </div>
 
-            <a class="admin" href="login">Admin</a>
+           
         </nav>
 </header>
 <main>

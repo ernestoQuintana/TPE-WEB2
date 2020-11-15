@@ -87,9 +87,10 @@ class UsersControllers
             $email = $_POST['input_emailRegister'];
             $password = $_POST['input_passwordRegister'];
         }
+        $passEncrypt = password_hash($password,PASSWORD_DEFAULT); //encriptamos el password ingresado
 
         $categorias = $this->modelCategoria->getAllCategorias();
-        $this->modelAdmin->getUser($nombre,$password,$email);
+        $this->modelAdmin->getUser($nombre,$passEncrypt,$email);
         $this->viewAdmin->renderAdmin($categorias);
     }
 }
