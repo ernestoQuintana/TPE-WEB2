@@ -15,5 +15,9 @@
         return $adminDB;
     }
 
+    function getUser($nombre,$password,$email){
+        $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador, email) VALUES (?,?,?)');
+        $query->execute([$nombre,$password,$email]);
+    }
 
  }

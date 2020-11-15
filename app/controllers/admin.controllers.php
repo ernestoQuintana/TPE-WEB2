@@ -72,4 +72,24 @@ class UsersControllers
             $this->viewAdmin->renderViewAdmin($categorias, $mensaje);
         }
     }
+
+    /********************** REGISTRO **********************/
+    
+    function showRegistro(){
+        $categorias = $this->modelCategoria->getAllCategorias();
+        $this->viewAdmin->renderRegistro($categorias);
+    }
+
+    function agregarUsuario(){
+        if (isset($_POST['input_nameRegister']) && isset($_POST['input_emailRegister'])
+         && isset($_POST['input_passwordRegister'])){
+            $nombre = $_POST['input_nameRegister'];
+            $email = $_POST['input_emailRegister'];
+            $password = $_POST['input_passwordRegister'];
+        }
+
+        $categorias = $this->modelCategoria->getAllCategorias();
+        $this->modelAdmin->getUser($nombre,$password,$email);
+        $this->viewAdmin->renderAdmin($categorias);
+    }
 }

@@ -31,6 +31,8 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 $r->addRoute("login", "GET", "UsersControllers", "login");
 $r->addRoute("logout", "GET", "UsersControllers", "logout");
 $r->addRoute("administrador", "POST", "UsersControllers", "verificarUsuario");
+$r->addRoute("registro", "GET", "UsersControllers", "showRegistro");
+$r->addRoute("agregaUsuario", "POST", "UsersControllers", "agregarUsuario");
 
 //rutas usuario
 $r->addRoute("index", "GET", "ProductosControllers", "showIndex");

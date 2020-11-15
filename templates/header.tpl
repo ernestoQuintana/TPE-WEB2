@@ -33,10 +33,9 @@
                         <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
                     {/foreach}
                     </div>
+                    <a class="navbar-brand" href="registro">Registrate</a>
                 </div>
             </div>
-
-            <a class="admin" href="login">Administrador</a>
             <div class="iconosRedesNav">
                 <a href="#"><i class="iconosNav fab fa-facebook"></i></a>
                 <a href="#"><i class="iconosNav fab fa-instagram-square"></i></a>
@@ -45,6 +44,8 @@
                 <a href="#"><i class="iconosNav fab fa-vk"></i></a>
                 <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
             </div>
+
+            <a class="admin" href="login">Admin</a>
         </nav>
 </header>
 <main>
