@@ -5,7 +5,7 @@
         </div>
 
         <div class="col-md-8">
-           {include file="vue/Producto.vue"}
+    <!--{include file="vue/Producto.vue"} -->
         </div>
     </div>
 

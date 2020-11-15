@@ -3,7 +3,7 @@
 require_once 'app\views\productos.view.php';
 require_once 'app\models\categorias.model.php';
 require_once 'app\models\productos.model.php';
-require_once 'app\controllers\user.controllers.php';
+require_once 'app\controllers\admin.controllers.php';
 require_once 'app\controllers\helper.php';
 
 

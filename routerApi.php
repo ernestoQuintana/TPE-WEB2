@@ -1,6 +1,7 @@
 <?php
 require_once 'RouterClass.php';
-require_once 'api\controllers\Api.Controllers.php';
+require_once './api/controllers/Api.Comentarios.Controllers.php';
+//require_once 'api\controllers\Api.Controllers.php';
 
 // instacio el router
 $router = new Router();
@@ -12,4 +13,7 @@ $router->addRoute('comentarios', 'POST', 'ApiComentariosController', 'insertCome
 $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentariosController', 'deleteComentario');
 
 
-$r->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);
+
+
+
+$router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);

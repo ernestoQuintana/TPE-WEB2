@@ -1,6 +1,6 @@
 <?php
 include_once "libs/smarty/Smarty.class.php";
-class ViewUsuario
+class ViewAdmin
 {
 
     /************************ TABLAS DEL ADMINISTRADOR ************************/
@@ -11,7 +11,7 @@ class ViewUsuario
         $this->smarty = new Smarty();
     }
 
-    function renderViewUsuario($categorias , $mensaje = ""){
+    function renderViewAdmin($categorias , $mensaje = ""){
 
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('categorias', $categorias);

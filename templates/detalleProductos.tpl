@@ -10,7 +10,7 @@
 </div>
 
 {include file="formComentario.tpl"}
-{include file="listaComentarios"}
+{include file="listaComentarios.tpl"}
 
 titulo comentario puntaje
 titulo comentario puntaje 

@@ -1,7 +1,7 @@
 <?php
 
 require_once 'app\controllers\productos.controllers.php';
-require_once 'app\controllers\user.controllers.php';
+require_once 'app\controllers\admin.controllers.php';
 require_once 'RouterClass.php';
 
 define('BASE_URL', '//'.$_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']).'/');

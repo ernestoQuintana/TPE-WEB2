@@ -7,16 +7,10 @@ require_once 'app\models\comentarios.model.php';
 
 class ApiComentariosController extends ApiControllers { //hereda e implementa todo de api controllers
 
-    private $model;
-    private $modelProducto;
-    private $view;
-
-
     function __construct(){
 
         parent::__construct(); // con esto termina de implementar el apicontrollers
         $this->model = new ModelComentarios();
-        $this->modelProducto = new ModelProducto();
         $this->view = new ApiViewProducto();
         
     }
@@ -52,7 +46,12 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
     function getComentario($params = null){
         $id = $params[':ID'];
         $comentario = $this->model->getComentarioId($id);
-        var_dump($comentario);
-      //  $this->view->response($comentario, 200);
+        $this->view->response($comentario, 200);
     }
+
+   /* function getAllComentarios($params = null){
+        
+        $comentario = $this->model->getComentario();
+        $this->view->response($comentario, 200);
+    }*/
 }

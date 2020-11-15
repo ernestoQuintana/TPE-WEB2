@@ -29,12 +29,16 @@ class ModelComentarios{
         return $this->dbComentarios->lastInsertId();//Trae el ultimo id que toco.
     }
     function getComentarioId($idComentario){
-        $comentario = $this->dbComentarios->prepare('SELECT * FROM comentario WHERE id = ?');
+        $comentario = $this->dbComentarios->prepare('SELECT * FROM comentario WHERE id_comentario = ?');
         $comentario->execute([$idComentario]);
         return $comentario->fetch(PDO::FETCH_OBJ);
     }
 
-
+    function getComentario(){
+        $comentario = $this->dbComentarios->prepare('SELECT * FROM comentario');
+        $comentario->execute([]);
+        return $comentario->fetchAll(PDO::FETCH_OBJ);
+    }
 
 
 }
