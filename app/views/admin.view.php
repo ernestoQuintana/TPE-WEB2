@@ -8,11 +8,18 @@ class ViewAdmin
 
     function __construct()
     {
+        //$this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty = new Smarty();
     }
 
-    function renderViewAdmin($categorias , $mensaje = ""){
+    function renderIndex($categorias){
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->display('index.tpl');
+    }
 
+    function renderViewAdmin($categorias , $mensaje = ""){
+        
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('mensaje', $mensaje);
@@ -25,8 +32,16 @@ class ViewAdmin
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('administrador.tpl');
     }
-    
+
+    function renderViewUser($categorias , $mensaje = ""){
+
+        $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('mensaje', $mensaje);
+        $this->smarty->display('loginUsuario.tpl');
+    }
     function renderRegistro($categorias, $mensaje = ""){
+
         $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->assign('categorias', $categorias);

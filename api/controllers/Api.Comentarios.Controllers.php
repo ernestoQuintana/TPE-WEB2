@@ -33,7 +33,7 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
 
     function insertComentario($params = null){
     
-       // $idUsuario = $params[':ID'];
+       //$idUsuario = $params[':ID'];
         $body = $this->getData();
         $idComentario = $this->model->insertarComentario($body->titulo,$body->texto,$body->puntuacion,$body->id_usuario,$body->id_producto);
         if(!empty($idComentario)){// verifica si la tarea existe
@@ -41,9 +41,8 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
         }else{
             $this->view->response("La tarea no se pudo insertar", 404);
         }
-       
     }
-    
+
     function getComentario($params = null){
         $id = $params[':ID'];
         $comentario = $this->model->getComentarioId($id);

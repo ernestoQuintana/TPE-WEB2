@@ -30,16 +30,20 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 //faltaria la parte del login del administrador
 $r->addRoute("login", "GET", "UsersControllers", "login");
 $r->addRoute("logout", "GET", "UsersControllers", "logout");
-$r->addRoute("administrador", "POST", "UsersControllers", "verificarUsuario");
+$r->addRoute("administrador", "POST", "UsersControllers", "verificarAdmin");
 $r->addRoute("registro", "GET", "UsersControllers", "showRegistro");
 $r->addRoute("agregaUsuario", "POST", "UsersControllers", "agregarUsuario");
 
-//rutas usuario
+//rutas usuario sin registrar
 $r->addRoute("index", "GET", "ProductosControllers", "showIndex");
 $r->addRoute("productos", "GET", "ProductosControllers", "showProductos");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
+
+//rutas de usuario registrado
+$r->addRoute("loginUsuario", "GET", "UsersControllers", "loginUsuario");
+$r->addRoute("usuario", "POST", "UsersControllers", "verificarUsuario");
 
 
 $r->setDefaultRoute("ProductosControllers", "showIndex");

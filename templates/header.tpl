@@ -34,7 +34,8 @@
                     {/foreach}
                     </div>
                     <a class="navbar-brand" href="registro">Registrate</a>
-                    <a class="admin" href="login">Ingresa</a>
+                    <a class="navbar-brand" href="loginUsuario">Login</a>
+                    <a class="admin" href="login">Admin</a>
                 </div>
             </div>
             <div class="iconosRedesNav">

@@ -5,6 +5,7 @@ require_once 'app\models\admin.model.php';
 require_once 'app\models\categorias.model.php';
 
 
+
 class UsersControllers
 {
 
@@ -41,11 +42,11 @@ class UsersControllers
         header("Location: " . LOGIN);
     }
 
-    function verificarUsuario()
+    function verificarAdmin()
     {
-        if (isset($_POST['input_user']) && isset($_POST['input_password'])) {
-            $nombre = $_POST['input_user'];
-            $password = $_POST['input_password'];
+        if (isset($_POST['input_admin']) && isset($_POST['input_passwordAdmin'])) {
+            $nombre = $_POST['input_admin'];
+            $password = $_POST['input_passwordAdmin'];
         }
 
         $categorias = $this->modelCategoria->getAllCategorias();
@@ -95,12 +96,66 @@ class UsersControllers
         $categorias = $this->modelCategoria->getAllCategorias();
         
         if($password === $confirm){
-            $nombre = $this->modelAdmin->getUser($nombre,$passEncrypt,$email);
-            $this->viewAdmin->renderAdmin($categorias);
+            $this->modelAdmin->insertUser($nombre,$passEncrypt,$email);
+            $this->iniciarSesionAuto($nombre);
         }else{
-            $mensaje = 'Error al ingresar contraseña';
+            $mensaje = 'Las contraseñas no coinciden';
             $this->viewAdmin->renderRegistro($categorias, $mensaje);
         }
 
+    }
+
+    function loginUsuario()
+    {   
+        session_start();
+        if(isset ($_SESSION["nombre"])){
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->viewAdmin->renderIndex($categorias);
+        }else{
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $this->viewAdmin->renderViewAdmin($categorias);
+        }
+    }
+
+    function iniciarSesionAuto($nombre)
+    {
+        $categorias = $this->modelCategoria->getAllCategorias();
+        $userDB =  $this->modelAdmin->getAdmin($nombre);
+        if (isset($userDB) && $userDB){
+                session_start();
+                $_SESSION["nombre"] = $userDB->nombre_administrador;
+                $_SESSION['LAST_ACTIVITY'] = time();
+                $this->viewAdmin->renderIndex($categorias); 
+        } 
+    }
+
+    function verificarUsuario(){
+
+        if (isset($_POST['input_usuario']) && isset($_POST['input_passwordUsuario'])) {
+            $nombre = $_POST['input_usuario'];
+            $password = $_POST['input_passwordUsuario'];
+        }
+        $categorias = $this->modelCategoria->getAllCategorias();
+        $userDB =  $this->modelAdmin->getAdmin($nombre);
+        
+       if (isset($userDB) && $userDB){
+        
+           if (password_verify($password, $userDB->password_administrador)) {
+               
+                session_start();
+                $_SESSION["nombre"] = $userDB->nombre_administrador;
+                $_SESSION['LAST_ACTIVITY'] = time();
+
+                $this->viewAdmin->renderAdmin($categorias); 
+            }
+            else{
+                $mensaje = "PASSWORD INCORRECTO";
+                $this->viewAdmin->renderViewUser($categorias, $mensaje);
+            }
+
+        } else {
+            $mensaje = "NO EXISTE EL USUARIO";
+            $this->viewAdmin->renderViewUser($categorias, $mensaje);
+        }
     }
 }
