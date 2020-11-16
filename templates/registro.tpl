@@ -1,21 +1,21 @@
 {include file="header.tpl"}
-<div class="container">
+<div class="container registroUsuario">
 <div class="mensajeError">
- <!--   {$mensaje} -->
+   {$mensaje}
 </div>
-    <h1 class="tituloRegistrar"> Registro de Usuario</h1>
+    <h1 class="tituloRegistrar"> Registrate</h1>
     <form action="agregaUsuario" method="POST">
         <div class="form-group">
-            <label for="title">Nombre de usuario</label>
-            <input class="form-control" id="user" name="input_nameRegister" aria-describedby="emailHelp" required>
+            <input type="text" class="form-control" id="user" name="input_nameRegister" placeholder="Enter your name" aria-describedby="emailHelp" required>
         </div>
         <div class="form-group">
-            <label for="description">Email</label>
-            <input type="email" class="form-control" name="input_emailRegister" id="email" required>
+            <input type="email" class="form-control" name="input_emailRegister" id="email" placeholder="Enter your email" required>
         </div>
         <div class="form-group">
-            <label for="description">Password</label>
-            <input type="password" class="form-control" name="input_passwordRegister" id="password" required>
+            <input type="password" class="form-control" name="input_passwordRegister" placeholder="Enter your password" id="password" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" name="input_confirmPassword" placeholder="Confirm your password" id="passwordConfirm" autocomplete="off" required>
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

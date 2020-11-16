@@ -1,19 +1,17 @@
 {include file="header.tpl"}
-<div class="container">
+<div class="container loginDiv">
 <div class="mensajeError">
     {$mensaje}
 </div>
-    <h1 class="tituloIngresar"> Ingresar</h1>
+    <h1 class="tituloIngresar"> Ingrese sus Datos</h1>
     <form action="administrador" method="POST">
         <div class="form-group">
-            <label for="title">Ingrese su Usuario</label>
-            <input class="form-control" id="user" name="input_user" aria-describedby="emailHelp" required>
+            <input type="text" class="form-control" id="user" name="input_user" aria-describedby="emailHelp" placeholder="Enter your name or email" required>
         </div>
         <div class="form-group">
-            <label for="description">Password</label>
-            <input type="password" class="form-control" name="input_password" id="password" required>
+            <input type="password" class="form-control" name="input_password" id="password" placeholder="Enter your password" required>
         </div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="submit" class="btn btn-primary">Ingresar</button>
     </form>
 </div>
 {include file="footer.tpl"}

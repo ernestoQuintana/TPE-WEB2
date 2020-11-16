@@ -1,9 +1,9 @@
 <?php
 require_once 'app\models\productos.model.php';
 require_once 'app\models\categorias.model.php';
+require_once 'app\models\comentarios.model.php';
 require_once 'api\view\Api.View.Producto.php';
 require_once 'api\controllers\Api.Controllers.php';
-require_once 'app\models\comentarios.model.php';
 
 class ApiComentariosController extends ApiControllers { //hereda e implementa todo de api controllers
 
@@ -31,11 +31,11 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
             $this->view->response("El comentario con el id=$id no existe", 404);
     }
 
-    function Insertcomentario($params = null){
+    function insertComentario($params = null){
     
-        $idUsuario = $params[':ID'];
+       // $idUsuario = $params[':ID'];
         $body = $this->getData();
-        $idComentario = $this->model->insertarComentario($body->titulo,$body->texto ,$body->puntuacion,$idUsuario);
+        $idComentario = $this->model->insertarComentario($body->titulo,$body->texto,$body->puntuacion,$body->id_usuario,$body->id_producto);
         if(!empty($idComentario)){// verifica si la tarea existe
             $this->view->response($this->model->getComentarioId($idComentario), 201);
         }else{
@@ -43,6 +43,7 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
         }
        
     }
+    
     function getComentario($params = null){
         $id = $params[':ID'];
         $comentario = $this->model->getComentarioId($id);

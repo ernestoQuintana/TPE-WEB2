@@ -1,5 +1,6 @@
 <?php
 require_once 'api\view\Api.View.Producto.php';
+require_once 'app\models\comentarios.model.php';
 
 abstract class ApiControllers{
 
@@ -9,6 +10,7 @@ abstract class ApiControllers{
     private $data; 
 
     public function __construct() {
+        $this->model = new ModelComentarios();
         $this->view = new ApiViewProducto();
         $this->data = file_get_contents("php://input"); 
     }

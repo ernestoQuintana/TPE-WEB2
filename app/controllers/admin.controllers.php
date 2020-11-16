@@ -75,22 +75,32 @@ class UsersControllers
 
     /********************** REGISTRO **********************/
     
-    function showRegistro(){
+    function showRegistro()
+    {
         $categorias = $this->modelCategoria->getAllCategorias();
         $this->viewAdmin->renderRegistro($categorias);
     }
 
-    function agregarUsuario(){
+    function agregarUsuario()
+    {
         if (isset($_POST['input_nameRegister']) && isset($_POST['input_emailRegister'])
-         && isset($_POST['input_passwordRegister'])){
+         && isset($_POST['input_passwordRegister']) && isset($_POST['input_confirmPassword'])){
             $nombre = $_POST['input_nameRegister'];
             $email = $_POST['input_emailRegister'];
             $password = $_POST['input_passwordRegister'];
+            $confirm = $_POST['input_confirmPassword'];
         }
-        $passEncrypt = password_hash($password,PASSWORD_DEFAULT); //encriptamos el password ingresado
 
+        $passEncrypt = password_hash($password,PASSWORD_DEFAULT); //encriptamos el password ingresado
         $categorias = $this->modelCategoria->getAllCategorias();
-        $this->modelAdmin->getUser($nombre,$passEncrypt,$email);
-        $this->viewAdmin->renderAdmin($categorias);
+        
+        if($password === $confirm){
+            $nombre = $this->modelAdmin->getUser($nombre,$passEncrypt,$email);
+            $this->viewAdmin->renderAdmin($categorias);
+        }else{
+            $mensaje = 'Error al ingresar contraseña';
+            $this->viewAdmin->renderRegistro($categorias, $mensaje);
+        }
+
     }
 }

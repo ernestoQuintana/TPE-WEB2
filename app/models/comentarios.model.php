@@ -23,9 +23,9 @@ class ModelComentarios{
     }
 
 
-    function insertarComentario($titulo,$texto , $puntuacion, $idUsuario){
-        $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion,id_usuario) VALUES(?,?,?,?)');
-        $comentario->execute([$titulo,$texto,$puntuacion,$idUsuario]);
+    function insertarComentario($titulo,$texto,$puntuacion,$id_usuario,$id_producto){
+        $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion,id_usuario,id_producto) VALUES(?,?,?,?,?)');
+        $comentario->execute([$titulo,$texto,$puntuacion,$id_usuario,$id_producto]);
         return $this->dbComentarios->lastInsertId();//Trae el ultimo id que toco.
     }
     function getComentarioId($idComentario){

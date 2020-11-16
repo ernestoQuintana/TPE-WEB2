@@ -25,8 +25,10 @@ class ViewAdmin
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('administrador.tpl');
     }
-    function renderRegistro($categorias){
+    
+    function renderRegistro($categorias, $mensaje = ""){
         $this->smarty->assign('BASE_URL', BASE_URL);
+        $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('registro.tpl');
     }
