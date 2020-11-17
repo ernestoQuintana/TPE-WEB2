@@ -56,7 +56,7 @@ body {
   margin: 2em;
 }
 .listaProductos,
-.listaCategorias {
+.listaCategorias, .listaUsuarios {
   font-weight: bold;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: 3rem 0 5rem;
@@ -276,14 +276,14 @@ section .franjaAzul {
 /************* ALLPRODUCTOS **************/
 
 .tituloTablaProductos,
-.tituloTablaCategoria {
+.tituloTablaCategoria{
   display: flex;
   justify-content: center;
   margin: 3rem 0;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .tituloTablaProductos h1,
-.tituloTablaCategoria h1 {
+.tituloTablaCategoria h1{
   font-size: 3rem;
 }
 

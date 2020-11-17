@@ -20,4 +20,17 @@
         $query->execute([$nombre,$passEncrypt,$email]);
     }
 
+
+    /************ PERMISOS DE USUARIO *************/
+
+    function getAllUsers(){
+        $query = $this->dbAdministrador->prepare('SELECT * FROM administrador');
+        $query->execute([]);
+        $adminDB = $query->fetchAll(PDO::FETCH_OBJ);
+        return $adminDB;
+    }
+    function eliminarUsuarioID($id){
+        $query = $this->dbAdministrador->prepare('SELECT * FROM administrador WHERE id = ?');
+        $query->execute([$id]);
+    }
  }

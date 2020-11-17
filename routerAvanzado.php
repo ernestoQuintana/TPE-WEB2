@@ -26,6 +26,9 @@ $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCa
 $r->addRoute("editarC/:ID", "GET", "ProductosControllers", "editarC");
 $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCategoria");
 
+//rutas admin usuarios
+$r->addRoute("allUsers", "GET", "UsersControllers", "showUsersAdmin");
+$r->addRoute("eliminarUsuario/:ID", "GET", "UsersControllers", "eliminarUsuario");
 
 //faltaria la parte del login del administrador
 $r->addRoute("login", "GET", "UsersControllers", "login");

@@ -158,4 +158,23 @@ class UsersControllers
             $this->viewAdmin->renderViewUser($categorias, $mensaje);
         }
     }
+
+    /******************* PERMISOS DEL USUARIO *********************/ 
+
+      function showUsersAdmin(){
+        {
+            // $this->helper->checkLogin();
+            $categorias = $this->modelCategoria->getAllCategorias();
+            $users = $this->modelAdmin->getAllUsers();
+            $this->viewAdmin->renderUsersAdmin($categorias, $users);
+        }
+    }
+
+    function eliminarUsuario($params = null)
+    {
+        // $this->helper->checkLogin();
+        $id = $params[':ID'];
+        $this->modelAdmin->eliminarUsuarioID($id);
+        $this->viewAdmin->ShowUsuarioLocation();
+    }
 }
