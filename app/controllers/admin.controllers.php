@@ -115,7 +115,7 @@ class UsersControllers
             $this->viewAdmin->renderIndex($categorias);
         }else{
             $categorias = $this->modelCategoria->getAllCategorias();
-            $this->viewAdmin->renderViewAdmin($categorias);
+            $this->viewAdmin->renderViewUser($categorias);
         }
     }
 
@@ -148,7 +148,7 @@ class UsersControllers
                 $_SESSION["nombre"] = $userDB->nombre_administrador;
                 $_SESSION['LAST_ACTIVITY'] = time();
 
-                $this->viewAdmin->renderAdmin($categorias); 
+                $this->viewAdmin->renderIndex($categorias); 
             }
             else{
                 $mensaje = "PASSWORD INCORRECTO";
@@ -167,8 +167,8 @@ class UsersControllers
         {
             $this->helper->checkLogin();
             $categorias = $this->modelCategoria->getAllCategorias();
-            $users = $this->modelAdmin->getAllUsers();
-            $this->viewAdmin->renderUsersAdmin($categorias, $users);
+            $users = $this->modelAdmin->getAllUsers(); 
+           $this->viewAdmin->renderUsersAdmin($categorias, $users);
         }
     }
 

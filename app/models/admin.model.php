@@ -8,7 +8,7 @@
         $this->dbAdministrador = new PDO('mysql:host=localhost;'.'dbname=db_productos;charset=utf8', 'root', '');
     }
     
-    function getAdmin($nombre){
+    function getAdmin($nombre = 'admin'){
         $query = $this->dbAdministrador->prepare("SELECT * FROM `administrador` WHERE nombre_administrador = ?");
         $query->execute([$nombre]);
         $adminDB = $query->fetch(PDO::FETCH_OBJ);
@@ -32,6 +32,7 @@
     function eliminarUsuarioID($id){
         $query = $this->dbAdministrador->prepare('DELETE FROM administrador WHERE id = ?');
         $query->execute([$id]);
+
     }
 /*
     function permisoUsuarioID($id){

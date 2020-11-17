@@ -4,19 +4,19 @@
     </div>
     <div class="container">
         <h1 class="comentarioUser"> Comentario</h1>
-        <form action="agregarCategoria" method="POST">
+        <form action="agregarComentario" method="POST">
             <div class="form-group">
                 <label for="title">Titulo</label>
-                <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp" required>
+                <input class="form-control" id="title" name="input_titleComentario" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
                 <label for="description">Comentario</label>
-                <input class="form-control" name="input_description" id="description" required>
+                <textarea class="form-control" name="input_comentario" id="description" required> </textarea>
             </div>
             <div class="form-group">
                 <label for="priority">Puntaje</label>
                  <!--Agregar un select de puntaje -->
-                <input class="form-control" name="input_origen" id="precio" required>
+                <input class="form-control" name="input_puntaje" id="precio" required>
             </div>
             <button type="submit" class="btn btn-primary">Agregar Comentario</button>
         </form>
