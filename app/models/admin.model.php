@@ -30,7 +30,14 @@
         return $adminDB;
     }
     function eliminarUsuarioID($id){
-        $query = $this->dbAdministrador->prepare('SELECT * FROM administrador WHERE id = ?');
+        $query = $this->dbAdministrador->prepare('DELETE FROM administrador WHERE id = ?');
         $query->execute([$id]);
     }
+/*
+    function permisoUsuarioID($id){
+        $query = $this->dbAdministrador->prepare('INSERT INTO administrador.permisos FROM administrador WHERE id = ?');
+        $query->execute([$id]);
+        $adminDB = $query->fetch(PDO::FETCH_OBJ);
+        return $adminDB;
+    }*/
  }

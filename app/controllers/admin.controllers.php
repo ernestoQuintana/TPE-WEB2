@@ -3,7 +3,7 @@
 require_once 'app\views\admin.view.php';
 require_once 'app\models\admin.model.php';
 require_once 'app\models\categorias.model.php';
-
+require_once 'app\controllers\helper.php';
 
 
 class UsersControllers
@@ -12,6 +12,7 @@ class UsersControllers
     private $viewAdmin;
     private $modelAdmin;
     private $modelCategoria;
+    private $helper;
   
 
     function __construct()
@@ -20,6 +21,7 @@ class UsersControllers
         $this->viewAdmin = new ViewAdmin();
         $this->modelAdmin = new ModelAdmin();
         $this->modelCategoria = new ModelCategoria();
+        $this->helper = new helper();
    
     }
 
@@ -163,7 +165,7 @@ class UsersControllers
 
       function showUsersAdmin(){
         {
-            // $this->helper->checkLogin();
+            $this->helper->checkLogin();
             $categorias = $this->modelCategoria->getAllCategorias();
             $users = $this->modelAdmin->getAllUsers();
             $this->viewAdmin->renderUsersAdmin($categorias, $users);
@@ -172,9 +174,16 @@ class UsersControllers
 
     function eliminarUsuario($params = null)
     {
-        // $this->helper->checkLogin();
         $id = $params[':ID'];
         $this->modelAdmin->eliminarUsuarioID($id);
         $this->viewAdmin->ShowUsuarioLocation();
     }
+
+    /*
+    function permisoUsuario($params = null){
+        $this->helper->checkLogin();
+        $id = $params[':ID'];
+        $permiso = $this->modelAdmin->permisoUsuarioID($id);
+        }
+    }*/
 }

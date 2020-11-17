@@ -83,7 +83,7 @@ body {
 }
 
 .listaProductoView,
-.listaCategoriasView {
+.listaCategoriasView,.listaUsuarioView {
   position: relative;
   display: flex;
   padding: 0.75rem 1.25rem;
