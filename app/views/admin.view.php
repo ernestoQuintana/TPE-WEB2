@@ -59,4 +59,11 @@ class ViewAdmin
     {
         header("Location: " . BASE_URL . "allUsers");
     }
+
+    function ShowIndex()
+    {
+        header("Location: " . BASE_URL . "index");
+    }
+
+
 }

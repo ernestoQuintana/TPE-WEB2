@@ -17,14 +17,14 @@
         <h3>Para ver los comentarios logueate <a href='loginUsuario'>Login</a></h3>
     </div>
 
-{if $users->permiso === 0}
+{if {$users->permiso} === 0}
     <div id="formComentarios">
         {include file="formComentario.tpl"}
     </div>
     <div id="listaComentarios">
         {include file="vue/comentarios.vue"}
     </div>
-{else if $users->permiso === 1}
+{elseif {$users->permiso} === 1}
     {include file="vue/comentariosAdmin.vue"}
 {/if}
 

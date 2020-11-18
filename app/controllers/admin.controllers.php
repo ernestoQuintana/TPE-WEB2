@@ -28,9 +28,15 @@ class UsersControllers
     function login()
     {   
         session_start();
+        $nombre =$_SESSION["nombre"];
+        $user = $this->modelAdmin->getAdmin($nombre); 
         if(isset ($_SESSION["nombre"])){
+            if($user->permiso==1){
+                $categorias = $this->modelCategoria->getAllCategorias();
+                $this->viewAdmin->renderAdmin($categorias);
+            }
             $categorias = $this->modelCategoria->getAllCategorias();
-            $this->viewAdmin->renderAdmin($categorias);
+            $this->viewAdmin->renderViewAdmin($categorias);
         }else{
             $categorias = $this->modelCategoria->getAllCategorias();
             $this->viewAdmin->renderViewAdmin($categorias);
@@ -62,8 +68,13 @@ class UsersControllers
                 session_start();
                 $_SESSION["nombre"] = $adminDB->nombre_administrador;
                 $_SESSION['LAST_ACTIVITY'] = time();
-
-                $this->viewAdmin->renderAdmin($categorias); 
+                $nombre=$_SESSION["nombre"];
+                $user = $this->modelAdmin->getAdmin($nombre);
+                if($user->permiso ==1){
+                    $this->viewAdmin->renderAdmin($categorias); 
+                }    
+                $mensaje = "NO TENES PERMISO DE ADMINISTRADOR";
+                $this->viewAdmin->renderViewAdmin($categorias, $mensaje);
             }
             else{
                 $mensaje = "PASSWORD INCORRECTO";
