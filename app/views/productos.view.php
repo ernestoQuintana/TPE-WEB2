@@ -6,42 +6,36 @@ class ViewProducto
     /************************ TABLAS DEL ADMINISTRADOR ************************/
     private $smarty;
 
-    function __construct()
+    function __construct($categorias)
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
     // PRODUCTOS
 
     //pasar como templated de smarty y adentro del administrador incluir el header y footer
-    function renderAdmin($categorias)
+    function renderAdmin()
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);// agregar al constructor
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('administrador.tpl');
     }
     //prueba
-    function renderIndex($categorias)
+    function renderIndex()
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('index.tpl');
     }
 
-    function renderFormEditar($id,$categorias,$producto)
+    function renderFormEditar($id,$producto)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('id', $id);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('producto', $producto);
         $this->smarty->display('formEditar.tpl');
     }
 
-    function renderProductosAdmin($productos, $categorias)
+    function renderProductosAdmin($productos)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->assign('productos', $productos);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('productosAdmin.tpl');
     }
 
@@ -53,30 +47,22 @@ class ViewProducto
 
     // CATEGORIAS 
 
-    function renderCategoriasAdmin($categorias)
+    function renderCategoriasAdmin()
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('categoriasAdmin.tpl');
     }
-    function renderFormEditarCategoria($idCategoria, $categoria, $categorias)
+    function renderFormEditarCategoria($idCategoria, $categoria)
     {
-
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('idCategoria', $idCategoria);
         $this->smarty->assign('categoria',$categoria);
         $this->smarty->display('formEditarCategoria.tpl');
     }
 
-    function renderProductosByCategoria($categorias ,$productosCategoria, $nombreCategoriaId)
+    function renderProductosByCategoria($productosCategoria, $nombreCategoriaId)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('nombreCategoriaId', $nombreCategoriaId);
         $this->smarty->assign('productosCategoria', $productosCategoria);
         $this->smarty->display('productosPorCategoria.tpl');
-
     }
 
     function ShowHomeLocationCategory()
@@ -86,27 +72,23 @@ class ViewProducto
 
     /************************ TABLAS DEL USUARIO ************************/
 
-    function renderProductos($productos , $categorias)
+    function renderProductos($productos)
     {
         $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('productos', $productos);
         $this->smarty->display('allProductos.tpl');
     }
 
-    function renderDetalleProducto($producto , $categorias , $user)
+    function renderDetalleProducto($producto, $user)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('user', $user);
         $this->smarty->display('detalleProductos.tpl');
     }
 
-    function renderCategoriasUsuario($categorias)
+    function renderCategoriasUsuario()
     {
         $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('allCategorias.tpl');
     }
 

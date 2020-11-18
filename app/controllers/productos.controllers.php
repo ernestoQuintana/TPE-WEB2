@@ -21,8 +21,9 @@ class ProductosControllers
     {
         $this->modelProducto = new ModelProducto();
         $this->modelCategoria = new ModelCategoria();
+        $this->categorias = $this->modelCategoria->getAllCategorias();
         $this->modelAdmin = new ModelAdmin();
-        $this->view = new ViewProducto();
+        $this->view = new ViewProducto($this->categorias);
         $this->helper = new helper();
     }
 
@@ -35,26 +36,25 @@ class ProductosControllers
 
     function showIndex()
     {
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->view->renderIndex($categorias);
+        $this->view->renderIndex();
     }
 
     function showProductosAdmin()
     {
         $user = $this->helper->checkLogin();
         if($user->permiso ==1){
-            $categorias = $this->modelCategoria->getAllCategorias();
             $productos = $this->modelProducto->getAllProductos();
-            $this->view->renderProductosAdmin($productos, $categorias);
-        }$this->view->ShowHomeLocationUsuario();
+            $this->view->renderProductosAdmin($productos);
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }
     }
 
     function showCategoriasAdmin()
     {
         $user = $this->helper->checkLogin();
         if($user->permiso ==1){
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->view->renderCategoriasAdmin($categorias);
+            $this->view->renderCategoriasAdmin();
         }
         $this->view->ShowHomeLocationUsuario();
 
@@ -73,7 +73,9 @@ class ProductosControllers
             }
             $this->modelProducto->insertarProducto($nombre,$descripcion,$precio,$categoria);
             $this->view->ShowHomeLocation();
-        }$this->view->ShowHomeLocationUsuario();
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }
     }
 
     function editarP($params = null)
@@ -82,10 +84,10 @@ class ProductosControllers
         if($user->permiso ==1){
             $id = $params[':ID'];
             $producto = $this->modelProducto->getDetalleProducto($id);
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->view->renderFormEditar($id,$categorias,$producto);
+            $this->view->renderFormEditar($id,$producto);
+        }else{
+            $this->view->ShowHomeLocationUsuario();
         }
-        $this->view->ShowHomeLocationUsuario();
 
     }
 
@@ -102,18 +104,19 @@ class ProductosControllers
             }
             $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id);
             $this->view->ShowHomeLocation();
-        }$this->view->ShowHomeLocationUsuario();  
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }  
     }
 
     function eliminarProducto($params = null)
     {   
+        $id = $params[':ID'];
         $user = $this->helper->checkLogin();
-            if($user->permiso ==1){
-            $this->helper->checkLogin();
-            $id = $params[':ID'];
+            if($user->permiso == 1){
             $this->modelProducto->eliminarProductoID($id);
             $this->view->ShowHomeLocation();
-        }$this->view->ShowHomeLocationUsuario();        
+        }        
     }
 
     //FUNCIONES DE LAS CATEGORIAS
@@ -131,7 +134,9 @@ class ProductosControllers
         
             $this->modelCategoria->insertarCategoria($nombre, $descripcion, $origen);
             $this->view->ShowHomeLocationCategory();
-        }$this->view->ShowHomeLocationUsuario();
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }
     }
 
     function eliminarCategoria($params = null)
@@ -145,19 +150,21 @@ class ProductosControllers
                 $this->modelCategoria->eliminarCategoriaID($id);
                 $this->view->ShowHomeLocationCategory();   
             }       
-        }$this->view->ShowHomeLocationUsuario();    
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }    
     }
 
     function editarC($params = null)
     {
         $user = $this->helper->checkLogin();
         if($user->permiso ==1){
-            $this->helper->checkLogin();
             $idCategoria = $params[':ID'];
-            $categorias = $this->modelCategoria->getAllCategorias();
             $categoria = $this->modelCategoria->getNombreCategoria($idCategoria);
-            $this->view->renderFormEditarCategoria($idCategoria ,$categoria , $categorias);
-        }$this->view->ShowHomeLocationUsuario();    
+            $this->view->renderFormEditarCategoria($idCategoria ,$categoria);
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }    
     }
 
     function editarCategoria($params = null)
@@ -176,7 +183,9 @@ class ProductosControllers
 
             $this->modelCategoria->editarCategoriaID($nombre, $descripcion, $origen, $id);
             $this->view->ShowHomeLocationCategory();
-        }$this->view->ShowHomeLocationUsuario();    
+        }else{
+            $this->view->ShowHomeLocationUsuario();
+        }    
     }
 
 
@@ -187,8 +196,7 @@ class ProductosControllers
     {
         //1.obtener los productos
         $productos = $this->modelProducto->getAllProductos();
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->view->renderProductos($productos, $categorias);
+        $this->view->renderProductos($productos);
     }
 
     function showDetalleProducto($params = null)
@@ -196,33 +204,28 @@ class ProductosControllers
         session_start();
             $id = $params[':ID'];
            $producto = $this->modelProducto->getDetalleProducto($id);
-            $categorias = $this->modelCategoria->getAllCategorias();
         if(!isset($_SESSION['nombre'])){
             $user = null;    
-            $this->view->renderDetalleProducto($producto, $categorias,$user);
+            $this->view->renderDetalleProducto($producto,$user);
         } else {
             $nombre = $_SESSION['nombre'];
             $user = $this->modelAdmin->getAdmin($nombre);
             //var_dump($user);
-            $this->view->renderDetalleProducto($producto, $categorias,$user);
+            $this->view->renderDetalleProducto($producto,$user);
         } 
     }
 
     function showProductosByCategoria($params = null)
     {
-
         $idCategoria = $params[':ID'];
         $productosCategoria = $this->modelProducto->getProductosByCategoria($idCategoria);
-        $categorias = $this->modelCategoria->getAllCategorias();
         $nombreCategoriaId = $this->modelCategoria->getNombreCategoria($idCategoria);
-        $this->view->renderProductosByCategoria($categorias, $productosCategoria, $nombreCategoriaId);
-    
+        $this->view->renderProductosByCategoria($productosCategoria, $nombreCategoriaId);
     }
 
     function showCategoriasUsuario()
     {
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->view->renderCategoriasUsuario($categorias);
+        $this->view->renderCategoriasUsuario();
     }
      
 }

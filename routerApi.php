@@ -7,13 +7,11 @@ require_once './api/controllers/Api.Comentarios.Controllers.php';
 $router = new Router();
 
 // armo la tabla de ruteo de la API REST
-$router->addRoute('comentarios/:ID', 'GET', 'ApiComentariosController', 'getComentario');
-//$router->addRoute('comentarios/:ID', 'GET', 'ApiComentariosController', 'showComentarioPorProducto');
+//$router->addRoute('comentarios/:ID', 'GET', 'ApiComentariosController', 'getComentario');
+$router->addRoute('comentarios/:ID', 'GET', 'ApiComentariosController', 'showComentarioPorProducto');
+$router->addRoute('productos/:ID/comentarios', 'GET', 'ApiComentariosController', 'showComentarioPorProducto');//!!!!!
 $router->addRoute('comentarios', 'POST', 'ApiComentariosController', 'insertComentario');
 $router->addRoute('comentarios/:ID', 'DELETE', 'ApiComentariosController', 'deleteComentario');
-
-
-
 
 
 $router->route($_GET['resource'], $_SERVER['REQUEST_METHOD']);

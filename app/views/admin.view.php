@@ -6,46 +6,36 @@ class ViewAdmin
     /************************ TABLAS DEL ADMINISTRADOR ************************/
     private $smarty;
 
-    function __construct()
+    function __construct($categorias)
     {
         //$this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty = new Smarty();
+        $this->smarty->assign('categorias', $categorias);
+        $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
-    function renderIndex($categorias){
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
+    function renderIndex(){
         $this->smarty->display('index.tpl');
     }
 
-    function renderViewAdmin($categorias , $mensaje = ""){
+    function renderViewAdmin($mensaje = ""){
         
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('mensaje', $mensaje);
         $this->smarty->display('login.tpl');
     }
 
-    function renderAdmin($categorias)
+    function renderAdmin()
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('administrador.tpl');
     }
 
-    function renderRegistro($categorias, $mensaje = ""){
-
-        $this->smarty->assign('BASE_URL', BASE_URL);
+    function renderRegistro($mensaje = ""){
         $this->smarty->assign('mensaje', $mensaje);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('registro.tpl');
     }
 
-    function renderUsersAdmin($categorias,$users){
-
-        $this->smarty->assign('BASE_URL', BASE_URL);
+    function renderUsersAdmin($users){
         $this->smarty->assign('users', $users);
-        $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('controlUsersAdmin.tpl');
     }
     

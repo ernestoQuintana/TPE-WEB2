@@ -11,8 +11,7 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
 
         parent::__construct(); // con esto termina de implementar el apicontrollers
         $this->model = new ModelComentarios();
-        $this->view = new ApiViewProducto();
-        
+        $this->view = new ApiViewProducto();   
     }
 
     function showComentarioPorProducto($params = null){

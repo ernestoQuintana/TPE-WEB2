@@ -18,9 +18,10 @@ class UsersControllers
     function __construct()
     {
 
-        $this->viewAdmin = new ViewAdmin();
-        $this->modelAdmin = new ModelAdmin();
         $this->modelCategoria = new ModelCategoria();
+        $this->categorias = $this->modelCategoria->getAllCategorias();
+        $this->viewAdmin = new ViewAdmin($this->categorias);
+        $this->modelAdmin = new ModelAdmin();
         $this->helper = new helper();
     }
 
@@ -31,14 +32,12 @@ class UsersControllers
             $nombre = $_SESSION["nombre"];
             $user = $this->modelAdmin->getAdmin($nombre);
             if ($user->permiso == 1) {
-                $categorias = $this->modelCategoria->getAllCategorias();
-                $this->viewAdmin->renderAdmin($categorias);
+
+                $this->viewAdmin->renderAdmin();
             }
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->viewAdmin->renderViewAdmin($categorias);
+            $this->viewAdmin->renderViewAdmin();
         } else {
-            $categorias = $this->modelCategoria->getAllCategorias();
-            $this->viewAdmin->renderViewAdmin($categorias);
+            $this->viewAdmin->renderViewAdmin();
         }
     }
 
@@ -56,8 +55,6 @@ class UsersControllers
             $password = $_POST['input_passwordAdmin'];
         }
 
-        $categorias = $this->modelCategoria->getAllCategorias();
-
         $adminDB =  $this->modelAdmin->getAdmin($nombre);
 
         if (isset($adminDB) && $adminDB) {
@@ -70,16 +67,16 @@ class UsersControllers
                 $nombre = $_SESSION["nombre"];
                 $user = $this->modelAdmin->getAdmin($nombre);
                 if ($user->permiso == 1) {
-                    $this->viewAdmin->renderAdmin($categorias);
+                    $this->viewAdmin->renderAdmin();
                 }
-                $this->viewAdmin->renderIndex($categorias);
+                $this->viewAdmin->renderIndex();
             } else {
                 $mensaje = "PASSWORD INCORRECTO";
-                $this->viewAdmin->renderViewAdmin($categorias, $mensaje);
+                $this->viewAdmin->renderViewAdmin($mensaje);
             }
         } else {
             $mensaje = "NO EXISTE EL USUARIO";
-            $this->viewAdmin->renderViewAdmin($categorias, $mensaje);
+            $this->viewAdmin->renderViewAdmin($mensaje);
         }
     }
 
@@ -87,8 +84,7 @@ class UsersControllers
 
     function showRegistro()
     {
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->viewAdmin->renderRegistro($categorias);
+        $this->viewAdmin->renderRegistro();
     }
 
     function agregarUsuario()
@@ -104,26 +100,24 @@ class UsersControllers
         }
 
         $passEncrypt = password_hash($password, PASSWORD_DEFAULT); //encriptamos el password ingresado
-        $categorias = $this->modelCategoria->getAllCategorias();
 
         if ($password === $confirm) {
             $this->modelAdmin->insertUser($nombre, $passEncrypt, $email);
             $this->iniciarSesionAuto($nombre);
         } else {
             $mensaje = 'Las contraseñas no coinciden';
-            $this->viewAdmin->renderRegistro($categorias, $mensaje);
+            $this->viewAdmin->renderRegistro($mensaje);
         }
     }
 
     function iniciarSesionAuto($nombre)
     {
-        $categorias = $this->modelCategoria->getAllCategorias();
         $userDB =  $this->modelAdmin->getAdmin($nombre);
         if (isset($userDB) && $userDB) {
             session_start();
             $_SESSION["nombre"] = $userDB->nombre_administrador;
             $_SESSION['LAST_ACTIVITY'] = time();
-            $this->viewAdmin->renderIndex($categorias);
+            $this->viewAdmin->renderIndex();
         }
     }
 
@@ -133,9 +127,8 @@ class UsersControllers
     { 
         $user = $this->helper->checkLogin();
         if($user->permiso ==1){
-            $categorias = $this->modelCategoria->getAllCategorias();
             $users = $this->modelAdmin->getAllUsers();
-            $this->viewAdmin->renderUsersAdmin($categorias, $users);
+            $this->viewAdmin->renderUsersAdmin($users);
         }
     }
 
