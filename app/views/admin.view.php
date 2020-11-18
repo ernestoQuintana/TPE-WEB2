@@ -33,13 +33,6 @@ class ViewAdmin
         $this->smarty->display('administrador.tpl');
     }
 
-    function renderViewUser($categorias , $mensaje = ""){
-
-        $this->smarty->assign('BASE_URL', BASE_URL);
-        $this->smarty->assign('categorias', $categorias);
-        $this->smarty->assign('mensaje', $mensaje);
-        $this->smarty->display('loginUsuario.tpl');
-    }
     function renderRegistro($categorias, $mensaje = ""){
 
         $this->smarty->assign('BASE_URL', BASE_URL);

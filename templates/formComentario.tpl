@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <h1 class="comentarioUser"> Comentario</h1>
-        <form action="agregarComentario" method="POST">
+        <form id="formComentario" action="agregarComentario" method="POST">
             <div class="form-group">
                 <label for="title">Titulo</label>
                 <input class="form-control" id="title" name="input_titleComentario" aria-describedby="emailHelp" required>

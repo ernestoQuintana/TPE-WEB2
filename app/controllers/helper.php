@@ -22,7 +22,7 @@ class helper {
             }
             $_SESSION['LAST_ACTIVITY'] = time();
         }
-        $nombre= $_SESSION['nombre'];
+        $nombre = $_SESSION['nombre'];
         $user = $this->model->getAdmin($nombre);
         return $user;
     }

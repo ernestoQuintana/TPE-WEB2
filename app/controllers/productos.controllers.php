@@ -190,7 +190,7 @@ class ProductosControllers
 
     function showDetalleProducto($params = null)
     {
-        $user = $this->helper->checkLogin();
+        $user = $this->helper->checkLogin(); //revisar!!!
         $id = $params[':ID'];
         $producto = $this->modelProducto->getDetalleProducto($id);
         $categorias = $this->modelCategoria->getAllCategorias();

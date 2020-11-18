@@ -1,4 +1,5 @@
 {include file='header.tpl'}
+
 <div class="container">
     <ul class='detalleProducto list-group mt-5'>
         <li class='list-group-item'>
@@ -13,19 +14,21 @@
     </div>
 </div>
 
-    <div class="mensajeLogin">
-        <h3>Para ver los comentarios logueate <a href='loginUsuario'>Login</a></h3>
+<div class="mensajeLogin">
+        <h3>Para agregar comentarios logueate <a href='login'>Login</a></h3>
     </div>
 
-{if {$users->permiso} === 0}
-    <div id="formComentarios">
-        {include file="formComentario.tpl"}
-    </div>
+{if $users->permiso === 0}
     <div id="listaComentarios">
-        {include file="vue/comentarios.vue"}
+      <p> entro </p>
+  <!--  {include file="vue/listaComentarios.vue"} -->
     </div>
-{elseif {$users->permiso} === 1}
-    {include file="vue/comentariosAdmin.vue"}
+{elseif $users->permiso === 1}
+    <div id="cajaFormComentarios">
+         <p>entro ADMIN </p>
+      <!--  {include file="formComentario.tpl"} -->
+    </div>
+    <!--{include file="vue/comentariosAdmin.vue"} -->
 {/if}
 
 </div>

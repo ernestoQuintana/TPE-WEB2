@@ -46,11 +46,7 @@ $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleP
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
 
-//rutas de usuario registrado
-$r->addRoute("loginUsuario", "GET", "UsersControllers", "loginUsuario");
-$r->addRoute("usuario", "POST", "UsersControllers", "verificarUsuario");
-
-
+//ruta por default
 $r->setDefaultRoute("ProductosControllers", "showIndex");
 
 //run
