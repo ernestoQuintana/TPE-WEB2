@@ -12,7 +12,8 @@ class helper {
     function checkLogin()
     {
         session_start();
-        if (!isset($_SESSION['nombre'])) { //si no hay una sesion iniciada anda a login
+        if (!isset($_SESSION['nombre'])) {
+             //si no hay una sesion iniciada anda a login
             header("Location: " . LOGIN);
             die();
         } else {

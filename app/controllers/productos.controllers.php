@@ -2,6 +2,7 @@
 
 require_once 'app\views\productos.view.php';
 require_once 'app\models\categorias.model.php';
+require_once 'app\models\admin.model.php';
 require_once 'app\models\productos.model.php';
 require_once 'app\controllers\admin.controllers.php';
 require_once 'app\controllers\helper.php';
@@ -12,6 +13,7 @@ class ProductosControllers
 
     private $modelProducto;
     private $modelCategoria;
+    private $modelAdmin;
     private $view;
     private $helper;
 
@@ -19,6 +21,7 @@ class ProductosControllers
     {
         $this->modelProducto = new ModelProducto();
         $this->modelCategoria = new ModelCategoria();
+        $this->modelAdmin = new ModelAdmin();
         $this->view = new ViewProducto();
         $this->helper = new helper();
     }
@@ -190,12 +193,19 @@ class ProductosControllers
 
     function showDetalleProducto($params = null)
     {
-        $user = $this->helper->checkLogin(); //revisar!!!
-        $id = $params[':ID'];
-        $producto = $this->modelProducto->getDetalleProducto($id);
-        $categorias = $this->modelCategoria->getAllCategorias();
-        $this->view->renderDetalleProducto($producto, $categorias,$user);
-     
+        session_start();
+            $id = $params[':ID'];
+           $producto = $this->modelProducto->getDetalleProducto($id);
+            $categorias = $this->modelCategoria->getAllCategorias();
+        if(!isset($_SESSION['nombre'])){
+            $user = null;    
+            $this->view->renderDetalleProducto($producto, $categorias,$user);
+        } else {
+            $nombre = $_SESSION['nombre'];
+            $user = $this->modelAdmin->getAdmin($nombre);
+            //var_dump($user);
+            $this->view->renderDetalleProducto($producto, $categorias,$user);
+        } 
     }
 
     function showProductosByCategoria($params = null)

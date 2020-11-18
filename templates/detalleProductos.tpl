@@ -12,23 +12,25 @@
     <a class='btnVolver' href='productos/'><i class="fas fa-backward"> Volver</i></a>
     <div class="claseComentario" id="cajaComentario">
     </div>
+    <div> 
+  
+    </div>
 </div>
 
 <div class="mensajeLogin">
         <h3>Para agregar comentarios logueate <a href='login'>Login</a></h3>
     </div>
 
-{if $users->permiso === 0}
-    <div id="listaComentarios">
+{if $user->permiso === '0'}
+    <div>
       <p> entro </p>
-  <!--  {include file="vue/listaComentarios.vue"} -->
+
     </div>
-{elseif $users->permiso === 1}
-    <div id="cajaFormComentarios">
+{elseif $user->permiso === '1'}
+    <div >
          <p>entro ADMIN </p>
-      <!--  {include file="formComentario.tpl"} -->
     </div>
-    <!--{include file="vue/comentariosAdmin.vue"} -->
+
 {/if}
 
 </div>

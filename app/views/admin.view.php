@@ -48,6 +48,7 @@ class ViewAdmin
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->display('controlUsersAdmin.tpl');
     }
+    
     function ShowUsuarioLocation()
     {
         header("Location: " . BASE_URL . "allUsers");

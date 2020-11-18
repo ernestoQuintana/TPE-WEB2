@@ -34,11 +34,14 @@
         $query->execute([$id]);
 
     }
-/*
-    function permisoUsuarioID($id){
-        $query = $this->dbAdministrador->prepare('INSERT INTO administrador.permisos FROM administrador WHERE id = ?');
+    function getAdminID($id){
+        $query = $this->dbAdministrador->prepare('SELECT * FROM administrador WHERE id = ?');
         $query->execute([$id]);
         $adminDB = $query->fetch(PDO::FETCH_OBJ);
         return $adminDB;
-    }*/
+    }
+    function modificarPermiso($permiso ,$id){
+        $query = $this->dbAdministrador->prepare('UPDATE `administrador` SET `permiso`= ? WHERE `id`= ?');
+        $query->execute([$permiso ,$id]);
+    }
  }

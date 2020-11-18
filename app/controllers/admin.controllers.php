@@ -131,11 +131,12 @@ class UsersControllers
 
     function showUsersAdmin()
     { 
-            $this->helper->checkLogin();
+        $user = $this->helper->checkLogin();
+        if($user->permiso ==1){
             $categorias = $this->modelCategoria->getAllCategorias();
             $users = $this->modelAdmin->getAllUsers();
             $this->viewAdmin->renderUsersAdmin($categorias, $users);
-      
+        }
     }
 
     function eliminarUsuario($params = null)
@@ -145,4 +146,18 @@ class UsersControllers
         $this->viewAdmin->ShowUsuarioLocation();
     }
 
+    function permisoUsuario($params = null){
+            $id = $params[':ID'];
+            $userId = $this->modelAdmin->getAdminID($id);
+            if($userId->permiso == 0){
+                $permiso = 1;
+                $this->modelAdmin->modificarPermiso($permiso ,$id);
+            
+            }else{
+                $permiso = 0;
+                $this->modelAdmin->modificarPermiso($permiso ,$id);
+            }
+            $this->viewAdmin->ShowUsuarioLocation();
+        
+    }
 }
