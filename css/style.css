@@ -51,6 +51,10 @@ body {
   justify-content: flex-end;
   color: #fff;
 }
+
+.loginUser{
+  display: none;
+}
 /********************* MAIN HOME **********************/
 .container {
   margin: 2em;

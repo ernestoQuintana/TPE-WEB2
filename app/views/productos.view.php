@@ -15,7 +15,6 @@ class ViewProducto
 
     // PRODUCTOS
 
-    //pasar como templated de smarty y adentro del administrador incluir el header y footer
     function renderAdmin()
     {
         $this->smarty->display('administrador.tpl');
@@ -74,7 +73,7 @@ class ViewProducto
 
     function renderProductos($productos)
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
+     
         $this->smarty->assign('productos', $productos);
         $this->smarty->display('allProductos.tpl');
     }
@@ -88,7 +87,6 @@ class ViewProducto
 
     function renderCategoriasUsuario()
     {
-        $this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty->display('allCategorias.tpl');
     }
 

@@ -55,8 +55,9 @@ class ProductosControllers
         $user = $this->helper->checkLogin();
         if($user->permiso ==1){
             $this->view->renderCategoriasAdmin();
+        }else{
+            $this->view->ShowHomeLocationUsuario();
         }
-        $this->view->ShowHomeLocationUsuario();
 
     }
 

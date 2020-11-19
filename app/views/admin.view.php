@@ -8,7 +8,6 @@ class ViewAdmin
 
     function __construct($categorias)
     {
-        //$this->smarty->assign('BASE_URL', BASE_URL);
         $this->smarty = new Smarty();
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('BASE_URL', BASE_URL);
