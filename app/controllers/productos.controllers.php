@@ -21,10 +21,11 @@ class ProductosControllers
     {
         $this->modelProducto = new ModelProducto();
         $this->modelCategoria = new ModelCategoria();
+        $this->helper = new helper();
         $this->categorias = $this->modelCategoria->getAllCategorias();
+      //  $this->user = $this->helper->checkLogin();
         $this->modelAdmin = new ModelAdmin();
         $this->view = new ViewProducto($this->categorias);
-        $this->helper = new helper();
     }
 
 
@@ -34,7 +35,7 @@ class ProductosControllers
     //FUNCIONES DE LOS PRODUCTOS
 
 
-    function showIndex()
+    function showIndex($user)
     {
         $this->view->renderIndex();
     }

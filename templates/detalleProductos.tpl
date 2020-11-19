@@ -10,27 +10,21 @@
         </li>
     </ul>
     <a class='btnVolver' href='productos/'><i class="fas fa-backward"> Volver</i></a>
-    <div class="claseComentario" id="cajaComentario">
-    </div>
-    <div> 
-  
-    </div>
 </div>
 
-<div class="mensajeLogin">
+
+{if $user != null}
+    {if $user->permiso === '0'}
+        {include file="formComentario.tpl"}
+        <div id="listaComentario"></div>
+    {elseif $user->permiso === '1'}
+        <div id="listaComentarioAdmin">asd</div>
+    {/if}
+{else}
+    <div class="mensajeLogin">
         <h3>Para agregar comentarios logueate <a href='login'>Login</a></h3>
     </div>
-
-{if $user->permiso === '0'}
-    <div>
-      <p> entro </p>
-
-    </div>
-{elseif $user->permiso === '1'}
-    <div >
-         <p>entro ADMIN </p>
-    </div>
-
+    <div id="listaComentario"></div>
 {/if}
 
 </div>

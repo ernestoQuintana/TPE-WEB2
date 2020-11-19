@@ -7,14 +7,15 @@
     <base href="{BASE_URL}">
     <link rel="stylesheet" href="css\style.css">
     <script src="https://kit.fontawesome.com/c178af35d7.js" crossorigin="anonymous"></script>
-    <script src="js\login.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    {* <script type="text/javascript" src="../js/comentarios.js"></script> *}
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Productos</title>
 </head>
 
 <body>
-<header>
+    <header>
         <nav class="navBar">
             <img src="img\crema.png" class="imgCremas" alt="crema natural">
             <div>
@@ -30,12 +31,21 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="allCategoriasUsuario">Todas las Categorias</a>
-                    {foreach $categorias as $categoria}
-                        <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
-                    {/foreach}
+                        {foreach $categorias as $categoria}
+                            <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
+                        {/foreach}
                     </div>
                     <a class="navbar-brand" href="registro">Registrate</a>
                     <a class="admin" id="loginJs" href="login">Ingresá</a>
+                    {* {if $user != null}
+                    {else}
+                        <div class="loginUser" id="loginUserJs">
+                            Bienvenido <span class="nombreUsuarioSpan">{$user->nombre_administrador}</span>
+                            <div class="btnLogout">
+                                <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
+                            </div>
+                        </div>
+                    {/if} *}
                 </div>
             </div>
             <div class="iconosRedesNav">
@@ -46,11 +56,7 @@
                 <a href="#"><i class="iconosNav fab fa-vk"></i></a>
                 <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
             </div>
-{* 
-            <div class="loginUser" id="loginUserJs">
-             Bienvenido <span class="nombreUsuarioSpan">{$user->nombre_administrador}</span> 
-             <button id="btnLogOut">LogOut</button>
-            </div> *}
+
         </nav>
-</header>
-<main>
+    </header>
+    <main>

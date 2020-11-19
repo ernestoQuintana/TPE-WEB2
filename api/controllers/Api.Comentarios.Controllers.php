@@ -32,14 +32,15 @@ class ApiComentariosController extends ApiControllers { //hereda e implementa to
 
     function insertComentario($params = null){
     
-       //$idUsuario = $params[':ID'];
+        $idUsuario = $params[':ID'];
         $body = $this->getData();
-        $idComentario = $this->model->insertarComentario($body->titulo,$body->texto,$body->puntuacion,$body->id_usuario,$body->id_producto);
-        if(!empty($idComentario)){// verifica si la tarea existe
-            $this->view->response($this->model->getComentarioId($idComentario), 201);
-        }else{
-            $this->view->response("La tarea no se pudo insertar", 404);
-        }
+        var_dump($body);
+         $idComentario = $this->model->insertarComentario($body->titulo,$body->texto,$body->puntuacion,$idUsuario,$body->id_producto);
+         if(!empty($idComentario)){// verifica si la tarea existe
+         $this->view->response($this->model->getComentarioId($idComentario), 201);
+         }else{
+             $this->view->response("La tarea no se pudo insertar", 404);
+         }
     }
 
     function getComentario($params = null){

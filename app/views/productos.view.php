@@ -10,6 +10,7 @@ class ViewProducto
     {
         $this->smarty = new Smarty();
         $this->smarty->assign('categorias', $categorias);
+    //    $this->smarty->assign('user', $user);
         $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
@@ -78,7 +79,7 @@ class ViewProducto
         $this->smarty->display('allProductos.tpl');
     }
 
-    function renderDetalleProducto($producto, $user)
+    function renderDetalleProducto($producto,$user)
     {
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('user', $user);

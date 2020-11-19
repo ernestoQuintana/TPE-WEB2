@@ -1,44 +1,118 @@
-/*"use strict"
-
-document.addEventListener('DOMContentLoaded',() => {
-    getComentario();
+document.addEventListener('DOMContentLoaded', () => {
+    "use strict"
+  
     document.querySelector('#formComentario').addEventListener('submit', e => {
         e.preventDefault();//evita el envio del formulario
 
-        addComentario();
+        getComentarioAdmin();
+
+
+
+        document.querySelector('#btnAgregarComentario').addEventListener('click',agregarFila);
     })
 });
 
 
+const baseURL = 'api/comentarios';
+const listaComentarios = document.querySelector('#listaComentario');
+const listaComentariosAdmin = document.querySelector('#listaComentarioAdmin');
 
 
-    function getComentario(){
-        fetch('api/comentarios')
-            .then(response => response.json())
-            .then(comentarios => render(comentarios))
-            .catch(error => console.log(error));
-    }
+// TRAER COMENTARIOS ADMIN
 
-    function addComentario(){
-
-        fetch('api/comentarios',{
-            method: 'POST',
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(comentario)
-        })
+function getComentarioAdmin() {
+    fetch('productos/:ID/comentario')
         .then(response => response.json())
-        .then(comentario => console.log(comentario))
+        .then(comentarios => renderAdmin(comentarios))
         .catch(error => console.log(error));
+}
+
+function renderAdmin(comentarios) {
+
+    for (let comentario of comentarios) {
+
+        let idComentario = comentario.id;
+        let ul = document.createElement('ul');
+        let li = document.createElement('li').innerHTML = comentario;
+        let btnBorrar = document.createElement('button');
+
+
+        btnBorrar.innerHTML = '<i class="fa fa-trash" aria-hidden="true"></i>';
+        botonBorrar.addEventListener("click", function () {
+            borrar(idComentario);
+        });
+
+        li.appendChild(btnBorrar);
+        ul.appendChild(li);
+        listaComentarios.appendChild(ul);
     }
-/*
-    function render(comentarios){
 
-        const comentario = document.querySelector('#cajaComentario');
+}
 
-        for (let comentario of comentarios){
-            comentario.innerHTML += '<li> ${comentario.titulo} - ${comentario.texto}</li>';
+//TRAER COMENTARIOS USUARIOS
+
+function getComentarioUsuario() {
+    fetch(baseURL)
+        .then(response => response.json())
+        .then(comentarios => renderUsuario(comentarios))
+        .catch(error => console.log(error));
+}
+function renderUsuario(comentarios) {
+
+    for (let comentario of comentarios) {
+
+        let idComentario = comentario.id;
+        let ul = document.createElement('ul');
+        let li = document.createElement('li').innerHTML = comentario;
+        ul.appendChild(li);
+        listaComentarios.appendChild(ul);
+    }
+
+}
+
+// agregar Fila A la APi
+function agregarFila() {
+
+    let comentario = {
+        "thing":
+        {
+            "titulo": document.querySelector("#tituloComentario").value,
+            "descripcion": document.querySelector("#descriptionComentario").value,
+            "puntaje": document.querySelector("#puntajeComentario").value,
         }
+    };
+    fetch(baseURL, {
+        "method": "POST",
+        "headers": { "Content-Type": "application/json" },
+        "body": JSON.stringify(comentario)
+    }).then(function (r) {
+        return r.json()
+    }).then(function (json) {
+        //console.log(json);
+        getComentarioUsuario();
+        vaciarInput();
+    }).catch(function (e) {
+        console.log(e)
+    })
+}
 
-    }
-*/
-   
+function vaciarInput(){
+    document.querySelector("#tituloComentario").value = "";
+    document.querySelector("#descriptionComentario").value = "";
+    document.querySelector("#puntajeComentario").value = "";
+}
+
+
+
+function borrar(idComentario) {
+    fetch('api/comentarios/' + idComentario, {
+        "method": "DELETE",
+        "headers": { "Content-Type": "application/json" },
+    }).then(response => response.json())
+        .then(function (json) {
+            getComentario();
+        }).catch(function (e) {
+            console.log(e);
+        })
+}
+

@@ -7,17 +7,16 @@
         <form id="formComentario" action="agregarComentario" method="POST">
             <div class="form-group">
                 <label for="title">Titulo</label>
-                <input class="form-control" id="title" name="input_titleComentario" aria-describedby="emailHelp" required>
+                <input class="form-control" id="tituloComentario" name="input_titleComentario" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
                 <label for="description">Comentario</label>
-                <textarea class="form-control" name="input_comentario" id="description" required> </textarea>
+                <textarea class="form-control" name="input_comentario" id="descriptionComentario" required> </textarea>
             </div>
             <div class="form-group">
-                <label for="priority">Puntaje</label>
-                 <!--Agregar un select de puntaje -->
-                <input class="form-control" name="input_puntaje" id="precio" required>
+                <label for="priority">Puntaje</label> 
+                <input type="number" min="1" max="5" class="form-control" name="input_puntaje" id="puntajeComentario" required>
             </div>
-            <button type="submit" class="btn btn-primary">Agregar Comentario</button>
+            <button type="submit" id="btnAgregarComentario" class="btn btn-primary">Agregar Comentario</button>
         </form>
     </div>

@@ -10,7 +10,7 @@ class ModelComentarios{
 
 
     function getComentariosPorProducto($idProducto){
-        $comentario =  $this->dbComentarios->prepare('SELECT comentario.texto, comentario.puntuacion FROM comentario INNER JOIN producto 
+        $comentario =  $this->dbComentarios->prepare('SELECT comentario.titulo , comentario.texto, comentario.puntuacion FROM comentario INNER JOIN producto 
         ON producto.id = comentario.id_producto WHERE producto.id = ?');
         $comentario->execute([$idProducto]);
         return $comentario->fetchAll(PDO::FETCH_OBJ);
@@ -23,9 +23,9 @@ class ModelComentarios{
     }
 
 
-    function insertarComentario($titulo,$texto,$puntuacion,$id_usuario,$id_producto){
+    function insertarComentario($titulo,$texto,$puntuacion,$idUsuario,$idProducto){
         $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion,id_usuario,id_producto) VALUES(?,?,?,?,?)');
-        $comentario->execute([$titulo,$texto,$puntuacion,$id_usuario,$id_producto]);
+        $comentario->execute([$titulo,$texto,$puntuacion,$idUsuario,$idProducto]);
         return $this->dbComentarios->lastInsertId();//Trae el ultimo id que toco.
     }
     function getComentarioId($idComentario){
