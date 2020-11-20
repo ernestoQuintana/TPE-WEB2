@@ -1,7 +1,7 @@
 <?php
 require_once 'RouterClass.php';
-require_once './api/controllers/Api.Comentarios.Controllers.php';
-//require_once 'api\controllers\Api.Controllers.php';
+require_once './api\controllers\Api.Comentarios.Controllers.php';
+
 
 // instacio el router
 $router = new Router();

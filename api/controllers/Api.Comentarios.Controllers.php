@@ -20,7 +20,6 @@ class ApiComentariosController extends ApiControllers
     {
         $id = $params[':ID'];
         $comentarios = $this->model->getComentariosPorProducto($id);
-        var_dump($comentarios);
         $this->view->response($comentarios, 200);
     }
 

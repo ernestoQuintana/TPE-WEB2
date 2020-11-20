@@ -6,16 +6,16 @@
         <h1 class="comentarioUser"> Comentario</h1>
         <form id="formComentario" action="agregarComentario" method="POST">
             <div class="form-group">
-                <label for="title">Titulo</label>
-                <input class="form-control" id="tituloComentario" name="input_titleComentario" aria-describedby="emailHelp" required>
+                <input class="form-control" id="tituloComentario" name="input_titleComentario" 
+                 placeholder="titulo" aria-describedby="emailHelp" required>
             </div>
             <div class="form-group">
-                <label for="description">Comentario</label>
-                <textarea class="form-control" name="input_comentario" id="descriptionComentario" required> </textarea>
+                <input type="text" class="form-control" name="input_comentario" id="descriptionComentario"
+                placeholder="Dejá un comentario..." required>
             </div>
             <div class="form-group">
-                <label for="priority">Puntaje</label> 
-                <input type="number" min="1" max="5" class="form-control" name="input_puntaje" id="puntajeComentario" required>
+                <input type="number" min="1" max="5" class="form-control" name="input_puntaje" 
+                placeholder="Puntua el item" id="puntajeComentario" required>
             </div>
             <button type="submit" id="btnAgregarComentario" class="btn btn-primary">Agregar Comentario</button>
         </form>
