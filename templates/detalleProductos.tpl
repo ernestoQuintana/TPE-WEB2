@@ -21,7 +21,7 @@
         <h3>Para agregar comentarios logueate <a href='login'>Login</a></h3>
     </div>
 {/if}
-<div class="cargando"></div>
+<div id="cargando"></div>
 <div id="listaComentario"></div>
 
 </div>

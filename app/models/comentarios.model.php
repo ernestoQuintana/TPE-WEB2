@@ -10,7 +10,7 @@ class ModelComentarios{
 
 
     function getComentariosPorProducto($idProducto){
-        $comentario =  $this->dbComentarios->prepare('SELECT comentario.titulo , comentario.texto, comentario.puntuacion FROM comentario INNER JOIN producto 
+        $comentario =  $this->dbComentarios->prepare('SELECT comentario.id_comentario, comentario.titulo , comentario.texto, comentario.puntuacion, comentario.id_usuario FROM comentario INNER JOIN producto 
         ON producto.id = comentario.id_producto WHERE producto.id = ?');
         $comentario->execute([$idProducto]);
         return $comentario->fetchAll(PDO::FETCH_OBJ);

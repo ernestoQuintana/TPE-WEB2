@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="{BASE_URL}">
     <link rel="stylesheet" href="css\style.css">
-    <script src="https://kit.fontawesome.com/c178af35d7.js" crossorigin="anonymous"></script>
+    {* <script src="https://kit.fontawesome.com/c178af35d7.js" crossorigin="anonymous"></script> *}
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script type="text/javascript" src="./js/comentarios.js"></script>
     <!-- Bootstrap CSS -->
