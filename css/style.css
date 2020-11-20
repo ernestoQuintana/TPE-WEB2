@@ -2,7 +2,11 @@
   padding: 0;
   margin: 0;
 }
-/**************** NAV ********************/
+
+/****************************************************/
+/********************* NAVEGADOR ********************/
+/****************************************************/
+
 body {
   width: 100%;
 }
@@ -52,16 +56,21 @@ body {
   color: #fff;
 }
 
-.loginUser{
+.loginUser {
   color: #fff;
   display: none;
 }
-/********************* MAIN HOME **********************/
+
+/****************************************************/
+/*********************** HOME ***********************/
+/****************************************************/
+
 .container {
   margin: 2em;
 }
 .listaProductos,
-.listaCategorias, .listaUsuarios {
+.listaCategorias,
+.listaUsuarios {
   font-weight: bold;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   margin: 3rem 0 5rem;
@@ -88,7 +97,8 @@ body {
 }
 
 .listaProductoView,
-.listaCategoriasView,.listaUsuarioView {
+.listaCategoriasView,
+.listaUsuarioView {
   position: relative;
   display: flex;
   padding: 0.75rem 1.25rem;
@@ -118,7 +128,11 @@ body {
   background-color: rgb(128, 224, 90);
   color: aliceblue;
 }
-/****************** ADMINISTRADOR *********************/
+
+/****************************************************/
+/****************** ADMINISTRADOR *******************/
+/****************************************************/
+
 .selecAdmin {
   display: flex;
 }
@@ -145,18 +159,18 @@ body {
   border-radius: 0 0 3% 3%;
 }
 
-.loginDiv{
+.loginDiv {
   text-align: center;
   justify-content: center;
 }
 
-.tituloIngresar{
+.tituloIngresar {
   margin: 2em 0 1.5em;
 }
 
-.loginDiv .form-group{
+.loginDiv .form-group {
   width: 50%;
-  margin: 0 25%;  
+  margin: 0 25%;
 }
 
 .btnLogout {
@@ -165,13 +179,16 @@ body {
   font-size: 30px;
   margin: 20px 30px 0 0;
 }
-.fas{
-  color: rgb(204, 87, 32); 
+.fas {
+  color: rgb(204, 87, 32);
 }
-.fas:hover{
+.fas:hover {
   color: rgb(206, 22, 22);
 }
-/********************* USUARIO ************************/
+
+/****************************************************/
+/********************* USUARIOS *********************/
+/****************************************************/
 
 .cajaHome {
   background-image: url("../img/Slider-OrganicShop.jpg");
@@ -180,7 +197,6 @@ body {
   border-radius: 0 0 60% 60%;
   background-position: center;
   align-items: center;
-
 }
 .home {
   display: flex;
@@ -255,20 +271,25 @@ section .franjaAzul {
 .fa-telegram:hover {
   color: rgb(9, 32, 163);
 }
-/************* REGISTRO DE USUARIO *************/
+/****************************************************/
+/******************** REGISTRO **********************/
+/****************************************************/
 
-.registroUsuario{
+.registroUsuario {
   text-align: center;
   justify-content: center;
 }
-.tituloRegistrar{
+.tituloRegistrar {
   margin: 2em 0 1.5em;
 }
-.registroUsuario .form-group{
+.registroUsuario .form-group {
   width: 50%;
-  margin: 0 25%;  
+  margin: 0 25%;
 }
-.registroUsuario input[type="text"], input[type="password"] ,input[type="email"] , .loginDiv input[type="text"]{
+.registroUsuario input[type="text"],
+input[type="password"],
+input[type="email"],
+.loginDiv input[type="text"] {
   outline: none;
   padding: 25px;
   display: block;
@@ -277,18 +298,19 @@ section .franjaAzul {
   margin: 25px auto;
 }
 
-
-/************* ALLPRODUCTOS **************/
+/****************************************************/
+/******************** PRODUCTOS *********************/
+/****************************************************/
 
 .tituloTablaProductos,
-.tituloTablaCategoria{
+.tituloTablaCategoria {
   display: flex;
   justify-content: center;
   margin: 3rem 0;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 .tituloTablaProductos h1,
-.tituloTablaCategoria h1{
+.tituloTablaCategoria h1 {
   font-size: 3rem;
 }
 
@@ -332,8 +354,23 @@ thead {
 .btnVolver {
   font-size: 25px;
 }
+/****************************************************/
+/******************* COMENTARIOS ********************/
+/****************************************************/
+.listaCajasComentario{
+  list-style: none;
+}
+.cajaComentario {
+  padding: 1em 2em;
+  box-shadow: 0.5px 0.2px 1.5px black;
+}
+.mensajeLogin{
+  text-align: center;
+}
 
-/****************** FOOTER *******************/
+/****************************************************/
+/********************** FOOTER **********************/
+/****************************************************/
 footer {
   background-image: url("../img/fondo.jpg");
   background-size: cover;

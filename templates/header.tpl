@@ -37,14 +37,14 @@
                     </div>
                     <a class="navbar-brand" href="registro">Registrate</a>
                     <a class="admin" id="loginJs" href="login">Ingresá</a>
-                  
-                        <div class="loginUser" id="loginUserJs">
-                            <p id="nombreUser"></p>
-                            <div class="btnLogout">
-                                <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-                            </div>
+
+                    {* <div class="loginUser" id="loginUserJs">
+                        <p id="nombreUser"></p>
+                        <div class="btnLogout">
+                            <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
                         </div>
-                  
+                    </div> *}
+
                 </div>
             </div>
             <div class="iconosRedesNav">
