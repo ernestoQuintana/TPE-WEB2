@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css\style.css">
     <script src="https://kit.fontawesome.com/c178af35d7.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    {* <script type="text/javascript" src="../js/comentarios.js"></script> *}
+    <script type="text/javascript" src="./js/comentarios.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <title>Productos</title>
@@ -37,15 +37,14 @@
                     </div>
                     <a class="navbar-brand" href="registro">Registrate</a>
                     <a class="admin" id="loginJs" href="login">Ingresá</a>
-                    {* {if $user != null}
-                    {else}
+                  
                         <div class="loginUser" id="loginUserJs">
-                            Bienvenido <span class="nombreUsuarioSpan">{$user->nombre_administrador}</span>
+                            <p id="nombreUser"></p>
                             <div class="btnLogout">
                                 <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
                             </div>
                         </div>
-                    {/if} *}
+                  
                 </div>
             </div>
             <div class="iconosRedesNav">

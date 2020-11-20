@@ -54,7 +54,7 @@ body {
 
 .loginUser{
   color: #fff;
-
+  display: none;
 }
 /********************* MAIN HOME **********************/
 .container {
