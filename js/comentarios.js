@@ -3,20 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const baseURL = 'api/comentarios';
     const contenedor = document.querySelector('#listaComentario');
+    let id_producto = contenedor.dataset.producto;
+    console.log(id_producto);
+    let permiso = contenedor.dataset.permiso;
     const div = document.querySelector("#cargando");
-   // let datos = [];
-    
-    document.querySelector('#formComentario').addEventListener('submit', e => {
-        e.preventDefault();//evita el envio del formulario
-        agregarFila();        
-    })
-    
+
+  
     /*********************************************************************/
     /************************* TRAER COMENTARIOS *************************/
     /*********************************************************************/
-    let id_producto = 3;
-    cargarComentarios(id_producto);
-    
+  
+
+
+    cargarComentarios(id_producto);   
+
     function cargarComentarios(id_producto) {       
         div.innerHTML = "Imprimiendo...";
         fetch('api/productos/'+id_producto+'/comentarios', {
@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
             "titulo": document.querySelector("#tituloComentario").value,
             "texto": document.querySelector("#descriptionComentario").value,
             "puntuacion": document.querySelector("#puntajeComentario").value,//poner paserINT?
-            "id_usuario": 2,  //INVESTIGAR cuando me logue , el api trae el usuario, Json, Guardo en una variable y lo uso aca
-            "id_producto": 3 //obtener datos de la barra del navegador
+            "id_usuario": 2,                                            //INVESTIGAR cuando me logue , el api trae el usuario, Json, Guardo en una variable y lo uso aca
+            "id_producto": 3                                            //obtener datos de la barra del navegador
         };
 
         fetch(baseURL, {
@@ -69,6 +69,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector("#descriptionComentario").value = "";
         document.querySelector("#puntajeComentario").value = "";
     }
+
+    let form = document.querySelector('#formComentario');
+    if(form){
+        form.addEventListener('submit', e => {
+        e.preventDefault();//evita el envio del formulario
+         agregarFila();        
+     })
+    }
+    
+    /*********************************************************************/
+    /*********************** BORRAR COMENTARIOS *************************/
+    /*********************************************************************/
+
     function borrarComentarios(id_comentario,id_producto) {
         // div.innerHTML = "Borrando...";
         console.log('hola');
@@ -84,7 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
         })
 
     }
-
+    
+    /*********************************************************************/
+    /*********************** CREACION DE DIV COMENTARIOS *************************/
+    /*********************************************************************/
     function renderAdmin(json) {
 
         for (let i = 0; i < json.length; i++) {
@@ -105,34 +121,23 @@ document.addEventListener('DOMContentLoaded', () => {
              let li = document.createElement('li');
              li.appendChild(div);
              ul.appendChild(li);
- 
-             let btn = document.createElement("button");
-             btn.innerText = "Eliminar";
-             btn.addEventListener("click" , function(){
-                 borrarComentarios(id_comentario , id_producto);
-             });        
-             btn.classList.add("btnEliminarComentario");
-             li.appendChild(btn);
+            
+             if(permiso == 1){
+                let btn = document.createElement("button");
+                btn.innerText = "Eliminar";
+                btn.addEventListener("click" , function(){
+                     borrarComentarios(id_comentario , id_producto);
+            
+                    });
+                btn.classList.add("btnEliminarComentario");    
+                li.appendChild(btn);
+                }
+
+            
              ul.classList.add("listaCajasComentario")
              contenedor.appendChild(ul);
         }
     }
-    /*********************************************************************/
-    /*********************** ELIMINAR COMENTARIOS ************************/
-    /*********************************************************************/
-    // function borrarPosicion(event) {
-    //     let idComentario = event.target.attributes.id_comentario.value; // esto llama al elemento que dispara el boton que cliceast
-    //     borrarComentarios(idComentario);
-    // }
 
-        // autoActualizar();
-    
-    // function autoActualizar(){
-    //     getApi();
-    //     detener = setInterval(function(){
-    //         getApi();
-    //     }, 15000)
-    // }
-
-    //setInterval(function () { cargarComentarios() }, 10000);
+    setInterval(function () { cargarComentarios(id_producto) }, 30000);
 });

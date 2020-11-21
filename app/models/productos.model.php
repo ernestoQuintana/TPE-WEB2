@@ -33,11 +33,23 @@ class ModelProducto {
         return $productos;
     }
 
-    function insertarProducto($nombre,$descripcion,$precio,$categoria){
-        
-      $query =$this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria) VALUES(?,?,?,?)');
-      $query->execute([$nombre,$descripcion,$precio,$categoria]);
+    function insertarProductoImg($nombre,$descripcion,$precio,$categoria,$imagen = null){
+        $img = null;
+        if($imagen){
+
+            $img = $this->uploadImage($imagen);
+            $query = $this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria,imagen) VALUES(?,?,?,?,?)');
+            $query->execute([$nombre,$descripcion,$precio,$categoria,$img]);
+            return $this->dbProductos->lastInsertId();
+        }
     }
+
+    function uploadImage($imagen){
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($imagen, $target);
+        return $target;
+    }
+
 
     function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
 

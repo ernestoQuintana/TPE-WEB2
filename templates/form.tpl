@@ -4,7 +4,7 @@
     </div>
     <div class="container">
         <h1 class="listaProductos">Lista de Productos</h1>
-        <form action="agregarProducto" method="POST">
+        <form action="agregarProducto" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Nombre</label>
                 <input class="form-control" id="title" name="input_title" aria-describedby="emailHelp" required>
@@ -21,6 +21,7 @@
                 <label for="title">Categoria</label>
                 {include file="listaCategorias.tpl"}
             </div>
+            <input type="file" name="input_name" id="imageToUpload">
             <button type="submit" class="btn btn-primary">Agregar</button>
         </form>
     </div>

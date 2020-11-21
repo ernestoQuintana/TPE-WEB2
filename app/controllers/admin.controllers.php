@@ -34,8 +34,11 @@ class UsersControllers
             if ($user->permiso == 1) {
 
                 $this->viewAdmin->renderAdmin();
+                die();
+            }else{
+                $mensaje = "NO TENES PERMISO DE ADMINISTRADOR";
+                $this->viewAdmin->renderViewAdmin($mensaje);
             }
-            $this->viewAdmin->renderViewAdmin();
         } else {
             $this->viewAdmin->renderViewAdmin();
         }
@@ -68,8 +71,9 @@ class UsersControllers
                 $user = $this->modelAdmin->getAdmin($nombre);
                 if ($user->permiso == 1) {
                     $this->viewAdmin->renderAdmin();
+                }else{
+                    $this->viewAdmin->renderIndex();
                 }
-                $this->viewAdmin->renderIndex();
             } else {
                 $mensaje = "PASSWORD INCORRECTO";
                 $this->viewAdmin->renderViewAdmin($mensaje);

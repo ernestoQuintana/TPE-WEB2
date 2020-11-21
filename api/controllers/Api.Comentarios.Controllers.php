@@ -53,9 +53,4 @@ class ApiComentariosController extends ApiControllers
         $this->view->response($comentario, 200);
     }
 
-    /* function getAllComentarios($params = null){
-        
-        $comentario = $this->model->getComentario();
-        $this->view->response($comentario, 200);
-    }*/
 }

@@ -73,7 +73,12 @@ class ProductosControllers
                 $precio = $_POST['input_precio'];
                 $categoria = $_POST['select_categoria'];
             }
-            $this->modelProducto->insertarProducto($nombre,$descripcion,$precio,$categoria);
+
+        if($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png"){
+             $this->modelProducto->insertarProductoImg($nombre,$descripcion,$precio,$categoria,$_FILES['input_name']['tmp_name']);
+         } else{
+            $this->modelProducto->insertarProductoImg($nombre,$descripcion,$precio,$categoria);
+              }
             $this->view->ShowHomeLocation();
         }else{
             $this->view->ShowHomeLocationUsuario();
