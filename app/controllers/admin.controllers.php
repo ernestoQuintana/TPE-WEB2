@@ -35,7 +35,7 @@ class UsersControllers
 
                 $this->viewAdmin->renderAdmin();
                 die();
-            }else{
+            } else {
                 $mensaje = "NO TENES PERMISO DE ADMINISTRADOR";
                 $this->viewAdmin->renderViewAdmin($mensaje);
             }
@@ -71,7 +71,7 @@ class UsersControllers
                 $user = $this->modelAdmin->getAdmin($nombre);
                 if ($user->permiso == 1) {
                     $this->viewAdmin->renderAdmin();
-                }else{
+                } else {
                     $this->viewAdmin->renderIndex();
                 }
             } else {
@@ -128,33 +128,47 @@ class UsersControllers
     /******************* PERMISOS DEL USUARIO *********************/
 
     function showUsersAdmin()
-    { 
+    {
         $user = $this->helper->checkLogin();
-        if($user->permiso ==1){
+        if ($user->permiso == 1) {
             $users = $this->modelAdmin->getAllUsers();
             $this->viewAdmin->renderUsersAdmin($users);
+        } else {
+            $this->viewAdmin->renderIndex();
         }
     }
 
     function eliminarUsuario($params = null)
-    {
-        $id = $params[':ID'];
-        $this->modelAdmin->eliminarUsuarioID($id);
-        $this->viewAdmin->ShowUsuarioLocation();
-    }
-
-    function permisoUsuario($params = null){
+    {   
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
             $id = $params[':ID'];
+            $this->modelAdmin->eliminarUsuarioID($id);
+            $this->viewAdmin->ShowUsuarioLocation();
+       }else{
+            $this->viewAdmin->renderIndex();
+       }
+}
+
+    function permisoUsuario($params = null)
+    {
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
+
+            $id = $params[':ID'];
+
             $userId = $this->modelAdmin->getAdminID($id);
-            if($userId->permiso == 0){
+
+            if ($userId->permiso == 0) {
                 $permiso = 1;
-                $this->modelAdmin->modificarPermiso($permiso ,$id);
-            
-            }else{
+                $this->modelAdmin->modificarPermiso($permiso, $id);
+            } else {
                 $permiso = 0;
-                $this->modelAdmin->modificarPermiso($permiso ,$id);
+                $this->modelAdmin->modificarPermiso($permiso, $id);
             }
             $this->viewAdmin->ShowUsuarioLocation();
-        
+        }else{
+            $this->viewAdmin->renderIndex();
+        }
     }
 }

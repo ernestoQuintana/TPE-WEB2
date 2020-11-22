@@ -128,6 +128,16 @@ class ProductosControllers
         }
     }
 
+    function eliminarImagen($params = null)
+    {
+        $id = $params[':ID'];
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
+            $this->modelProducto->eliminarImagenID($id);
+            $this->view->ShowHomeLocation();
+        }
+    }
+ 
     //FUNCIONES DE LAS CATEGORIAS
 
     function agregarCategoria()

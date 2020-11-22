@@ -20,7 +20,7 @@
     <a class='btnVolver' href='productos/'><i class="fas fa-backward"> Volver</i></a>
 </div>
 <div id="cargando"></div>
-<div>
+
 {if $user == null}
     <div class="mensajeLogin">
         <p>Para comentar tenes que estar registrado. Si ya tenes una cuenta, ingresá <span><a href='login'>Aquí</a> o Registrate <a href="registro">Aquí</a>.</span></p>
@@ -33,7 +33,7 @@
     <div id="listaComentario" data-permiso="{$user->permiso}" data-producto="{$producto->id}"></div>
 {/if}
 
-</div>
+
 
 
 <script type="text/javascript" src="./js/comentarios.js"></script>

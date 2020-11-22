@@ -9,7 +9,7 @@ class ModelProducto {
     //llamamos todos los productos
     function getAllProductos(){
         
-        $query =$this->dbProductos->prepare('SELECT producto.nombre, producto.precio ,producto.descripcion, categoria.nombre_categoria, producto.id FROM producto INNER JOIN categoria ON producto.id_categoria=categoria.id_categoria');
+        $query =$this->dbProductos->prepare('SELECT producto.nombre, producto.precio ,producto.descripcion, categoria.nombre_categoria, producto.id , producto.imagen  FROM producto INNER JOIN categoria ON producto.id_categoria=categoria.id_categoria');
         $query->execute();                  
         $productos= $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;
@@ -65,6 +65,10 @@ class ModelProducto {
 
     function eliminarProductoID($id){
         $query = $this->dbProductos->prepare('DELETE FROM `producto` WHERE id = ?');
+        $query->execute([$id]);
+    }
+    function eliminarImagenID($id){
+        $query = $this->dbProductos->prepare('UPDATE producto SET imagen = NULL WHERE id=?');//Provisorio hasta encontrar una mejor forma!
         $query->execute([$id]);
     }
 
