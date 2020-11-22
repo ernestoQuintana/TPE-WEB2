@@ -139,5 +139,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    setInterval(function () { cargarComentarios(id_producto) }, 30000);
+  //  setInterval(function () { cargarComentarios(id_producto) }, 30000);
 });

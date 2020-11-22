@@ -51,11 +51,15 @@ class ModelProducto {
     }
 
 
-    function editarProductoID($nombre,$descripcion,$precio,$categoria,$id){
-
-        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ?
-        ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ?  WHERE `id`= ?");
-        $query->execute([$nombre,$descripcion,$precio,$categoria,$id]);
+    function editarProductoID($nombre,$descripcion,$precio,$categoria,$id, $imagen = null){
+        $img = null;
+        if($imagen){
+            $img = $this->uploadImage($imagen);
+            $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ?
+            ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ?,`imagen` =?  WHERE `id`= ?");
+            $query->execute([$nombre,$descripcion,$precio,$categoria,$id,$img]);
+            return $this->dbProductos->lastInsertId();
+        }
         
     }
 
