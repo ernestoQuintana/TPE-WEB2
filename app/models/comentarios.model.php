@@ -10,8 +10,13 @@ class ModelComentarios{
 
 
     function getComentariosPorProducto($idProducto){
-        $comentario =  $this->dbComentarios->prepare('SELECT comentario.id_comentario, comentario.titulo , comentario.texto, comentario.puntuacion, comentario.id_usuario FROM comentario INNER JOIN producto 
-        ON producto.id = comentario.id_producto WHERE producto.id = ?');
+        $comentario =  $this->dbComentarios->prepare('SELECT administrador.nombre_administrador as nombre , administrador.imagen as imagen,
+         comentario.id_comentario, comentario.titulo , comentario.texto, comentario.puntuacion, comentario.id_usuario 
+        FROM comentario INNER JOIN producto 
+        ON producto.id = comentario.id_producto 
+        INNER JOIN administrador ON comentario.id_usuario = administrador.id
+        WHERE producto.id = ? '
+    ); // El as te define como se va llamar la columna(atributo) en la respuesta  que te va a dar el sql
         $comentario->execute([$idProducto]);
         return $comentario->fetchAll(PDO::FETCH_OBJ);
     }
@@ -29,7 +34,9 @@ class ModelComentarios{
         return $this->dbComentarios->lastInsertId();//Trae el ultimo id que toco.
     }
     function getComentarioId($idComentario){
-        $comentario = $this->dbComentarios->prepare('SELECT * FROM comentario WHERE id_comentario = ?');
+        $comentario = $this->dbComentarios->prepare('SELECT administrador.nombre_administrador as nombre , administrador.imagen as imagen, 
+        comentario.id_comentario, comentario.titulo , comentario.texto, comentario.puntuacion, comentario.id_usuario
+        FROM comentario INNER JOIN administrador ON comentario.id_usuario = administrador.id WHERE id_comentario = ?'); // el as nombra como quiero yo que se llame el atributo en la respuesta del select , por defecto el ponen el mismo nombre
         $comentario->execute([$idComentario]);
         return $comentario->fetch(PDO::FETCH_OBJ);
     }

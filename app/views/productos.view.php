@@ -74,7 +74,6 @@ class ViewProducto
 
     function renderProductos($productos)
     {
-     
         $this->smarty->assign('productos', $productos);
         $this->smarty->display('allProductos.tpl');
     }
@@ -84,6 +83,10 @@ class ViewProducto
         $this->smarty->assign('producto', $producto);
         $this->smarty->assign('user', $user);
         $this->smarty->display('detalleProductos.tpl');
+    }
+    function renderBusqueda($producto){
+        $this->smarty->assign('producto', $producto);
+        $this->smarty->display('busquedaAvanzada.tpl');
     }
 
     function renderCategoriasUsuario()

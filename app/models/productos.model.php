@@ -68,7 +68,7 @@ class ModelProducto {
         $query->execute([$id]);
     }
     function eliminarImagenID($id){
-        $query = $this->dbProductos->prepare('UPDATE producto SET imagen = NULL WHERE id=?');//Provisorio hasta encontrar una mejor forma!
+        $query = $this->dbProductos->prepare('UPDATE producto SET imagen = NULL WHERE id=?');
         $query->execute([$id]);
     }
 

@@ -15,11 +15,21 @@
         return $adminDB;
     }
 
-    function insertUser($nombre,$passEncrypt,$email){
-        $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador, email) VALUES (?,?,?)');
-        $query->execute([$nombre,$passEncrypt,$email]);
+    function insertUser($nombre,$passEncrypt,$email,$imagen = null){
+        $img = null;
+        if($imagen){
+            $img = $this->uploadImagen($imagen);
+            $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador, email,imagen) VALUES (?,?,?,?)');
+            $query->execute([$nombre,$passEncrypt,$email,$img]);
+            return $this->dbAdministrador->lastInsertId();
+        }
     }
 
+    function uploadImagen($imagen){
+        $target = 'img/' . uniqid() . '.jpg';
+        move_uploaded_file($imagen, $target);
+        return $target;
+    }
 
     /************ PERMISOS DE USUARIO *************/
 

@@ -4,7 +4,7 @@
    {$mensaje}
 </div>
     <h1 class="tituloRegistrar"> Registrate</h1>
-    <form action="agregaUsuario" method="POST">
+    <form action="agregaUsuario" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <input type="text" class="form-control" id="user" name="input_nameRegister" placeholder="Enter your name" aria-describedby="emailHelp" required>
         </div>
@@ -16,6 +16,9 @@
         </div>
         <div class="form-group">
             <input type="password" class="form-control" name="input_confirmPassword" placeholder="Confirm your password" id="passwordConfirm" autocomplete="off" required>
+        </div>
+        <div class="form-group">
+            <input type="file" name="input_name" id="imagenRegistro">
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

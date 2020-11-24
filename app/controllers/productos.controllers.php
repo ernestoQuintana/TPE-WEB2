@@ -23,7 +23,6 @@ class ProductosControllers
         $this->modelCategoria = new ModelCategoria();
         $this->helper = new helper();
         $this->categorias = $this->modelCategoria->getAllCategorias();
-        //  $this->user = $this->helper->checkLogin();
         $this->modelAdmin = new ModelAdmin();
         $this->view = new ViewProducto($this->categorias);
     }
@@ -245,5 +244,10 @@ class ProductosControllers
     function showCategoriasUsuario()
     {
         $this->view->renderCategoriasUsuario();
+    }
+
+    function showBusqueda(){
+        $productos = $this->modelProducto->getAllProductos();
+        $this->view->renderBusqueda($productos);
     }
 }

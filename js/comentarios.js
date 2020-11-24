@@ -4,22 +4,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const baseURL = 'api/comentarios';
     const contenedor = document.querySelector('#listaComentario');
     let id_producto = contenedor.dataset.producto;
-    console.log(id_producto);
     let permiso = contenedor.dataset.permiso;
     const div = document.querySelector("#cargando");
 
-  
+
     /*********************************************************************/
     /************************* TRAER COMENTARIOS *************************/
     /*********************************************************************/
-  
 
 
-    cargarComentarios(id_producto);   
 
-    function cargarComentarios(id_producto) {       
+    cargarComentarios(id_producto);
+
+    function cargarComentarios(id_producto) {
         div.innerHTML = "Imprimiendo...";
-        fetch('api/productos/'+id_producto+'/comentarios', {
+        fetch('api/productos/' + id_producto + '/comentarios', {
             method: "GET",
         })
             .then(function (r) {
@@ -35,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderAdmin(json);
             })
     }
-    
+
     /*********************************************************************/
     /*********************** AGREGAR COMENTARIOS *************************/
     /*********************************************************************/
@@ -44,9 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let comentario = {
             "titulo": document.querySelector("#tituloComentario").value,
             "texto": document.querySelector("#descriptionComentario").value,
-            "puntuacion": document.querySelector("#puntajeComentario").value,//poner paserINT?
-            "id_usuario": 2,                                            //INVESTIGAR cuando me logue , el api trae el usuario, Json, Guardo en una variable y lo uso aca
-            "id_producto": 3                                            //obtener datos de la barra del navegador
+            "puntuacion": document.querySelector("#puntajeComentario").value,
+            "id_usuario": contenedor.dataset.usuario,  
+            "id_producto": contenedor.dataset.producto,
         };
 
         fetch(baseURL, {
@@ -56,8 +55,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(function (r) {
             return r.json()
         }).then(function (json) {
-            console.log(json);
-            renderAdmin(json)
+           // console.log(JSON.stringify(json));
+            renderizarComentario(json);
             vaciarInput();
         }).catch(function (e) {
             console.log(e)
@@ -71,73 +70,91 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let form = document.querySelector('#formComentario');
-    if(form){
+    if (form) {
         form.addEventListener('submit', e => {
-        e.preventDefault();//evita el envio del formulario
-         agregarFila();        
-     })
+            e.preventDefault();//evita el envio del formulario
+            agregarFila();
+        })
     }
-    
+
     /*********************************************************************/
     /*********************** BORRAR COMENTARIOS *************************/
     /*********************************************************************/
 
-    function borrarComentarios(id_comentario,id_producto) {
-        // div.innerHTML = "Borrando...";
+    function borrarComentarios(id_comentario, id_producto) {
+        div.innerHTML = "Borrando...";
         console.log('hola');
-        fetch(baseURL +'/' + id_comentario, {
+        fetch(baseURL + '/' + id_comentario, {
             "method": "DELETE",
             "headers": { "Content-Type": "application/json" },
-        }).then(function(r){
+        }).then(function (r) {
             return r.json()
-        }).then(function(json) {
-                cargarComentarios(id_producto);         
-        }).catch(function(e){
+        }).then(function (json) {
+            cargarComentarios(id_producto);
+        }).catch(function (e) {
             console.log(e);
         })
 
     }
-    
+
     /*********************************************************************/
     /*********************** CREACION DE DIV COMENTARIOS *************************/
     /*********************************************************************/
     function renderAdmin(json) {
-
         for (let i = 0; i < json.length; i++) {
-            let id_comentario = json[i].id_comentario;
-             let div = document.createElement('div');
-             div.classList.add("cajaComentario");
- 
-             let h3 = document.createElement('h3');
-             h3.innerText = json[i].titulo;
-             div.appendChild(h3);
-             h3.classList.add("tituloComentario");
- 
-             let p = document.createElement('p');
-             p.innerText = json[i].texto + ' puntuacion: '+ json[i].puntuacion ;
-             div.appendChild(p);
-
-             let ul = document.createElement('ul');
-             let li = document.createElement('li');
-             li.appendChild(div);
-             ul.appendChild(li);
-            
-             if(permiso == 1){
-                let btn = document.createElement("button");
-                btn.innerText = "Eliminar";
-                btn.addEventListener("click" , function(){
-                     borrarComentarios(id_comentario , id_producto);
-            
-                    });
-                btn.classList.add("btnEliminarComentario");    
-                li.appendChild(btn);
-                }
-
-            
-             ul.classList.add("listaCajasComentario")
-             contenedor.appendChild(ul);
+          renderizarComentario(json[i]);
         }
     }
 
-  //  setInterval(function () { cargarComentarios(id_producto) }, 30000);
+    function renderizarComentario(comentario){
+
+        let id_comentario = comentario.id_comentario;
+        let div = document.createElement('div');
+        div.classList.add("cajaComentario");
+        
+        let div2 = document.createElement('img');
+        div2.classList.add("imagenUsuario");
+        div2.src = comentario.imagen;
+        div.appendChild(div2);
+
+        let h4 = document.createElement('h4');
+        h4.innerHTML = `<span class="nombre-usuario"> ${comentario.nombre}: </span> ${comentario.titulo}`;
+
+        div.appendChild(h4);
+        h4.classList.add("tituloComentario");
+
+        let p = document.createElement('p');
+        p.classList.add('parrafoComentario');
+        p.innerText = comentario.texto ;
+        div.appendChild(p);
+
+        let div3 = document.createElement('div');
+        div3.classList.add("puntuacion");
+        let p2 = document.createElement('p');
+        p2.classList.add('parrafoPuntuacion');
+        p2.innerText = ' Puntuacion: ' + comentario.puntuacion;
+        div.appendChild(div3);
+        div3.appendChild(p2);
+
+        let ul = document.createElement('ul');
+        let li = document.createElement('li');
+        li.appendChild(div);
+        ul.appendChild(li);
+        li.classList.add("liComentario");
+
+        if (permiso == 1) {
+            let btn = document.createElement("button");
+            btn.innerText = "Eliminar";
+            btn.addEventListener("click", function () {
+                borrarComentarios(id_comentario, id_producto);
+
+            });
+            btn.classList.add("btnEliminarComentario");
+            li.appendChild(btn);
+        }
+        ul.classList.add("listaCajasComentario")
+        contenedor.appendChild(ul);
+    }
+
+    //  setInterval(function () { cargarComentarios(id_producto) }, 30000);
 });

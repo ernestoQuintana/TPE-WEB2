@@ -25,12 +25,12 @@
     <div class="mensajeLogin">
         <p>Para comentar tenes que estar registrado. Si ya tenes una cuenta, ingresá <span><a href='login'>Aquí</a> o Registrate <a href="registro">Aquí</a>.</span></p>
     </div>
-    <div id="listaComentario" data-producto="{$producto->id}"></div>
+    <div id="listaComentario" data-imagen="{$user->imagen}" data-producto="{$producto->id}"></div>
 {elseif $user->permiso === '0'}
     {include file="formComentario.tpl"}
-    <div id="listaComentario" data-permiso="{$user->permiso}" data-producto="{$producto->id}"></div>
+    <div id="listaComentario" data-usuario="{$user->id}" data-imagen="{$user->imagen}" data-permiso="{$user->permiso}" data-producto="{$producto->id}"></div>
 {else}
-    <div id="listaComentario" data-permiso="{$user->permiso}" data-producto="{$producto->id}"></div>
+    <div id="listaComentario" data-usuario="{$user->id}" data-imagen="{$user->imagen}" data-permiso="{$user->permiso}" data-producto="{$producto->id}"></div>
 {/if}
 
 

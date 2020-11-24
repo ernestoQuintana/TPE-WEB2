@@ -102,15 +102,18 @@ class UsersControllers
             $password = $_POST['input_passwordRegister'];
             $confirm = $_POST['input_confirmPassword'];
         }
-
         $passEncrypt = password_hash($password, PASSWORD_DEFAULT); //encriptamos el password ingresado
-
+        
         if ($password === $confirm) {
-            $this->modelAdmin->insertUser($nombre, $passEncrypt, $email);
+            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {       
+                $this->modelAdmin->insertUser($nombre, $passEncrypt, $email, $_FILES['input_name']['tmp_name']);
+            } else {
+                $this->modelAdmin->insertUser($nombre, $passEncrypt, $email);
+            }
             $this->iniciarSesionAuto($nombre);
         } else {
-            $mensaje = 'Las contraseñas no coinciden';
-            $this->viewAdmin->renderRegistro($mensaje);
+                $mensaje = 'Las contraseñas no coinciden';
+                $this->viewAdmin->renderRegistro($mensaje);
         }
     }
 
@@ -139,16 +142,16 @@ class UsersControllers
     }
 
     function eliminarUsuario($params = null)
-    {   
+    {
         $user = $this->helper->checkLogin();
         if ($user->permiso == 1) {
             $id = $params[':ID'];
             $this->modelAdmin->eliminarUsuarioID($id);
             $this->viewAdmin->ShowUsuarioLocation();
-       }else{
+        } else {
             $this->viewAdmin->renderIndex();
-       }
-}
+        }
+    }
 
     function permisoUsuario($params = null)
     {
@@ -167,7 +170,7 @@ class UsersControllers
                 $this->modelAdmin->modificarPermiso($permiso, $id);
             }
             $this->viewAdmin->ShowUsuarioLocation();
-        }else{
+        } else {
             $this->viewAdmin->renderIndex();
         }
     }

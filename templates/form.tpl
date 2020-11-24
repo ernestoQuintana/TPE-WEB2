@@ -19,7 +19,9 @@
                 <label for="title">Categorias</label>
                 {include file="listaCategorias.tpl"}
             </div>
-            <input type="file" name="input_name" id="imageToUpload">
+            <div class="form-group">
+                <input type="file" name="input_name" id="imageToUpload">
+            </div>
             <button type="submit" class="btn btn-primary">Agregar</button>
         </form>
     </div>

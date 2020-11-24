@@ -35,6 +35,7 @@
                             <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
                         {/foreach}
                     </div>
+                    <a class="navbar-brand" href="busquedaAvanzada">Busqueda</a>
                     <a class="navbar-brand" href="registro">Registrate</a>
                     <a class="admin" id="loginJs" href="login">Ingresá</a>
 
