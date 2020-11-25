@@ -228,7 +228,6 @@ class ProductosControllers
         } else {
             $nombre = $_SESSION['nombre'];
             $user = $this->modelAdmin->getAdmin($nombre);
-            //var_dump($user);
             $this->view->renderDetalleProducto($producto, $user);
         }
     }
@@ -249,5 +248,24 @@ class ProductosControllers
     function showBusqueda(){
         $productos = $this->modelProducto->getAllProductos();
         $this->view->renderBusqueda($productos);
+    }
+
+    function showBusquedaAvanzada($params = null){
+        if (isset($_POST['input_busquedaNombre']) && isset($_POST['input_busquedaCategoria'])
+         && isset($_POST['input_busquedaOrigen']) && isset($_POST['select_precioMin'])
+         && isset($_POST['select_precioMax'])) {
+            $nombre = $_POST['input_busquedaNombre'];
+            $categoria = $_POST['input_busquedaCategoria'];
+            $origen = $_POST['input_busquedaOrigen'];
+            $precioMin = $_POST['select_precioMin'];
+            $precioMax = $_POST['select_precioMax'];
+        }
+        
+        $producto = $this->modelProducto->getProductoPorNombre($nombre);
+        $clase = $this->modelProducto->getProductosByCategoria($categoria);
+        $lugar = $this->modelProducto->getProductosByOrigen($origen);
+        $precio = $this->modelProducto->getProductosByPrecio($precioMin,$precioMax);
+
+        //$this->view->renderBusquedaProducto($producto,$clase,$lugar,$precio);
     }
 }

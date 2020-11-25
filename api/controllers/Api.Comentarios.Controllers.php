@@ -36,12 +36,22 @@ class ApiComentariosController extends ApiControllers
 
     function insertComentario($params = null)
     {
-       // $idUsuario = $params[':ID'];
         $body = $this->getData();
-        $idComentario = $this->model->insertarComentario($body->titulo, $body->texto, $body->puntuacion, $body->id_usuario, $body->id_producto);
-        if (!empty($idComentario)) { // verifica si la comentario existe
-            $this->view->response($this->model->getComentarioId($idComentario), 201);
-        } else {
+
+        if (!empty($body->titulo) && !empty($body->texto) && !empty($body->puntuacion) && !empty($body->id_usuario) && !empty($body->id_producto)) {
+            $titulo = $body->titulo;
+            $texto = $body->texto;
+            $puntucion = $body->puntuacion;
+            $usuario = $body->id_usuario ;
+            $id_producto =  $body->id_producto;
+
+            $idComentario = $this->model->insertarComentario($titulo, $texto, $puntucion, $usuario, $id_producto);
+            if (!empty($idComentario)) { // verifica si la comentario existe
+                $this->view->response($this->model->getComentarioId($idComentario), 201);
+            } else {
+                $this->view->response("La tarea no se pudo insertar", 404);
+            }
+        }else{
             $this->view->response("La tarea no se pudo insertar", 404);
         }
     }
@@ -52,5 +62,4 @@ class ApiComentariosController extends ApiControllers
         $comentario = $this->model->getComentarioId($id);
         $this->view->response($comentario, 200);
     }
-
 }

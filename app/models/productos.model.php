@@ -72,4 +72,18 @@ class ModelProducto {
         $query->execute([$id]);
     }
 
+
+
+
+     /************************* BUSQUEDA AVANZADA **************************/
+
+     function getProductoPorNombre($nombre){
+
+     }
+     function getProductosByOrigen($origen){
+
+     }
+     function getProductosByPrecio($precioMin,$precioMax){
+         
+     }
 }
