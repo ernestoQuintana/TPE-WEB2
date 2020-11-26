@@ -60,7 +60,15 @@ body {
   color: #fff;
   display: none;
 }
-
+.logoutHidden{
+  width: 7%;
+  display: none;
+  font-size: 1.5em;
+  justify-content: flex-end;
+}
+.logoutHidden.show{
+  display: flex;
+}
 /****************************************************/
 /*********************** HOME ***********************/
 /****************************************************/
