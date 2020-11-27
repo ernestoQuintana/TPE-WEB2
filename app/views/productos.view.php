@@ -6,11 +6,11 @@ class ViewProducto
     /************************ TABLAS DEL ADMINISTRADOR ************************/
     private $smarty;
 
-    function __construct($categorias)
+    function __construct($categorias,$user)
     {
         $this->smarty = new Smarty();
         $this->smarty->assign('categorias', $categorias);
-    //    $this->smarty->assign('user', $user);
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('BASE_URL', BASE_URL);
     }
 

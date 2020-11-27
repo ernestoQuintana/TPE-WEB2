@@ -46,7 +46,8 @@ $r->addRoute("productos", "GET", "ProductosControllers", "showProductos");
 $r->addRoute("detalleProducto/:ID", "GET", "ProductosControllers", "showDetalleProducto");
 $r->addRoute("categoria/:ID", "GET", "ProductosControllers", "showProductosByCategoria");
 $r->addRoute("allCategoriasUsuario", "GET", "ProductosControllers", "showCategoriasUsuario");
-$r->addRoute("busquedaAvanzada", "GET", "ProductosControllers", "showBusqueda");
+$r->addRoute("busqueda", "GET", "ProductosControllers", "showBusqueda");
+$r->addRoute("busquedaAvanzada", "POST", "ProductosControllers", "showBusquedaAvanzada");
 
 
 //ruta por default

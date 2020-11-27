@@ -4,38 +4,33 @@
     <h2 class="busqueda-esloganB">Cremas, Perfumes y más</h2>
     <h1 class="busqueda-esloganA">Tu Producto está acá</h1>
     <div class="nav-searching">
-        <form action="busqueda" method="GET">
+        <form action="busquedaAvanzada" method="POST">
         <div class="form-group">
             <input class="form-control" name="input_busquedaNombre" type="search" placeholder="Nombre del producto...">
         </div>
             <div class="form-group">
+            {* <input  class="form-control" name="input_busquedaCategoria" type="search" placeholder="Categoria..."> *}
                 <select class="form-control" name="input_busquedaCategoria" id="origenJs">
-                    <option value="Categoria">Categorias por nombre</option>
-                    <option value="allCategoriasUsuario">Todas las Categorias</option>  
+                    <option value="">Categorias por nombre</option>
+                    <option value="">Todas las Categorias</option>  
                     {foreach $categorias as $categoria}
                         <option value="{$categoria->id_categoria}">{$categoria->nombre_categoria}</option>
                     {/foreach}
                 </select>
             </div>
             <div class="form-group">
-                <select class="form-control" name="input_origen" id="origenJs">
-                    <option value="Categoria">Categorias por Origen</option>
-                    <option value="allCategoriasUsuario">Todas las Categorias</option>  
-                {foreach $categorias as $categoria}
-                    <option value="{$categoria->id_categoria}">{$categoria->origen}</option>
-                {/foreach}
-                </select>
-            </div>
+                <input type="search" class="form-control" name="input_busquedaDescripcion" id="descripcionJs" placeholder="Ingrese una palabra">
+                  
 
             <div class="form-group">
                 <select class="precioMin" id="precioMinJS" name="select_precioMin">
-                <option value="Precio Min">Precio Min</option>  
+                <option value="">Precio Min</option>  
                     {foreach $productos as $producto}
                         <option value="{$producto->id}">{$producto->precio}</option>
                     {/foreach}
                 </select>
                 <select class="precioMin" id="precioMaxJS" name="select_precioMax">
-                <option value="Precio Max">Precio Max</option>  
+                <option value="">Precio Max</option>  
                     {foreach $productos as $producto}
                         <option value="{$producto->id}">{$producto->precio}</option>
                     {/foreach}

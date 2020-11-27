@@ -23,8 +23,9 @@ class ProductosControllers
         $this->modelCategoria = new ModelCategoria();
         $this->helper = new helper();
         $this->categorias = $this->modelCategoria->getAllCategorias();
+        $this->user = $this->helper->checkLogin();
         $this->modelAdmin = new ModelAdmin();
-        $this->view = new ViewProducto($this->categorias);
+        $this->view = new ViewProducto($this->categorias, $this->user);
     }
 
 
@@ -34,7 +35,7 @@ class ProductosControllers
     //FUNCIONES DE LOS PRODUCTOS
 
 
-    function showIndex($user)
+    function showIndex()
     {
         $this->view->renderIndex();
     }
@@ -219,7 +220,7 @@ class ProductosControllers
 
     function showDetalleProducto($params = null)
     {
-        session_start();
+       // session_start();
         $id = $params[':ID'];
         $producto = $this->modelProducto->getDetalleProducto($id);
         if (!isset($_SESSION['nombre'])) {
@@ -252,20 +253,18 @@ class ProductosControllers
 
     function showBusquedaAvanzada($params = null){
         if (isset($_POST['input_busquedaNombre']) && isset($_POST['input_busquedaCategoria'])
-         && isset($_POST['input_busquedaOrigen']) && isset($_POST['select_precioMin'])
+         && isset($_POST['input_busquedaDescripcion']) && isset($_POST['select_precioMin'])
          && isset($_POST['select_precioMax'])) {
             $nombre = $_POST['input_busquedaNombre'];
             $categoria = $_POST['input_busquedaCategoria'];
-            $origen = $_POST['input_busquedaOrigen'];
+            $descripcion = $_POST['input_busquedaDescripcion'];
             $precioMin = $_POST['select_precioMin'];
             $precioMax = $_POST['select_precioMax'];
         }
         
-        $producto = $this->modelProducto->getProductoPorNombre($nombre);
-        $clase = $this->modelProducto->getProductosByCategoria($categoria);
-        $lugar = $this->modelProducto->getProductosByOrigen($origen);
-        $precio = $this->modelProducto->getProductosByPrecio($precioMin,$precioMax);
-
+      $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
+        var_dump($busqueda);
+        die();
         //$this->view->renderBusquedaProducto($producto,$clase,$lugar,$precio);
     }
 }

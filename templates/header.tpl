@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="{BASE_URL}">
     <link rel="stylesheet" href="css\style.css">
-    {* <script src="js\logout.js"></script> *}
+    <script src="js\logout.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -34,7 +34,7 @@
                             <a class="dropdown-item" href="categoria/{$categoria->id_categoria}">{$categoria->nombre_categoria}</a>
                         {/foreach}
                     </div>
-                    <a class="navbar-brand" href="busquedaAvanzada">Busqueda</a>
+                    <a class="navbar-brand" href="busqueda">Busqueda</a>
                     <a class="navbar-brand" href="registro">Registrate</a>
                     <a class="admin" id="loginJs" href="login">Ingresá</a>
 
