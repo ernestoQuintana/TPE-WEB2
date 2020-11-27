@@ -87,27 +87,54 @@ class ModelProducto
     /************************* BUSQUEDA AVANZADA **************************/
 
     function getBusquedaAvanzada($nombre = null, $categoria = null, $descripcion = null, $precioMin = null, $precioMax = null)
-    {
-        $base = "SELECT * FROM producto WHERE nombre LIKE ''$nombre'%' AND";
-        var_dump($categoria);
-        if ($nombre != null && $categoria != null) {
-            $query = $this->dbProductos->prepare("SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria 
-            WHERE producto.id_categoria = ? AND producto.nombre LIKE '%?%'");
-            $query->execute([$nombre, $categoria]); 
-            var_dump('entro de una');     
+    {  
+        $base = "SELECT * FROM producto WHERE nombre LIKE ?";
+        $base2 = "SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria WHERE producto.id_categoria = ? AND";
+        //nombre
+        if($nombre != null && $categoria == null &&  $descripcion == null && $precioMin == null && $precioMax == null){
+            $query = $this->dbProductos->prepare("SELECT * FROM producto WHERE nombre LIKE ?");
+            $query->execute(['%'. $nombre.'%']);
         }
-         elseif ($nombre != null && $descripcion != null) {
-            $query = $this->dbProductos->prepare($base + "producto.descripcion LIKE '%?%'");
-            $query->execute([$nombre, $descripcion]); 
-        } elseif ($nombre != null && $precioMin != null && $precioMax != null) {
-            $query = $this->dbProductos->prepare($base + "(producto.precio > '?' AND producto.precio < '?')");
-            $query->execute([$nombre, $precioMin,$precioMax]);
-        } elseif($nombre != null && $categoria != null && $descripcion != null && $precioMin != null && $precioMax != null){
-            $query = $this->dbProductos->prepare("SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria WHERE producto.id_categoria = ? 
-            AND producto.descripcion LIKE '%'?'%' AND (producto.precio > ? AND producto.precio < ?) AND producto.nombre LIKE '%'?'%'");
-            $query->execute([$categoria,$descripcion,$precioMin,$precioMax,$nombre]);
+        //nombre y categoria
+        elseif ($nombre != null && $categoria != null &&  $descripcion == null && $precioMin == null && $precioMax == null) {
+            $query = $this->dbProductos->prepare($base2 . " producto.nombre LIKE ?");
+            $query->execute([$categoria ,'%'. $nombre.'%']);   
+        }
+        //nombre y descripcion
+         elseif ($nombre != null && $descripcion != null &&  $categoria == null && $precioMin == null && $precioMax == null) {       
+            $query = $this->dbProductos->prepare($base . " AND producto.descripcion LIKE ?");
+            $query->execute(['%'. $nombre.'%','%'. $descripcion . '%']);
+        } 
+        //nombre y precio
+        elseif ($nombre != null && $precioMin != null && $precioMax != null && $categoria == null && $descripcion == null) {
+            $query = $this->dbProductos->prepare($base . " AND (producto.precio > ? AND producto.precio < ?)");
+            $query->execute(['%'. $nombre.'%', $precioMin,$precioMax]);
+        }
+        //nombre, categoria y descripcion
+        elseif ($nombre != null && $categoria != null &&  $descripcion != null && $precioMin == null && $precioMax == null) {
+            $query = $this->dbProductos->prepare($base2 . " producto.descripcion LIKE ? AND producto.nombre LIKE ?");
+            $query->execute([$categoria ,'%'. $descripcion .'%', '%'. $nombre.'%']);   
+        }
+        //nombre , categoria , precio
+        elseif ($nombre != null && $precioMin != null && $precioMax != null && $categoria != null && $descripcion == null) {
+            $query = $this->dbProductos->prepare("SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria 
+            WHERE producto.nombre LIKE ? AND producto.id_categoria = ? AND (producto.precio > ? AND producto.precio < ?)");
+            $query->execute(['%'. $nombre.'%',$categoria, $precioMin,$precioMax]);
+        }
+        //categoria, descripcion, precio
+        elseif ($nombre == null && $precioMin != null && $precioMax != null && $categoria != null && $descripcion != null) {
+            $query = $this->dbProductos->prepare("SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria 
+            WHERE producto.descripcion LIKE ? AND producto.id_categoria = ? AND (producto.precio > ? AND producto.precio < ?)");
+            $query->execute(['%'. $descripcion.'%',$categoria, $precioMin,$precioMax]);
+        }
+        //nombre, categoria, descripcion y precio
+        elseif ($nombre != null && $categoria != null && $descripcion != null && $precioMin != null && $precioMax != null){
+            $query = $this->dbProductos->prepare("SELECT * FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria 
+            WHERE producto.nombre LIKE ? AND producto.id_categoria = ? AND producto.descripcion LIKE ? AND (producto.precio > ? AND producto.precio < ?)");
+            $query->execute(['%'.$nombre.'%', $categoria,'%'. $descripcion .'%',$precioMin,$precioMax]);   
         }
         $productos = $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;
+        
     }
 }

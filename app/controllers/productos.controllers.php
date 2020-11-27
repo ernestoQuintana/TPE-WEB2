@@ -261,10 +261,15 @@ class ProductosControllers
             $precioMin = $_POST['select_precioMin'];
             $precioMax = $_POST['select_precioMax'];
         }
-        
-      $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
-        var_dump($busqueda);
-        die();
+        if($categoria == ""){
+            $categoria = null;
+            $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
+            var_dump($busqueda);
+        }else{
+            $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
+           // var_dump($nombre,$categoria,$descripcion,$precioMin,$precioMax);
+           var_dump($busqueda);
+        }
         //$this->view->renderBusquedaProducto($producto,$clase,$lugar,$precio);
     }
 }

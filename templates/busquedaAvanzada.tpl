@@ -23,17 +23,21 @@
                   
 
             <div class="form-group">
-                <select class="precioMin" id="precioMinJS" name="select_precioMin">
+                <input type="number" class="form-control" name="select_precioMin" id="descripcionJs" placeholder="precio min">
+                <input type="number" class="form-control" name="select_precioMax" id="descripcionJs" placeholder="precio max">
+                    
+                {* <select class="precioMin" id="precioMinJS" name="select_precioMin">
                 <option value="">Precio Min</option>  
                     {foreach $productos as $producto}
                         <option value="{$producto->id}">{$producto->precio}</option>
                     {/foreach}
                 </select>
                 <select class="precioMin" id="precioMaxJS" name="select_precioMax">
+
                 <option value="">Precio Max</option>  
                     {foreach $productos as $producto}
                         <option value="{$producto->id}">{$producto->precio}</option>
-                    {/foreach}
+                    {/foreach} *}
                 </select>
             </div>
            
