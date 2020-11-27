@@ -97,7 +97,7 @@ class ModelProducto
             var_dump('entro de una');     
         }
          elseif ($nombre != null && $descripcion != null) {
-            $query = $this->dbProductos->prepare($base + "producto.descripcion LIKE = '%'?'%'");
+            $query = $this->dbProductos->prepare($base + "producto.descripcion LIKE '%?%'");
             $query->execute([$nombre, $descripcion]); 
         } elseif ($nombre != null && $precioMin != null && $precioMax != null) {
             $query = $this->dbProductos->prepare($base + "(producto.precio > '?' AND producto.precio < '?')");
