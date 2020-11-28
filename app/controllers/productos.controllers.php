@@ -247,8 +247,7 @@ class ProductosControllers
     }
 
     function showBusqueda(){
-        $productos = $this->modelProducto->getAllProductos();
-        $this->view->renderBusqueda($productos);
+        $this->view->renderBusqueda();
     }
 
     function showBusquedaAvanzada($params = null){
@@ -267,6 +266,7 @@ class ProductosControllers
         }else{
             $productos = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
         }
+        //var_dump($productos);
         $this->view->ShowBusquedaLocationUsuario($productos);
     }
 }

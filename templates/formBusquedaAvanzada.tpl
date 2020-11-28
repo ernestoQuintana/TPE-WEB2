@@ -1,4 +1,3 @@
-{include file="header.tpl"}
 <div class="busquedaMain">
     <div class="contenedor busqueda">
         <h2 class="busqueda-esloganB">Cremas, Perfumes y más</h2>
@@ -12,7 +11,6 @@
                 
                     <select class="form-control" name="input_busquedaCategoria" id="origenJs">
                         <option value="">Categorias por nombre</option>
-                        <option value="">Todas las Categorias</option>
                         {foreach $categorias as $categoria}
                             <option value="{$categoria->id_categoria}">{$categoria->nombre_categoria}</option>
                         {/foreach}
@@ -33,6 +31,3 @@
 
     </div>
 </div>
-    {include file="searchBox.tpl"}
-   
-    {include file="footer.tpl"}
