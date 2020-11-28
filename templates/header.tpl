@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <base href="{BASE_URL}">
     <link rel="stylesheet" href="css\style.css">
-    {* <script src="js\logout.js"></script> *}
+    <script src="js\logout.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -48,9 +48,13 @@
                 <a href="#"><i class="iconosNav fab fa-vk"></i></a>
                 <a href="#"><i class="iconosNav fab fa-telegram"></i></a>
             </div>
-            {* <div class="logoutHidden" data-permiso="{$user->permiso}" id="logoutHiddenJS">
+            {if $user != null}            
+            <div class="logoutHidden" data-usuario="{$user}" id="logoutHiddenJS">
                 <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-            </div> *}
+            </div>
+            {elseif $user == null}
+                <div></div>
+            {/if}
 
         </nav>
     </header>

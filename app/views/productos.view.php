@@ -6,11 +6,10 @@ class ViewProducto
     /************************ TABLAS DEL ADMINISTRADOR ************************/
     private $smarty;
 
-    function __construct($categorias,$user)
+    function __construct($categorias)
     {
         $this->smarty = new Smarty();
         $this->smarty->assign('categorias', $categorias);
-        $this->smarty->assign('user', $user);
         $this->smarty->assign('BASE_URL', BASE_URL);
     }
 
@@ -21,8 +20,9 @@ class ViewProducto
         $this->smarty->display('administrador.tpl');
     }
     //prueba
-    function renderIndex()
+    function renderIndex($user)
     {
+        $this->smarty->assign('user', $user);
         $this->smarty->display('index.tpl');
     }
 

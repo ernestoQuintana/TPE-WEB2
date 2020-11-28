@@ -21,11 +21,10 @@ class ProductosControllers
     {
         $this->modelProducto = new ModelProducto();
         $this->modelCategoria = new ModelCategoria();
+        $this->modelAdmin = new ModelAdmin();
         $this->helper = new helper();
         $this->categorias = $this->modelCategoria->getAllCategorias();
-        $this->user = $this->helper->checkLogin();
-        $this->modelAdmin = new ModelAdmin();
-        $this->view = new ViewProducto($this->categorias, $this->user);
+        $this->view = new ViewProducto($this->categorias);
     }
 
 
@@ -36,8 +35,16 @@ class ProductosControllers
 
 
     function showIndex()
-    {
-        $this->view->renderIndex();
+    {   
+        session_start();
+        if (isset($_SESSION['nombre'])) {
+            $user = $_SESSION['nombre']; 
+            $this->view->renderIndex($user);
+        }else{
+            $user = null;
+            $this->view->renderIndex($user);
+        }
+       
     }
 
     function showProductosAdmin()
@@ -137,7 +144,7 @@ class ProductosControllers
             $this->view->ShowHomeLocation();
         }
     }
- 
+
     //FUNCIONES DE LAS CATEGORIAS
 
     function agregarCategoria()
@@ -220,7 +227,7 @@ class ProductosControllers
 
     function showDetalleProducto($params = null)
     {
-       // session_start();
+        session_start();
         $id = $params[':ID'];
         $producto = $this->modelProducto->getDetalleProducto($id);
         if (!isset($_SESSION['nombre'])) {
@@ -246,25 +253,29 @@ class ProductosControllers
         $this->view->renderCategoriasUsuario();
     }
 
-    function showBusqueda(){
+    function showBusqueda()
+    {
         $this->view->renderBusqueda();
     }
 
-    function showBusquedaAvanzada($params = null){
-        if (isset($_POST['input_busquedaNombre']) && isset($_POST['input_busquedaCategoria'])
-         && isset($_POST['input_busquedaDescripcion']) && isset($_POST['select_precioMin'])
-         && isset($_POST['select_precioMax'])) {
+    function showBusquedaAvanzada($params = null)
+    {
+        if (
+            isset($_POST['input_busquedaNombre']) && isset($_POST['input_busquedaCategoria'])
+            && isset($_POST['input_busquedaDescripcion']) && isset($_POST['select_precioMin'])
+            && isset($_POST['select_precioMax'])
+        ) {
             $nombre = $_POST['input_busquedaNombre'];
             $categoria = $_POST['input_busquedaCategoria'];
             $descripcion = $_POST['input_busquedaDescripcion'];
             $precioMin = $_POST['select_precioMin'];
             $precioMax = $_POST['select_precioMax'];
         }
-        if($categoria == ""){
+        if ($categoria == "") {
             $categoria = null;
-            $productos = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
-        }else{
-            $productos = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
+            $productos = $this->modelProducto->getBusquedaAvanzada($nombre, $categoria, $descripcion, $precioMin, $precioMax);
+        } else {
+            $productos = $this->modelProducto->getBusquedaAvanzada($nombre, $categoria, $descripcion, $precioMin, $precioMax);
         }
         //var_dump($productos);
         $this->view->ShowBusquedaLocationUsuario($productos);

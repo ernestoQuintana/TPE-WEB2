@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     "use strict"
     const contenedor = document.querySelector('#logoutHiddenJS');
-    let permiso = contenedor.dataset.permiso;
+    let permiso = contenedor.dataset.usuario;
 
 
     function toggleMenu() {
@@ -9,15 +9,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function btnLogin(permiso) {
-        if(permiso == null){
+        console.log(permiso);
+        if(permiso != null){
+            toggleMenu(); 
             
-            console.log('no podes ver nada porque no esta logueado');
         }else{
-            if(permiso == 1 || permiso == 0 ){
-                console.log('hola');
-                toggleMenu();
-                
-            }
+          console.log('Listo');
         }
     }
     btnLogin(permiso);
