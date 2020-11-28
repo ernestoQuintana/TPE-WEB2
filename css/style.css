@@ -60,13 +60,13 @@ body {
   color: #fff;
   display: none;
 }
-.logoutHidden{
+.logoutHidden {
   width: 7%;
   display: none;
   font-size: 1.5em;
   justify-content: flex-end;
 }
-.logoutHidden.show{
+.logoutHidden.show {
   display: flex;
 }
 /****************************************************/
@@ -354,15 +354,23 @@ tr {
 thead {
   background-color: rgb(128, 224, 90);
 }
-
-.detalleProducto {
+.searchBox{
+  display: flex;
+  flex-wrap: wrap;
+}
+.detalleProducto, .searchProducto {
   display: grid;
-  width: 80%;
   text-align: center;
   margin: auto;
   margin-top: 6em;
 
   box-shadow: 0px 0px 3.5px grey;
+}
+.detalleProducto{
+  width: 80%;
+}
+.searchProducto{
+  width: 30%;
 }
 .descripcionProducto {
   padding: 1em;
@@ -370,8 +378,8 @@ thead {
   text-align: initial;
 }
 .nombreProducto {
-  color: rgb(51, 51, 51);
-  padding-top: 1em;
+  color: rgb(23, 65, 204);
+  padding: 1em;
   align-self: center;
 }
 .imagenProducto {
@@ -385,16 +393,15 @@ thead {
 /****************************************************/
 /********************* BUSQUEDA *********************/
 /****************************************************/
-.busquedaMain{
-  background-image: url('../img/FondoBusqueda.jpg');
+.busquedaMain {
+  background-image: url("../img/FondoBusqueda.jpg");
   background-size: cover;
   height: 1000px;
   text-align: center;
   display: flex;
- 
 }
-.busqueda{
-  background-color: rgba(0,0,0,.6);
+.busqueda {
+  background-color: rgba(0, 0, 0, 0.6);
   align-self: center;
   padding: 1em;
   color: #fff;
@@ -402,24 +409,29 @@ thead {
   margin-top: 0;
   width: 100%;
 }
-.busqueda-esloganB{
+.busqueda-esloganB {
   font-size: 1.5em;
   margin-top: 10px;
   margin-bottom: 0;
 }
 
-.busqueda-esloganA{
+.busqueda-esloganA {
   align-self: center;
 }
-.nav-searching .form-group{
-    width: 50%;
-    margin: 1% 25%;
+.nav-searching .form-group {
+  width: 50%;
+  margin: 1% 25%;
 }
-.nav-searching .form-control{
+.nav-searching .form-control {
   width: 50%;
   margin: auto;
 }
-
+.nav-searching .precios {
+  width: 75%;
+  display: flex;
+  margin: 1% 12.5%;
+  padding: 0px 25%;
+}
 /****************************************************/
 /******************* COMENTARIOS ********************/
 /****************************************************/
@@ -442,28 +454,28 @@ thead {
   padding: 1em 2em;
   margin: auto;
   display: grid;
-  grid-template-columns:0.4fr 3fr;
+  grid-template-columns: 0.4fr 3fr;
   grid-template-areas:
-      "imagen titulo titulo titulo puntuacion"
-      "imagen texto texto texto texto";
+    "imagen titulo titulo titulo puntuacion"
+    "imagen texto texto texto texto";
 }
 .mensajeLogin {
   text-align: center;
 }
-.parrafoComentario{
-grid-area: texto;
+.parrafoComentario {
+  grid-area: texto;
 }
-.puntuacion{
+.puntuacion {
   grid-area: puntuacion;
 }
-.imagenUsuario{
+.imagenUsuario {
   width: auto;
   margin-right: 10px;
   height: 80px;
   border-radius: 10%;
   grid-area: 1 / 1 / 3;
 }
-.nombre-usuario{
+.nombre-usuario {
   color: blue;
 }
 /****************************************************/

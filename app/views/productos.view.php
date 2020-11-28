@@ -84,14 +84,22 @@ class ViewProducto
         $this->smarty->assign('user', $user);
         $this->smarty->display('detalleProductos.tpl');
     }
-    function renderBusqueda($producto){
-        $this->smarty->assign('producto', $producto);
+    function renderBusqueda($productos){
+        $this->smarty->assign('productos', $productos);
         $this->smarty->display('busquedaAvanzada.tpl');
     }
 
     function renderCategoriasUsuario()
     {
         $this->smarty->display('allCategorias.tpl');
+    }
+    // function renderBusquedaProducto($productos){
+    //     $this->smarty->assign('productos', $productos);
+    //     $this->smarty->display('searchBox.tpl');
+    // }
+    function ShowBusquedaLocationUsuario()
+    {
+        header("Location: " . BASE_URL . "busqueda");
     }
 
     function ShowHomeLocationUsuario()

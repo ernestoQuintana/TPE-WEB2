@@ -263,13 +263,10 @@ class ProductosControllers
         }
         if($categoria == ""){
             $categoria = null;
-            $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
-            var_dump($busqueda);
+            $productos = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
         }else{
-            $busqueda = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
-           // var_dump($nombre,$categoria,$descripcion,$precioMin,$precioMax);
-           var_dump($busqueda);
+            $productos = $this->modelProducto->getBusquedaAvanzada($nombre,$categoria,$descripcion,$precioMin,$precioMax);
         }
-        //$this->view->renderBusquedaProducto($producto,$clase,$lugar,$precio);
+        $this->view->ShowBusquedaLocationUsuario($productos);
     }
 }
