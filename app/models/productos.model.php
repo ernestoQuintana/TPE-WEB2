@@ -41,13 +41,14 @@ class ModelProducto
     function insertarProductoImg($nombre, $descripcion, $precio, $categoria, $imagen = null)
     {
         $img = null;
-        if ($imagen) {
-
+        if ($imagen != null) {
             $img = $this->uploadImage($imagen);
             $query = $this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria,imagen) VALUES(?,?,?,?,?)');
-            $query->execute([$nombre, $descripcion, $precio, $categoria, $img]);
-            return $this->dbProductos->lastInsertId();
+        }else{
+            $query = $this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria,imagen) VALUES(?,?,?,?,?)');
         }
+        $query->execute([$nombre, $descripcion, $precio, $categoria, $img]);
+        return $this->dbProductos->lastInsertId();
     }
 
     function uploadImage($imagen)
@@ -58,16 +59,13 @@ class ModelProducto
     }
 
 
-    function editarProductoID($nombre, $descripcion, $precio, $categoria, $id, $imagen = null)
+    function editarProductoID($nombre, $descripcion, $precio, $categoria, $id)
     {
-        $img = null;
-        if ($imagen) {
-            $img = $this->uploadImage($imagen);
             $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ?
-            ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ?,`imagen` =?  WHERE `id`= ?");
-            $query->execute([$nombre, $descripcion, $precio, $categoria, $id, $img]);
+            ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ? WHERE `id`= ?");
+            $query->execute([$nombre, $descripcion, $precio, $categoria, $id]);
             return $this->dbProductos->lastInsertId();
-        }
+        
     }
 
     function eliminarProductoID($id)

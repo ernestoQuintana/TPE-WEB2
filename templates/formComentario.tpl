@@ -1,7 +1,4 @@
 <main class="container">
-    <div class="btnLogout">
-        <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-    </div>
     <div class="container">
         <h1 class="comentarioUser"> Comentario</h1>
         <form id="formComentario" action="agregarComentario" method="POST">

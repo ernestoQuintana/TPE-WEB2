@@ -19,6 +19,8 @@ $r->addRoute("eliminarProducto/:ID", "GET", "ProductosControllers", "eliminarPro
 $r->addRoute("editarP/:ID", "GET", "ProductosControllers", "editarP");
 $r->addRoute("editarProducto/:ID", "POST", "ProductosControllers", "editarProducto");//porque me queda en al URL EDITARP
 $r->addRoute("eliminarImagen/:ID", "GET", "ProductosControllers", "eliminarImagen");
+$r->addRoute("allComentarios", "GET", "ProductosControllers", "showComentario");
+$r->addRoute("eliminarComentario/:ID", "GET", "ProductosControllers", "eliminarComentario");
 
 //rutas admin categorias
 $r->addRoute("allCategorias", "GET", "ProductosControllers", "showCategoriasAdmin"); 
@@ -31,7 +33,6 @@ $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCateg
 $r->addRoute("allUsers", "GET", "UsersControllers", "showUsersAdmin");
 $r->addRoute("eliminarUsuario/:ID", "GET", "UsersControllers", "eliminarUsuario");
 $r->addRoute("permisoUsuario/:ID", "GET", "UsersControllers", "permisoUsuario");
-
 
 //faltaria la parte del login del administrador
 $r->addRoute("login", "GET", "UsersControllers", "login");

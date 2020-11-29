@@ -1,8 +1,5 @@
 {include file='header.tpl'}
 <main class="container">
-    <div class="btnLogout">
-        <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-    </div>
     <div class="container">
         <h1 class="listaCategorias"> Lista de Categorias</h1>
         <form action="editarCategoria/{$idCategoria}" method="POST">

@@ -11,7 +11,7 @@ class helper {
 
     function checkLogin()
     {
-        session_start();
+      //  session_start();
         if (!isset($_SESSION['nombre'])) {
              //si no hay una sesion iniciada anda a login
             header("Location: " . LOGIN);
@@ -26,6 +26,16 @@ class helper {
         $nombre = $_SESSION['nombre'];
         $user = $this->model->getAdmin($nombre);
         return $user;
+    }
+
+    function checkConnection(){
+        session_start();
+        if (isset($_SESSION['nombre'])) {
+            $userConnect = $_SESSION['nombre'];
+        } else {
+            $userConnect = null;
+        }
+        return $userConnect;
     }
 
 }

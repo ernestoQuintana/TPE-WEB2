@@ -20,33 +20,34 @@ class UsersControllers
 
         $this->modelCategoria = new ModelCategoria();
         $this->categorias = $this->modelCategoria->getAllCategorias();
-        $this->viewAdmin = new ViewAdmin($this->categorias);
         $this->modelAdmin = new ModelAdmin();
         $this->helper = new helper();
+        $this->user = $this->helper->checkConnection();
+        $this->viewAdmin = new ViewAdmin($this->categorias,$this->user);
     }
 
     function login()
     {
-        session_start();
+       // session_start();
         if (isset($_SESSION["nombre"])) {
             $nombre = $_SESSION["nombre"];
             $user = $this->modelAdmin->getAdmin($nombre);
             if ($user->permiso == 1) {
 
-                $this->viewAdmin->renderAdmin();
+                $this->viewAdmin->renderAdmin($this->user);
                 die();
             } else {
                 $mensaje = "NO TENES PERMISO DE ADMINISTRADOR";
                 $this->viewAdmin->renderViewAdmin($mensaje);
             }
         } else {
-            $this->viewAdmin->renderViewAdmin();
+            $this->viewAdmin->renderViewAdmin($this->user);
         }
     }
 
     function logout()
     {
-        session_start();
+       // session_start();
         session_destroy();
         header("Location: " . LOGIN);
     }
@@ -64,15 +65,15 @@ class UsersControllers
 
             if (password_verify($password, $adminDB->password_administrador)) {
 
-                session_start();
+               // session_start();
                 $_SESSION["nombre"] = $adminDB->nombre_administrador;
                 $_SESSION['LAST_ACTIVITY'] = time();
                 $nombre = $_SESSION["nombre"];
                 $user = $this->modelAdmin->getAdmin($nombre);
                 if ($user->permiso == 1) {
-                    $this->viewAdmin->renderAdmin();
+                    $this->viewAdmin->renderAdmin($this->user);
                 } else {
-                    $this->viewAdmin->renderIndex();
+                    $this->viewAdmin->renderIndex($this->user);
                 }
             } else {
                 $mensaje = "PASSWORD INCORRECTO";
@@ -108,7 +109,7 @@ class UsersControllers
             if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {       
                 $this->modelAdmin->insertUser($nombre, $passEncrypt, $email, $_FILES['input_name']['tmp_name']);
             } else {
-                $this->modelAdmin->insertUser($nombre, $passEncrypt, $email);
+               $this->modelAdmin->insertUser($nombre, $passEncrypt, $email);
             }
             $this->iniciarSesionAuto($nombre);
         } else {
@@ -121,10 +122,10 @@ class UsersControllers
     {
         $userDB =  $this->modelAdmin->getAdmin($nombre);
         if (isset($userDB) && $userDB) {
-            session_start();
+           // session_start();
             $_SESSION["nombre"] = $userDB->nombre_administrador;
             $_SESSION['LAST_ACTIVITY'] = time();
-            $this->viewAdmin->renderIndex();
+            $this->viewAdmin->renderIndex($this->user);
         }
     }
 
@@ -135,9 +136,9 @@ class UsersControllers
         $user = $this->helper->checkLogin();
         if ($user->permiso == 1) {
             $users = $this->modelAdmin->getAllUsers();
-            $this->viewAdmin->renderUsersAdmin($users);
+            $this->viewAdmin->renderUsersAdmin($users,$this->user);
         } else {
-            $this->viewAdmin->renderIndex();
+            $this->viewAdmin->renderIndex($this->user);
         }
     }
 
@@ -147,9 +148,9 @@ class UsersControllers
         if ($user->permiso == 1) {
             $id = $params[':ID'];
             $this->modelAdmin->eliminarUsuarioID($id);
-            $this->viewAdmin->ShowUsuarioLocation();
+            $this->viewAdmin->ShowUsuarioLocation($this->user);
         } else {
-            $this->viewAdmin->renderIndex();
+            $this->viewAdmin->renderIndex($this->user);
         }
     }
 
@@ -169,9 +170,10 @@ class UsersControllers
                 $permiso = 0;
                 $this->modelAdmin->modificarPermiso($permiso, $id);
             }
-            $this->viewAdmin->ShowUsuarioLocation();
+            $this->viewAdmin->ShowUsuarioLocation($this->user);
         } else {
-            $this->viewAdmin->renderIndex();
+            $this->viewAdmin->renderIndex($this->user);
         }
     }
+
 }

@@ -1,7 +1,4 @@
 {include file='header.tpl'}
-<div class="btnLogout">
-<a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-</div>
 <main class="container">
 <div class="listaUsuarios">
     <h1>Lista de Usuarios</h1>

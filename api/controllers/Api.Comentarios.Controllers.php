@@ -12,7 +12,7 @@ class ApiComentariosController extends ApiControllers
     {
 
         parent::__construct(); // con esto termina de implementar el apicontrollers
-        $this->model = new ModelComentarios();
+        $this->model = new ModelComentario();
         $this->view = new ApiViewProducto();
     }
 

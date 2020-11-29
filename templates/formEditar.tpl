@@ -1,11 +1,8 @@
 {include file='header.tpl'}
 <main class="container">
-    <div class="btnLogout">
-        <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
-    </div>
     <div class="container">
         <h1 class="listaProductos"> Edita tus Productos</h1>
-        <form action="editarProducto/{$id}" method="POST" enctype="multipart/form-data">
+        <form action="editarProducto/{$id}" method="POST">
             <div class="form-group">
                 <label for="title">Nombre:</label>
                 <input class="form-control" placeholder="Nombre" id="title" name="input_title" aria-describedby="emailHelp" value="{$producto->nombre}" required>
@@ -25,7 +22,6 @@
                 {include file="listaCategorias.tpl"}
 
             </div>
-            <input type="file" name="input_name" id="imageToUpload">
             <button type="submit" class="btn btn-primary">Editar</button>
         </form>
     </div>

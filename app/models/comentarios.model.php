@@ -1,6 +1,6 @@
 <?php
 
-class ModelComentarios{
+class ModelComentario{
 
     private $dbComentarios;
 
@@ -8,6 +8,14 @@ class ModelComentarios{
         $this->dbComentarios = new PDO('mysql:host=localhost;'.'dbname=db_productos;charset=utf8', 'root', '');
     }
 
+    function getAllComentarios(){
+        $query =  $this->dbComentarios->prepare('SELECT administrador.nombre_administrador as nombre , administrador.imagen as imagen, 
+        comentario.id_comentario, comentario.titulo , comentario.texto, comentario.puntuacion, comentario.id_usuario
+        FROM comentario INNER JOIN administrador ON comentario.id_usuario = administrador.id');
+        $query->execute();
+        $comentarios = $query->fetchAll(PDO::FETCH_OBJ);
+        return $comentarios;
+    }
 
     function getComentariosPorProducto($idProducto){
         $comentario =  $this->dbComentarios->prepare('SELECT administrador.nombre_administrador as nombre , administrador.imagen as imagen,
@@ -27,7 +35,7 @@ class ModelComentarios{
         $comentario->execute([$id]);
         return $comentario->rowCount();// Trae un numero mayor a 0 si borro.
     }
-
+    
 
     function insertarComentario($titulo,$texto,$puntuacion,$id_usuario,$idProducto){
         $comentario = $this->dbComentarios->prepare('INSERT INTO comentario (titulo,texto,puntuacion,id_usuario,id_producto) VALUES(?,?,?,?,?)');

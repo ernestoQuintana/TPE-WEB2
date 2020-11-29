@@ -6,9 +6,10 @@ class ViewProducto
     /************************ TABLAS DEL ADMINISTRADOR ************************/
     private $smarty;
 
-    function __construct($categorias)
+    function __construct($categorias,$user)
     {
         $this->smarty = new Smarty();
+        $this->smarty->assign('user', $user);
         $this->smarty->assign('categorias', $categorias);
         $this->smarty->assign('BASE_URL', BASE_URL);
     }
@@ -43,7 +44,15 @@ class ViewProducto
     {
         header("Location: " . BASE_URL . "allProductos");
     }
-
+    function ShowComentariosLocation()
+    {
+        header("Location: " . BASE_URL . "allComentarios");
+    }
+    function renderComentariosAdmin($comentarios)
+    {
+        $this->smarty->assign('comentarios', $comentarios);
+        $this->smarty->display('allComentarios.tpl');
+    }
 
     // CATEGORIAS 
 
@@ -72,9 +81,10 @@ class ViewProducto
 
     /************************ TABLAS DEL USUARIO ************************/
 
-    function renderProductos($productos)
+    function renderProductos($productos,$user)
     {
         $this->smarty->assign('productos', $productos);
+        $this->smarty->assign('user', $user);
         $this->smarty->display('allProductos.tpl');
     }
 

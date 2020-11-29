@@ -6,6 +6,7 @@ require_once 'app\models\admin.model.php';
 require_once 'app\models\productos.model.php';
 require_once 'app\controllers\admin.controllers.php';
 require_once 'app\controllers\helper.php';
+require_once 'app\models\comentarios.model.php';
 
 
 class ProductosControllers
@@ -13,6 +14,7 @@ class ProductosControllers
 
     private $modelProducto;
     private $modelCategoria;
+    private $modelComentario;
     private $modelAdmin;
     private $view;
     private $helper;
@@ -21,10 +23,12 @@ class ProductosControllers
     {
         $this->modelProducto = new ModelProducto();
         $this->modelCategoria = new ModelCategoria();
+        $this->modelComentario = new ModelComentario();
         $this->modelAdmin = new ModelAdmin();
         $this->helper = new helper();
+        $this->user = $this->helper->checkConnection();
         $this->categorias = $this->modelCategoria->getAllCategorias();
-        $this->view = new ViewProducto($this->categorias);
+        $this->view = new ViewProducto($this->categorias,$this->user);
     }
 
 
@@ -35,16 +39,8 @@ class ProductosControllers
 
 
     function showIndex()
-    {   
-        session_start();
-        if (isset($_SESSION['nombre'])) {
-            $user = $_SESSION['nombre']; 
-            $this->view->renderIndex($user);
-        }else{
-            $user = null;
-            $this->view->renderIndex($user);
-        }
-       
+    {
+        $this->view->renderIndex($this->user);
     }
 
     function showProductosAdmin()
@@ -114,11 +110,7 @@ class ProductosControllers
                 $precio = $_REQUEST['input_precio'];
                 $categoria = $_REQUEST['select_categoria'];
             }
-            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
-                $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id, $_FILES['input_name']['tmp_name']);
-            } else {
-                $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id);
-            }
+            $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id);
             $this->view->ShowHomeLocation();
         } else {
             $this->view->ShowHomeLocationUsuario();
@@ -221,23 +213,24 @@ class ProductosControllers
     function showProductos()
     {
         //1.obtener los productos
+        
         $productos = $this->modelProducto->getAllProductos();
-        $this->view->renderProductos($productos);
+        $this->view->renderProductos($productos, $this->user);
     }
 
     function showDetalleProducto($params = null)
     {
-        session_start();
+      
         $id = $params[':ID'];
         $producto = $this->modelProducto->getDetalleProducto($id);
         if (!isset($_SESSION['nombre'])) {
             $user = null;
-            $this->view->renderDetalleProducto($producto, $user);
+           // $this->view->renderDetalleProducto($producto, $user);
         } else {
             $nombre = $_SESSION['nombre'];
             $user = $this->modelAdmin->getAdmin($nombre);
-            $this->view->renderDetalleProducto($producto, $user);
         }
+        $this->view->renderDetalleProducto($producto, $user);
     }
 
     function showProductosByCategoria($params = null)
@@ -279,5 +272,28 @@ class ProductosControllers
         }
         //var_dump($productos);
         $this->view->ShowBusquedaLocationUsuario($productos);
+    }
+
+
+    function showComentario()
+    {
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
+            $comentarios = $this->modelComentario->getAllComentarios();
+            $this->view->renderComentariosAdmin($comentarios);
+        } else {
+            $this->view->ShowHomeLocationUsuario();
+        }
+    }
+
+
+    function eliminarComentario($params = null)
+    {
+        $id = $params[':ID'];
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
+            $this->modelComentario->DeleteComentarioDelModelo($id);
+            $this->view-> ShowComentariosLocation();
+        }
     }
 }

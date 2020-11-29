@@ -10,7 +10,7 @@ abstract class ApiControllers{
     private $data; 
 
     public function __construct() {
-        $this->model = new ModelComentarios();
+        $this->model = new ModelComentario();
         $this->view = new ApiViewProducto();
         $this->data = file_get_contents("php://input"); 
     }

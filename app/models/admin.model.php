@@ -17,12 +17,14 @@
 
     function insertUser($nombre,$passEncrypt,$email,$imagen = null){
         $img = null;
-        if($imagen){
+        if($imagen != null){
             $img = $this->uploadImagen($imagen);
-            $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador, email,imagen) VALUES (?,?,?,?)');
-            $query->execute([$nombre,$passEncrypt,$email,$img]);
-            return $this->dbAdministrador->lastInsertId();
+            $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador,email,imagen) VALUES (?,?,?,?)');   
+        }else{
+            $query = $this->dbAdministrador->prepare('INSERT INTO administrador (nombre_administrador,password_administrador,email,imagen) VALUES (?,?,?,?)');
         }
+        $query->execute([$nombre,$passEncrypt,$email,$img]);
+        return $this->dbAdministrador->lastInsertId();
     }
 
     function uploadImagen($imagen){

@@ -62,13 +62,11 @@ body {
 }
 .logoutHidden {
   width: 7%;
-  display: none;
+  display: flex;
   font-size: 1.5em;
   justify-content: flex-end;
 }
-.logoutHidden.show {
-  display: flex;
-}
+
 /****************************************************/
 /*********************** HOME ***********************/
 /****************************************************/
@@ -136,7 +134,10 @@ body {
   background-color: rgb(128, 224, 90);
   color: aliceblue;
 }
-
+.mensajeLogin p{
+  font-size: 20px;
+  color: #fff;
+}
 /****************************************************/
 /****************** ADMINISTRADOR *******************/
 /****************************************************/
