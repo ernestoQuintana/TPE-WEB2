@@ -83,19 +83,24 @@ body {
 .btnDetalle,
 .btnBorrarImg,
 .btnDescripcion,
-.btnBorrarComentario {
+.btnBorrarComentario,
+.btnBorrarUsuario,
+.btnEditarUsuario {
   color: white;
   border-radius: 13px;
   padding: 0.6em;
-  width: 100%;
+  width: 40%;
   margin-left: 0.5em;
   text-align: center;
 }
-.btnBorrar {
+.btnBorrar,.btnBorrarUsuario {
   background-color: rgb(65, 58, 58);
 }
+.btnEditarUsuario,.btnBorrarUsuario{
+  width: 35%;
+}
 .btnEditar,
-.btnDescripcion {
+.btnDescripcion,.btnEditarUsuario {
   background-color: rgb(40, 190, 65);
 }
 .btnDetalle {
@@ -120,10 +125,13 @@ body {
 .cajaBtn {
   width: 40%;
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-end;
 }
-
+.listaUsuarioView .cajaBtn{
+  justify-content: flex-end;
+} 
 .btnDescripcion {
+  width: auto;
   display: flex;
   justify-content: space-around;
 }
@@ -131,11 +139,13 @@ body {
 .btnDetalle:hover,
 .btnEditar:hover,
 .btnBorrarImg:hover,
-.btnBorrarComentario:hover {
+.btnBorrarComentario:hover,
+.btnBorrarUsuario:hover,
+.btnEditarUsuario:hover {
   text-decoration: none;
   color: white;
 }
-.btnBorrar:hover {
+.btnBorrar:hover,.btnBorrarUsuario:hover {
   background-color: black;
 }
 .btnBorrarImg:hover,
@@ -144,7 +154,7 @@ body {
 }
 .btnEditar:hover,
 .btnDescripcion:hover,
-.btnDetalle:hover {
+.btnDetalle:hover,.btnEditarUsuario:hover {
   text-decoration: none;
   background-color: rgb(128, 224, 90);
   color: aliceblue;
@@ -544,7 +554,7 @@ thead {
 .listaComentariosView {
   list-style: none;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
     padding: 1em 1em 0 1em;
   font-size: 1.5em;
 }
@@ -559,6 +569,7 @@ thead {
   background-color: rgb(211, 89, 44);
   width: 36%;
   font-size: 1rem;
+  margin-left: auto;
 }
 .spanNombreUsuario{
   color: blue;
@@ -567,6 +578,7 @@ thead {
   display: flex;
 }
 .infoComentario div{
+  text-transform: capitalize;
   margin-right: 1.5em;
 }
 /****************************************************/
