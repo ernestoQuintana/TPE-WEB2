@@ -82,7 +82,8 @@ body {
 .btnEditar,
 .btnDetalle,
 .btnBorrarImg,
-.btnDescripcion {
+.btnDescripcion,
+.btnBorrarComentario {
   color: white;
   border-radius: 13px;
   padding: 0.6em;
@@ -93,11 +94,11 @@ body {
 .btnBorrar {
   background-color: rgb(65, 58, 58);
 }
-.btnEditar,.btnDescripcion {
+.btnEditar,
+.btnDescripcion {
   background-color: rgb(40, 190, 65);
 }
-.btnDetalle
- {
+.btnDetalle {
   background-color: rgb(6, 150, 30);
   padding-top: 15px;
 }
@@ -129,14 +130,16 @@ body {
 .btnBorrar:hover,
 .btnDetalle:hover,
 .btnEditar:hover,
-.btnBorrarImg:hover {
+.btnBorrarImg:hover,
+.btnBorrarComentario:hover {
   text-decoration: none;
   color: white;
 }
-.btnBorrar:hover{
+.btnBorrar:hover {
   background-color: black;
 }
-.btnBorrarImg:hover {
+.btnBorrarImg:hover,
+.btnBorrarComentario:hover {
   background-color: rgb(255, 0, 43);
 }
 .btnEditar:hover,
@@ -325,7 +328,8 @@ input[type="email"],
 /****************************************************/
 
 .tituloTablaProductos,
-.tituloTablaCategoria {
+.tituloTablaCategoria,
+.tituloListaComentarios {
   display: flex;
   justify-content: center;
   margin: 3rem 0;
@@ -339,7 +343,8 @@ input[type="email"],
 }
 
 .tituloTablaProductos h1,
-.tituloTablaCategoria h1 {
+.tituloTablaCategoria h1,
+.tituloListaComentarios {
   font-size: 3rem;
 }
 
@@ -374,6 +379,25 @@ tr {
 }
 thead {
   background-color: rgb(128, 224, 90);
+}
+/****************************************************/
+/********************* BUSQUEDA *********************/
+/****************************************************/
+.busquedaMain {
+  background-image: url("../img/FondoBusqueda.jpg");
+  background-size: cover;
+  height: 1000px;
+  text-align: center;
+  display: flex;
+}
+.busqueda {
+  background-color: rgba(0, 0, 0, 0.6);
+  align-self: center;
+  padding: 1em;
+  color: #fff;
+  border-radius: 10px;
+  margin-top: 0;
+  width: 100%;
 }
 .searchBox {
   display: flex;
@@ -413,26 +437,13 @@ thead {
   grid-area: 1 / 1 / 10 / 3;
 }
 .btnVolver {
-  font-size: 25px;
-}
-/****************************************************/
-/********************* BUSQUEDA *********************/
-/****************************************************/
-.busquedaMain {
-  background-image: url("../img/FondoBusqueda.jpg");
-  background-size: cover;
-  height: 1000px;
-  text-align: center;
+  font-size: 2em;
+  margin-top: 1em;
   display: flex;
+  justify-content: flex-end;
 }
-.busqueda {
-  background-color: rgba(0, 0, 0, 0.6);
-  align-self: center;
-  padding: 1em;
-  color: #fff;
-  border-radius: 10px;
-  margin-top: 0;
-  width: 100%;
+.btnVolver:hover {
+  text-decoration: none;
 }
 .busqueda-esloganB {
   font-size: 1.5em;
@@ -456,6 +467,23 @@ thead {
   display: flex;
   margin: 1% 12.5%;
   padding: 0px 25%;
+}
+.categoriaProducto {
+  display: flex;
+  justify-content: center;
+  font-size: large;
+}
+.h5Categoria,
+.h5Precio {
+  margin-right: 10px;
+}
+.detalleProductoBuscado {
+  grid-column: 3;
+}
+.precioProducto {
+  display: flex;
+  font-size: large;
+  grid-column: 2;
 }
 /****************************************************/
 /******************* COMENTARIOS ********************/
@@ -502,6 +530,44 @@ thead {
 }
 .nombre-usuario {
   color: blue;
+}
+.containerComentario {
+  text-align: center;
+}
+.comentarioUser {
+  margin: 1em 0;
+}
+.containerComentario .form-control {
+  width: 75%;
+  margin: auto;
+}
+.listaComentariosView {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+    padding: 1em 1em 0 1em;
+  font-size: 1.5em;
+}
+.cajaForComentario {
+  border-bottom: 0.5px solid black;
+}
+.cajaForComentario .list-group-item {
+  border: none;
+  font-size: 1.3em;
+}
+.btnBorrarComentario {
+  background-color: rgb(211, 89, 44);
+  width: 36%;
+  font-size: 1rem;
+}
+.spanNombreUsuario{
+  color: blue;
+}
+.infoComentario{
+  display: flex;
+}
+.infoComentario div{
+  margin-right: 1.5em;
 }
 /****************************************************/
 /********************** FOOTER **********************/
