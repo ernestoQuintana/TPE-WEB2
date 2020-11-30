@@ -49,7 +49,7 @@
             </div>
      
             {if $user != null}
-                <div >
+                <div class="btnLogout" >
                     <a href="logout"><i class="fas fa-exclamation-triangle">Logout</i></a>
                 </div>    
             {/if}

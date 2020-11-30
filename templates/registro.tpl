@@ -18,7 +18,7 @@
             <input type="password" class="form-control" name="input_confirmPassword" placeholder="Confirm your password" id="passwordConfirm" autocomplete="off" required>
         </div>
         <div class="form-group">
-            <input type="file" name="input_name" id="imagenRegistro">
+            <input type="file" class="form-control imageInput" name="input_name" id="imagenRegistro">
         </div>
         <button type="submit" class="btn btn-primary">Registrar</button>
     </form>

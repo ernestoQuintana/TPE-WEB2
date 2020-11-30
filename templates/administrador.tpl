@@ -1,5 +1,7 @@
 {include file='header.tpl'}
-
+<div class="tituloTablaAdministrador">
+    <h1>Control de Administrador</h1>
+</div>
 <div class="selecAdmin">
     <div class="adminImg">
         <h2>Lista de Productos</h2>

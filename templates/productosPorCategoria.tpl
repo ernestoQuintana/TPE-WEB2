@@ -5,8 +5,8 @@
         {foreach $productosCategoria as $producto}
             <li class='listaProductoView'>
                 {$producto->nombre} | {$producto->nombre_categoria}
-                <div class='cajaBtn'>
-                    <a class='btnEditar' href='detalleProducto/{$producto->id}'>Descripcion</a>
+                <div class='cajaBtnDescripcion'>
+                    <a class='btnDescripcion' href='detalleProducto/{$producto->id}'>Descripcion</a>
                 </div>
             </li>
         {/foreach}
