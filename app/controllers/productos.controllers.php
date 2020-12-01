@@ -45,8 +45,8 @@ class ProductosControllers
 
     function showProductosAdmin()
     {
-        $user = $this->helper->checkLogin();
-        if ($user->permiso == 1) {
+        $user = $this->helper->checkLogin(); // SI hay una session iniciada me retorna el usuario registrado SINO me lleva al LOGOUT
+        if ($user->permiso == 1) { //controlamos que el usuario en session tenga permiso
             $productos = $this->modelProducto->getAllProductos();
             $this->view->renderProductosAdmin($productos);
         } else {
@@ -209,15 +209,22 @@ class ProductosControllers
             $this->view->ShowHomeLocationUsuario();
         }
     }
-
-
+    
+    function eliminarComentario($params = null)
+    {
+        $id = $params[':ID'];
+        $user = $this->helper->checkLogin();
+        if ($user->permiso == 1) {
+            $this->modelComentario->DeleteComentarioDelModelo($id);
+            $this->view-> ShowComentariosLocation();
+        }
+    }
 
     /********************** FUNCIONES DEL USUARIO **********************/
 
     function showProductos()
     {
-        //1.obtener los productos
-        
+        //1.obtener los productos   
         $productos = $this->modelProducto->getAllProductos();
         $this->view->renderProductos($productos, $this->user);
     }
@@ -286,17 +293,6 @@ class ProductosControllers
             $this->view->renderComentariosAdmin($comentarios);
         } else {
             $this->view->ShowHomeLocationUsuario();
-        }
-    }
-
-
-    function eliminarComentario($params = null)
-    {
-        $id = $params[':ID'];
-        $user = $this->helper->checkLogin();
-        if ($user->permiso == 1) {
-            $this->modelComentario->DeleteComentarioDelModelo($id);
-            $this->view-> ShowComentariosLocation();
         }
     }
 }
