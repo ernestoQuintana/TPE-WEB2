@@ -28,12 +28,7 @@
     {/foreach}
 
 </div>
-<div class="paginador">
-    <ul>
-        <li class=\"btn\"><a href=\"?pag=".$DecrementNum." \">◀</a></li>
-        <li class=\"btn\"><a href=\"?pag=".$IncrimentNum." \">▶</a></li>
-    </ul>
-</div>
+
 <a class='btnVolver' href='productos/'><i class="fas fa-backward"> Volver</i></a>
 
 {include file="footer.tpl"}

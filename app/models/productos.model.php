@@ -44,7 +44,7 @@ class ModelProducto
         if ($imagen != null) {
             $img = $this->uploadImage($imagen);
             $query = $this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria,imagen) VALUES(?,?,?,?,?)');
-        }else{
+        } else {
             $query = $this->dbProductos->prepare('INSERT INTO producto (nombre, descripcion, precio, id_categoria,imagen) VALUES(?,?,?,?,?)');
         }
         $query->execute([$nombre, $descripcion, $precio, $categoria, $img]);
@@ -59,13 +59,14 @@ class ModelProducto
     }
 
 
-    function editarProductoID($nombre, $descripcion, $precio, $categoria, $id)
+    function editarProductoID($nombre, $descripcion, $precio, $categoria, $id, $imagen = null)
     {
-            $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ?
-            ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ? WHERE `id`= ?");
-            $query->execute([$nombre, $descripcion, $precio, $categoria, $id]);
-            return $this->dbProductos->lastInsertId();
-        
+        $img = null;
+        $img = $this->uploadImage($imagen);
+        $query = $this->dbProductos->prepare("UPDATE `producto` SET `nombre`= ?
+            ,`descripcion`= ? ,`precio`= ?,`id_categoria`= ?,`imagen` = ? WHERE `id`= ?");
+        $query->execute([$nombre, $descripcion, $precio, $categoria,$img ,$id ]);
+        return $this->dbProductos->lastInsertId();
     }
 
     function eliminarProductoID($id)
@@ -85,51 +86,50 @@ class ModelProducto
     /************************* BUSQUEDA AVANZADA **************************/
 
     function getBusquedaAvanzada($nombre = null, $categoria = null, $descripcion = null, $precioMin = null, $precioMax = null)
-    {  
+    {
         $base = "SELECT producto.nombre, producto.precio ,producto.descripcion, categoria.nombre_categoria, producto.id , producto.imagen
          FROM producto INNER JOIN categoria ON producto.id_categoria = categoria.id_categoria WHERE ";
         //nombre
-        if($nombre != null && $categoria == null &&  $descripcion == null && $precioMin == null && $precioMax == null){
+        if ($nombre != null && $categoria == null &&  $descripcion == null && $precioMin == null && $precioMax == null) {
             $query = $this->dbProductos->prepare($base . " nombre LIKE ?");
-            $query->execute(['%'. $nombre.'%']);
+            $query->execute(['%' . $nombre . '%']);
         }
         //nombre y categoria
         elseif ($nombre != null && $categoria != null &&  $descripcion == null && $precioMin == null && $precioMax == null) {
             $query = $this->dbProductos->prepare($base . " producto.id_categoria = ? AND producto.nombre LIKE ?");
-            $query->execute([$categoria ,'%'. $nombre.'%']);   
+            $query->execute([$categoria, '%' . $nombre . '%']);
         }
         //nombre y descripcion
-         elseif ($nombre != null && $descripcion != null &&  $categoria == null && $precioMin == null && $precioMax == null) {       
+        elseif ($nombre != null && $descripcion != null &&  $categoria == null && $precioMin == null && $precioMax == null) {
             $query = $this->dbProductos->prepare($base . " nombre LIKE ? AND producto.descripcion LIKE ?");
-            $query->execute(['%'. $nombre.'%','%'. $descripcion . '%']);
-        } 
+            $query->execute(['%' . $nombre . '%', '%' . $descripcion . '%']);
+        }
         //nombre y precio
         elseif ($nombre != null && $precioMin != null && $precioMax != null && $categoria == null && $descripcion == null) {
             $query = $this->dbProductos->prepare($base . " nombre LIKE ? AND (producto.precio > ? AND producto.precio < ?)");
-            $query->execute(['%'. $nombre.'%', $precioMin,$precioMax]);
+            $query->execute(['%' . $nombre . '%', $precioMin, $precioMax]);
         }
         //nombre, categoria y descripcion
         elseif ($nombre != null && $categoria != null &&  $descripcion != null && $precioMin == null && $precioMax == null) {
             $query = $this->dbProductos->prepare($base . " producto.id_categoria = ? AND producto.descripcion LIKE ? AND producto.nombre LIKE ?");
-            $query->execute([$categoria ,'%'. $descripcion .'%', '%'. $nombre.'%']);   
+            $query->execute([$categoria, '%' . $descripcion . '%', '%' . $nombre . '%']);
         }
         //nombre , categoria , precio
         elseif ($nombre != null && $precioMin != null && $precioMax != null && $categoria != null && $descripcion == null) {
             $query = $this->dbProductos->prepare($base . " producto.nombre LIKE ? AND producto.id_categoria = ? AND (producto.precio > ? AND producto.precio < ?)");
-            $query->execute(['%'. $nombre.'%',$categoria, $precioMin,$precioMax]);
+            $query->execute(['%' . $nombre . '%', $categoria, $precioMin, $precioMax]);
         }
         //categoria, descripcion, precio
         elseif ($nombre == null && $precioMin != null && $precioMax != null && $categoria != null && $descripcion != null) {
             $query = $this->dbProductos->prepare($base . " producto.descripcion LIKE ? AND producto.id_categoria = ? AND (producto.precio > ? AND producto.precio < ?)");
-            $query->execute(['%'. $descripcion.'%',$categoria, $precioMin,$precioMax]);
+            $query->execute(['%' . $descripcion . '%', $categoria, $precioMin, $precioMax]);
         }
         //nombre, categoria, descripcion y precio
-        elseif ($nombre != null && $categoria != null && $descripcion != null && $precioMin != null && $precioMax != null){
+        elseif ($nombre != null && $categoria != null && $descripcion != null && $precioMin != null && $precioMax != null) {
             $query = $this->dbProductos->prepare($base . " producto.nombre LIKE ? AND producto.id_categoria = ? AND producto.descripcion LIKE ? AND (producto.precio > ? AND producto.precio < ?)");
-            $query->execute(['%'.$nombre.'%', $categoria,'%'. $descripcion .'%',$precioMin,$precioMax]);   
+            $query->execute(['%' . $nombre . '%', $categoria, '%' . $descripcion . '%', $precioMin, $precioMax]);
         }
         $productos = $query->fetchAll(PDO::FETCH_OBJ);
         return $productos;
-        
     }
 }

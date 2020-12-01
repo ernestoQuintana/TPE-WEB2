@@ -55,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(function (r) {
             return r.json()
         }).then(function (json) {
-           // console.log(JSON.stringify(json));
             renderizarComentario(json);
             vaciarInput();
         }).catch(function (e) {

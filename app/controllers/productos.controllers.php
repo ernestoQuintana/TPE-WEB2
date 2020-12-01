@@ -110,7 +110,11 @@ class ProductosControllers
                 $precio = $_REQUEST['input_precio'];
                 $categoria = $_REQUEST['select_categoria'];
             }
-            $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id);
+            if ($_FILES['input_name']['type'] == "image/jpg" || $_FILES['input_name']['type'] == "image/jpeg" || $_FILES['input_name']['type'] == "image/png") {
+                $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id, $_FILES['input_name']['tmp_name']);
+            } else {
+                $this->modelProducto->editarProductoID($nombre, $descripcion, $precio, $categoria, $id);
+            }
             $this->view->ShowHomeLocation();
         } else {
             $this->view->ShowHomeLocationUsuario();
@@ -225,7 +229,6 @@ class ProductosControllers
         $producto = $this->modelProducto->getDetalleProducto($id);
         if (!isset($_SESSION['nombre'])) {
             $user = null;
-           // $this->view->renderDetalleProducto($producto, $user);
         } else {
             $nombre = $_SESSION['nombre'];
             $user = $this->modelAdmin->getAdmin($nombre);

@@ -2,7 +2,7 @@
 <main class="container">
     <div class="container">
         <h1 class="listaProductos"> Edita tus Productos</h1>
-        <form action="editarProducto/{$id}" method="POST">
+        <form action="editarProducto/{$id}" method="POST"  enctype="multipart/form-data">
             <div class="form-group">
                 <label for="title">Nombre:</label>
                 <input class="form-control" placeholder="Nombre" id="title" name="input_title" aria-describedby="emailHelp" value="{$producto->nombre}" required>
@@ -21,6 +21,9 @@
 
                 {include file="listaCategorias.tpl"}
 
+            </div>
+            <div class="form-group">
+                <input type="file" name="input_name" id="imageToUpload">
             </div>
             <button type="submit" class="btn btn-primary">Editar</button>
         </form>
