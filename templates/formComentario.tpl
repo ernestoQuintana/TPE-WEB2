@@ -1,7 +1,7 @@
 <main class="container">
     <div class="containerComentario">
         <h1 class="comentarioUser">Dejanos un comentario</h1>
-        <form id="formComentario" action="agregarComentario" method="POST">
+        <form id="formComentario" >
             <div class="form-group">
                 <input class="form-control" id="tituloComentario" name="input_titleComentario" 
                  placeholder="titulo" aria-describedby="emailHelp" required>

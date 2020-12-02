@@ -155,5 +155,4 @@ document.addEventListener('DOMContentLoaded', () => {
         contenedor.appendChild(ul);
     }
 
-    //  setInterval(function () { cargarComentarios(id_producto) }, 30000);
 });

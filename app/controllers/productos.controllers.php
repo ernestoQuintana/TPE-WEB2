@@ -280,7 +280,6 @@ class ProductosControllers
         } else {
             $productos = $this->modelProducto->getBusquedaAvanzada($nombre, $categoria, $descripcion, $precioMin, $precioMax);
         }
-        //var_dump($productos);
         $this->view->ShowBusquedaLocationUsuario($productos);
     }
 

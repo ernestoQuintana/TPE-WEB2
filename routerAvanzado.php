@@ -29,7 +29,7 @@ $r->addRoute("eliminarCategoria/:ID", "GET", "ProductosControllers", "eliminarCa
 $r->addRoute("editarC/:ID", "GET", "ProductosControllers", "editarC");
 $r->addRoute("editarCategoria/:ID", "POST", "ProductosControllers", "editarCategoria");
 
-//rutas admin usuarios
+//rutas administrador
 $r->addRoute("allUsers", "GET", "UsersControllers", "showUsersAdmin");
 $r->addRoute("eliminarUsuario/:ID", "GET", "UsersControllers", "eliminarUsuario");
 $r->addRoute("permisoUsuario/:ID", "GET", "UsersControllers", "permisoUsuario");

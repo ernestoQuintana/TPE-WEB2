@@ -49,10 +49,10 @@ class ApiComentariosController extends ApiControllers
             if (!empty($idComentario)) { // verifica si la comentario existe
                 $this->view->response($this->model->getComentarioId($idComentario), 201);
             } else {
-                $this->view->response("La tarea no se pudo insertar", 404);
+                $this->view->response("El comentario no se pudo insertar", 404);
             }
         }else{
-            $this->view->response("La tarea no se pudo insertar", 404);
+            $this->view->response("El comentario no se pudo insertar", 404);
         }
     }
 

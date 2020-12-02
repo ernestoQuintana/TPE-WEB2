@@ -28,7 +28,6 @@ class UsersControllers
 
     function login()
     {
-       // session_start();
         if (isset($_SESSION["nombre"])) {
             $nombre = $_SESSION["nombre"];
             $user = $this->modelAdmin->getAdmin($nombre);
@@ -47,7 +46,6 @@ class UsersControllers
 
     function logout()
     {
-       // session_start();
         session_destroy();
         header("Location: " . LOGIN);
     }
@@ -59,17 +57,15 @@ class UsersControllers
             $password = $_POST['input_passwordAdmin'];
         }
 
-        $adminDB =  $this->modelAdmin->getAdmin($nombre);
+        $user =  $this->modelAdmin->getAdmin($nombre);
 
-        if (isset($adminDB) && $adminDB) {
+        if (isset($user) && $user) {
 
-            if (password_verify($password, $adminDB->password_administrador)) {
+            if (password_verify($password, $user->password_administrador)) {
 
-               // session_start();
-                $_SESSION["nombre"] = $adminDB->nombre_administrador;
+                $_SESSION["nombre"] = $user->nombre_administrador;
                 $_SESSION['LAST_ACTIVITY'] = time();
                 $nombre = $_SESSION["nombre"];
-                $user = $this->modelAdmin->getAdmin($nombre);
                 if ($user->permiso == 1) {
                     $this->viewAdmin->renderAdmin($this->user);
                 } else {
@@ -122,7 +118,6 @@ class UsersControllers
     {
         $userDB =  $this->modelAdmin->getAdmin($nombre);
         if (isset($userDB) && $userDB) {
-           // session_start();
             $_SESSION["nombre"] = $userDB->nombre_administrador;
             $_SESSION['LAST_ACTIVITY'] = time();
             $this->viewAdmin->renderIndex($this->user);
